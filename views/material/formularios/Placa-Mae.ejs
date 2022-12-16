@@ -1,0 +1,446 @@
+<%- include('../../partials/header') %>
+
+
+<style>
+  .card{
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+.conteudo_1{
+                display:none
+              }
+              .conteudo_2{
+                display:none
+              }
+              .conteudo_3{
+                display:none
+              }
+              
+              .active{
+                display:block!important;
+              }
+</style>
+
+
+   
+<header id="header">
+      <nav>
+        <a href="/selecionar-item" >Voltar</a>
+      </nav>
+      <nav> 
+        <a href="#menu">Menu</a>
+      </nav>
+    <nav id="menu">
+      <ul class="links">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/logout/">Sair</a></li>
+      </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+
+<div class="inner">
+
+    <section class="wrapper">
+            <header class="special">
+                <h2>Cadastro de Placa Mãe</h2>
+                <p></p>
+            </header>
+  
+
+<!-- formulario dinamico -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- formulario dinamico -->
+
+
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="#" onclick="toggleDiv(1)">Placa Mãe</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#" onclick="toggleDiv(2)">Ficha Tecnica</a>
+      </li>
+      <li class="nav-item">
+        <!--
+        <a class="nav-link active" href="#" onclick="toggleDiv(3)">Relação</a> 
+        -->
+      </li>
+    </ul>
+  </div> 
+  <div class="card-body">
+    <h5 class="card-title"></h5><br>
+
+    <div class="conteudo conteudo_1">
+        
+
+        <!-- FORM MONITOR -->
+
+        <form method="POST" name='form' action="/salvar-item" >
+            <div class="row">
+              <div class="col">
+                  <div class="text-left">
+                      <label for="">Marca</label>
+                  </div>
+                <input type="text" name='marca' class="form-control" placeholder="">
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "3"){ %>
+                    <div class="text-left">
+                     <b style="color: red;">* Preencha esse campo</b>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+              <div class="col">
+                <div class="text-left">
+                    <label for="">Processador</label>
+                </div>
+                <input type="text" name='processador' class="form-control" placeholder="">
+              </div>
+            </div><br>
+
+            <div class="row">
+                <div class="col">
+                    <div class="text-left">
+                        <label for="">Tipo de soquete do processador</label>
+                    </div>
+                   <select name='tiposoquete' class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <option value="LGA755/T"> LGA755/T</option>
+                        <option value="LGA1150/H3">LGA1150/H3</option>
+                        <option value="LGA1155/H2">LGA1155/H2</option>
+                        <option value="LGA1156/H1">LGA1156/H1></option>
+                        <option value="LGA1366/B">LGA1366/ B</option>
+                        <option value="AM2/AM2+">AM2 / AM2+</option>
+                        <option value="AM3"> AM3</option>
+                        <option value="FM1"> FM1</option>
+                        <option value="FM1 uPGA">FM1 uPGA</option>
+                        <option value="FM2">FM2</option>
+                      </select>
+                </div>
+                <div class="col">
+                  <div class="text-left">
+                      <label for="">Tecnologia da memória</label>
+                  </div>
+                  <select name='memoriaRam' class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="DDR4">DDR4</option>
+                    <option value="DDR4">DDR3</option>
+                    <option value="DDR2">DDR2</option>
+                    <option value="DDR">DDR</option>
+                  </select>
+                </div>
+              </div><br>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="text-left">
+                        <label for="">Entradas</label>
+                    </div>
+                    <select name='entrada' class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <option value="vga/hdmi">VGA / HDMI / </option>
+                        <option value="vga/hdmi/dvi">VGA / HDMI / DVI</option>
+                        <option value="vga">VGA</option>
+                        <option value="hdmi">HDMI</option>
+                        <option value="dvi">DVI</option>
+                        <option value="outros">Outros</option>
+                      </select>
+                </div>
+
+
+                <div class="col">
+                  <div class="text-left">
+                      <label >Quantidade</label>
+                  </div>
+                <input name='quantidade' id='numero' type="text" ="quantidade" class="form-control" placeholder="">
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "2"){ %>
+                    <div class="text-left">
+                     <b style="color: red;">* Preencha esse campo</b>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+
+              <div class="row">
+                  
+                <div class="col">
+                  <div class="text-left">
+                      <label >Preço</label>
+                  </div>
+                <input type="text" name="preco" id='money' class="form-control" placeholder="">
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "1"){ %>
+                    <div class="text-left">
+                     <b style="color: red;">* Preencha esse campo</b>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+              </div>
+
+
+
+
+                <div class="col-md-6"></div>
+   
+              </div><br>
+                  <div class="text-right">
+                    <input type="hidden" name='categoria' value="Placa Mãe">
+                    <a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+                  </div>
+
+                  </div>
+
+
+
+      <div class="conteudo conteudo_2">
+
+        <div class="row">
+          <div class="col">
+              <div class="text-left">
+                  <label for="">Interface da Placa de Vídeo</label>
+              </div>
+            <input type="text" name='placadevideo' class="form-control" placeholder="">
+          </div>
+          <div class="col">
+            <div class="text-left">
+                <label for="">Chipset</label>
+            </div>
+            <select name='chipset' class="form-select" aria-label="Default select example">
+              <option selected></option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+          </div>
+        </div><br>
+
+        <div class="row">
+            <div class="col">
+                <div class="text-left">
+                    <label for="">Número de slots de memória</label>
+                </div>
+                <select name='NslotsMemoria' class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="16">16</option>
+                  </select>
+            </div>
+            <div class="col">
+              <div class="text-left">
+                  <label for="">Modelo</label>
+              </div>
+              <input type="text" name='modelo' class="form-control" placeholder="">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-md-6">
+                <div class="text-left">
+                    <label for="">Garantia</label>
+                </div>
+                <select name='garantia' class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="sem Garantia">Sem Garantia</option>
+                    <option value="30">30 Dias</option>
+                    <option value="90">90 Dias</option>
+                    <option value="12mes">12 Mês</option>
+                    <option value="2anos">2 Anos</option>
+                    <option value="outros">Outro</option>
+                  </select>
+            </div>
+
+            <div class="col-md-6"></div>
+
+          </div><br>
+              <div class="text-right">
+                <a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+              </div>
+    
+      </div>
+
+     <!-- 
+      <div class="conteudo conteudo_3">
+
+
+
+        <div class="row">
+          <div class="col">
+              <div class="text-left">
+                  <label for="">Sessão</label>
+              </div>
+
+              <select  class="form-select" aria-label="Default select example">
+                <option selected></option>
+                <option value="">Cmt</option>
+                <option value="">SubCmt</option>
+                <option value="">Adj</option>
+                <option value="">S1</option>
+                <option value="">S2</option>
+                <option value="">S4</option>
+                <option value="">Fiscalização</option>
+                <option value="">Spima</option>
+                <option value="">Rp</option>
+                <option value="">Com</option>
+                <option value="">Sti</option>
+                <option value="">Tesouraria</option>
+                <option value="">Salc</option>
+                <option value="">Conf doc</option>
+                <option value="">asse Juridica</option>
+                <option value="">Pagamento</option>
+                <option value="">SFPC</option>
+                <option value="">Aprov</option>
+                <option value="">Guarda</option>
+                <option value="">Sec Sau</option>
+                <option value="">Gab Odontologico</option>
+                <option value="">Sec Controle</option>
+                <option value="">Posto de Lavagem</option>
+                <option value="">Pel Tranporte</option>
+                <option value="">Pel Eqp</option>
+                <option value="">Pel Manutenção</option>
+                <option value="">Almoxarifado</option>
+              
+              </select> 
+          
+
+          </div>
+          <div class="col">
+            <div class="text-left">
+                <label for="">N°Siscofis</label>
+            </div>
+            <input type="text" class="form-control" placeholder="">
+          </div>
+        </div><br>
+
+        <div class="row">
+            <div class="col">
+                <div class="text-left">
+                    <label for="">NEE</label>
+                </div>
+                <input type="text" class="form-control" placeholder="">
+
+            </div>
+            <div class="col">
+              <div class="text-left">
+                  <label for="">N° de Serie</label>
+              </div>
+              <input type="text" class="form-control" placeholder="">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-md-6">
+                <div class="text-left">
+                    <label for="">Entradas</label>
+                </div>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="">VGA / HDMI / </option>
+                    <option value="">VGA / HDMI / DVI</option>
+                    <option value="">VGA</option>
+                    <option value="">HDMI</option>
+                    <option value="">DVI</option>
+                    <option value="">Outros</option>
+                  </select>
+            </div>
+
+
+            <div class="col-md-2">
+              <div class="text-left">
+                  <label >Quantidade</label>
+              </div>
+            <input type="text" name="idPreco" class="form-control" placeholder="">
+
+</div>
+            
+          <div class="row">
+              
+            <div class="col">
+              <div class="text-left">
+                  <label >Preço</label>
+              </div>
+            <input type="text" name="idPreco" class="form-control" placeholder="">
+          </div>
+          </div>
+
+
+
+
+            <div class="col-md-6"></div>
+
+          </div><br>
+              <div class="text-right">
+                <button class='btn-success'>Ir</button>
+              </div>
+
+
+
+
+      </div>
+    -->
+  </div>
+</div>
+
+</div>
+
+
+</form>
+
+<!--
+  MARCARA DE FORMULARIO
+-->
+
+<!--
+  MARCARA DE FORMULARIO
+-->
+
+
+
+<script>
+  function toggleDiv(conteudo){
+    $('div.conteudo').removeClass('active');
+    if(conteudo == 1){
+      $('div.conteudo_1').addClass('active');
+    }else if(conteudo == 2){
+      $('div.conteudo_2').addClass('active');
+    }else if(conteudo == 3){
+      $('div.conteudo_3').addClass('active');
+    } 
+  }
+  </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+        
+    <script type="text/javascript">
+    $("#data1").mask("00/00/0000",{placeholder: "__/__/____"});
+    $("#data2").mask("00/00/0000",{placeholder: "__/__/____"});
+    $('#cpf').mask('000.000.000-00', {reverse: true});
+    $('#telefone1').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
+    $('#telefone2').mask('(00) 00000-0000');
+    $("#rg").mask("999.999.999-99" || "999.999.999-a");
+    $('#cep').mask('00000-000');
+    $('#numero').mask('0#', {maxlength: false});
+    $('#money').mask('000.000.000.000.000,00', {reverse: true});
+    
+    </script>
+
+
+
+<%- include('../../partials/footer') %>
+

@@ -1,0 +1,177 @@
+<%- include('../partials/header') %>
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+</style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/material" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+  </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header>
+
+
+
+<div class="inner">
+
+
+
+
+    <section class="wrapper">
+            <header class="special">
+                <h2>Controle de material</h2>
+                <p></p>
+            </header>
+
+<form name="form" method="POST" action="/adicionar-item">
+
+            <div class="card">
+              <div class="card-header">
+               Selecione a categoria
+                <div class="text-right">
+                <a class="position-absolute" style="top: -20px;" href="/add/categoria"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="38" height="38"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g><path d="M157.66667,86c0,39.57792 -32.08875,71.66667 -71.66667,71.66667c-39.57792,0 -71.66667,-32.08875 -71.66667,-71.66667c0,-39.57792 32.08875,-71.66667 71.66667,-71.66667c39.57792,0 71.66667,32.08875 71.66667,71.66667z" fill="#20341e"></path><path d="M75.25,50.16667h21.5v71.66667h-21.5z" fill="#ffffff"></path><path d="M50.16667,75.25h71.66667v21.5h-71.66667z" fill="#ffffff"></path></g></g></svg></a>
+              </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Selecione uma categoria</h5>
+
+
+
+                <select name='categoria' class="form-select" aria-label="Default select example">
+                 <option selected>selecione uma categoria</option>
+                  <option value="Placa Mãe">Placa Mãe</option>
+                  <option value="Monitor">Monitor</option>
+                </select><br>
+
+
+
+
+
+                <div class="text-right">
+
+              <a href='javascript:form.submit()' class="btn btn-success">Proximo</a> 
+
+              </div>
+              </div>
+            </div><br>
+
+</form>
+
+
+          
+        
+
+
+
+
+
+<!--
+
+            <form>
+            <div class="form-row">
+                <div class="col-7">
+
+                    <label for="inputEmail4">Nome</label> 
+                    <input type="text" class="form-control" placeholder="">
+                </div>
+                <div class="highlights">
+                <div class="col">
+                    <label for="inputEmail4">Categoria</label>
+                    <select id="inputEstado" class="form-control">
+                      <option selected>Escolher...</option>
+                      <option>...</option>
+                    </select>
+                </div>
+                <div class="col">
+                  <label for="inputEmail4">Subcategoria</label>
+                  <select id="inputEstado" class="form-control">
+                    <option selected>Escolher...</option>
+                    <option>...</option>
+                  </select>
+              </div>
+                <div class="col">
+                    <label for="inputEmail4">Quantidade</label>              
+                    <input type="text" class="form-control" placeholder="">
+                </div>
+                <div class="col">
+                    <label for="inputEmail4">Email</label>
+                    <input type="text" class="form-control" placeholder="CEP"><br>
+                    </div>
+            </div>
+            </div>
+        
+
+
+
+
+            <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6"><br>
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  </div>
+                  <div class="form-group col-md-6"><br>
+                    <label for="inputPassword4">Senha</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Senha">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Endereço</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Rua dos Bobos, nº 0">
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress2">Endereço 2</label>
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartamento, hotel, casa, etc.">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6"><br>
+                    <label for="inputCity">Cidade</label>
+                    <input type="text" class="form-control" id="inputCity">
+                  </div>
+                  <div class="form-group col-md-4"><br>
+                    <label for="inputEstado">Estado</label>
+                    <select id="inputEstado" class="form-control">
+                      <option selected>Escolher...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-2"><br>
+                    <label for="inputCEP">CEP</label>
+                    <input type="text" class="form-control" id="inputCEP">
+                  </div>
+                </div><br>
+
+                <button type="submit" class="btn btn-primary">Entrar</button>
+              </form>
+
+
+
+            -->
+
+
+</div>
+<%- include('../partials/footer') %>

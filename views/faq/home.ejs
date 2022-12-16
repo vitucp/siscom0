@@ -1,0 +1,1062 @@
+  <%- include('../partials/header') %>
+
+
+<!--
+  <style>
+    .card{
+
+          -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+          -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+          box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+        }
+
+        .container {
+                        /* Content is center horizontally */
+                        align-items: center;
+                        display: flex;
+
+                        /*
+    The property name will stick to the left, and the value
+    will stick to the right
+    */
+                        justify-content: space-between;
+
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+                        /* Spacing */
+                        margin: 0px;
+                        padding: 8px 0px;
+                    }
+
+                    h5 {
+    max-width: 60ch;
+    max-height: 60ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .limitar{
+    max-width: 100ch;
+    max-height: 10ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  </style>
+
+  <header id="header">
+    <nav>
+      <a href="/home" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="50" height="20"
+        viewBox="0 0 172 172"
+        style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+          <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+  
+         
+              
+        <% try{ %>
+          <%  if(user.permissoes.addCategoriaFaq === 'sim'){ %>
+            <a href="/faq/artigo" >Novo artigo</a>  
+            <a data-toggle="modal" data-target="#exampleModalCenter" >Nova Categoria</a>
+
+            
+            <% } %>
+        <% }catch(erro){ %> 
+        
+       <% } %>
+
+        </nav>
+    <nav> 
+      <a href="#menu">Menu</a>
+    </nav>
+  <nav id="menu">
+    <ul class="links">
+      <li><a href="/home">Home</a></li>
+      <% try{ %>
+        <%  if(user.permissoes.addCategoriaFaq === 'sim'){ %>
+
+      <li><a href="/faq/artigo">Novo Artigo</a></li>
+      <li><a href="/faq/editar">Meus Artigos</a></li>
+      <li><a href="/faq/ver/categorias">Editar Categorias</a></li>
+          
+          <% } %>
+      <% }catch(erro){ %> 
+      
+     <% } %>
+
+      <li><a href="/logout/">Sair</a></li>
+    </ul>
+  </nav>
+  </header><br><br>
+        <style>
+
+
+
+.avatar {
+                        /* Center the content */
+                        display: inline-block;
+                        vertical-align: middle;
+
+                        /* Used to position the content */
+                        position: relative;
+
+                        /* Colors */
+                        background-color: rgba(184, 179, 179, 0.3);
+                        color: rgb(255, 255, 255);
+
+                        /* Rounded border */
+                        border-radius: 50%;
+                        height: 50px;
+                        width: 50px;
+                    }
+
+                    .avatar__letters {
+                        /* Center the content */
+                        left: 50%;
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+
+        </style>
+     
+
+
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+
+
+<div class="row">
+
+  
+ <!-- Linux --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Linux">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+             <a href="/faq/categoria/linux"> <img src="/images/icones/linux48.png"></a>
+            
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+ <!-- ubuntu --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Ubuntu">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+             <a href="/faq/categoria/Ubuntu"> <img src="/images/icones/Ubuntu.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+    
+  
+ <!-- windows --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Windows">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Windows"> <img src="/images/icones/windows48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+
+ <!-- terminal --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Terminal">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Terminal"> <img src="/images/icones/terminal48.png"/> </a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+  
+ <!-- cabo de rede --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Cabo de Rede">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Cabeamento estruturado"> <img src="/images/icones/cabo-de-rede48.png"/> </a>>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+            
+ <!-- dns --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Dns">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Dns"> <img src="/images/icones/dns48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+ 
+ <!-- vpn --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Vpn">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Vpn">  <img src="/images/icones/vpn48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+ <!-- chrome --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Chrome">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Chrome">  <img src="/images/icones/chrome48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+ <!-- firefox --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Firefox">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Firefox">  <img src="/images/icones/firefox48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+ <!-- ip --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Ip">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Ip">   <img src="/images/icones/ip48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+ <!-- impressora --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Impressora">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Impressora">   <img src="/images/icones/impressora48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+
+ <!-- cameras --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Cameras de segurança">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+             <a href="/faq/categoria/Cameras"><img src="/images/icones/cameradeseguranca48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+
+    
+      </div><br>
+    
+
+    </div>
+
+
+    <div class="carousel-item">
+  
+<!-- parte 2 --
+        
+<div class="row">
+
+ <!-- grafana --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Grafana">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Grafana"> <img src="/images/icones/grafana48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+ <!-- joomla --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Joomla">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Joomla"> <img src="/images/icones/joomla48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+   
+
+<!-- java --
+ <div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="Java" >
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/Java"> <img src="/images/icones/java48.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+<!-- Logo OM --
+<div class="col-1">
+  <div class="row"> 
+    <div class="col-6">
+        <div class="card-body text-align" title="7º Becmb">
+          <div class="avatar">
+            <div class="avatar__letters" style="color: #fff;">
+              <a href="/faq/categoria/7º BeCmb">  <img src="/images/icones/logo-om.png"/></a>
+            </div>
+          </div>
+        </div>
+    </div>  
+  </div>
+</div><br>
+
+  
+
+  
+
+            
+
+        
+    
+      </div><br>
+    </div>
+
+   
+    <!-- Parte 3--
+ 
+
+</div>
+
+  <a style="width: 2%; " class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden=""></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a style="width: 2%; " class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden=""></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+
+
+<div class="inner">
+  <form action="/busca-artigo" method="post">
+    <label for="busca"></label>
+    <input type="search" id="busca" name="busca"  placeholder="Busca" list='historico'>
+    <datalist id='historico'>
+      <%  artigo.forEach(artigo => { %>
+              <option value="<%- artigo.title %>"><%- artigo.title %></option>
+              <% }) %>
+      
+    </datalist>
+    <p><b></b></p>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+      
+      
+      <!--  MODAL NOVA CATEGORIA --
+      
+      <!-- Modal --
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          
+          <div class="modal-content">
+            
+            <form name='form' method="POST" action="/salvar/categoria" enctype="multipart/form-data">
+              
+              <div class="card-header">
+                <div class="text-right">
+                </div>
+              </div>
+              <div class="card-body">     
+                <h5 class="card-title">Adicionar Categoria</h5>
+                
+                <input type="text" name="title" class="form-control" placeholder="Digite aqui"><br>
+                
+                <div class="text-left">
+                  <label for="">Icone</label>
+                </div>
+
+                <input type="file" name="icone" class="form-control" placeholder="selecione o icone "><br>
+                
+                
+                
+                <div class="text-right">
+                  <a href='javascript:form.submit()' class="btn btn-success">Salvar</a> 
+                </div> 
+              </div> 
+              
+            </form>
+            
+            
+          </div>
+        </div>
+      </div>
+
+
+
+<% artigo.forEach(artigo => { %>
+   
+  <ul class="container">
+  
+   
+    <img src="/images/icones/<%- artigo.category.slug %>"/><br><br>
+    <li>
+      <h5><a href="/faq/ver/artigo/<%- artigo.id %>"><%- artigo.title %></a><h5>
+
+    </li>
+
+    <li class="container__item--right">
+        <small>por <%- artigo.autor  %></small>
+    </li>
+    <li class="container__item--center">
+      <a href=""></a>
+  </li>
+</ul>
+
+    </div>
+
+
+    </div>
+
+<% }) %>
+
+
+
+
+
+
+
+
+
+
+
+<!-- videos  
+ 
+    
+    <div class="row"> 
+        <% artigo.forEach(artigo => { %>
+            <div class="">
+                <div class="">
+
+
+
+  <% if(artigo.nomeArquivo !== 'null'){ %> 
+
+                  <a href="/faq/ver/artigo/<%- artigo.id %>">
+
+                    
+                    <video width="200" height="150" controls>
+                      <source src="/files/1_user/faq/<%- artigo.nomeArquivo %>" type="video/mp4">
+                      <source src="movie.ogg" type="video/ogg">
+                    </video>
+                    
+
+                  <div class="text-center">
+                    <p style="white-space: pre-line;">
+                            <label for=""><%- artigo.title %></label> 
+                    </p>
+                  </div>
+                </a>
+<%} %>
+
+
+            </div><br>
+
+
+    </div>
+
+     <% }) %>     
+    </div><br>
+
+--
+
+
+<style>
+
+.container {
+                        /* Content is centered horizontally */
+                        align-items: center;
+                        display: flex;
+
+                        /* Reset styles */
+                        list-style-type: none;
+                        margin: 0;
+                    }
+
+                    .container__item--right {
+                        /* Sticks to the right */
+                        margin-left: auto;
+                    }
+
+</style>
+
+                    
+
+
+
+<!--link https://bbbootstrap.com/snippets/bootstrap-list-grid-view-template-74271163--
+
+<!--
+
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-md-4">
+          <div class="card p-3">
+              <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/ccMhxvC.png" width="70">
+                  <div class="d-flex flex-column ml-2"><span>Stripe</span><span class="text-black-50">Payment Services</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
+              </div>
+              <h6>Get more context on your users with stripe data inside our platform.</h6>
+              <div class="d-flex justify-content-between install mt-3"><span>Installed 172 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card p-3">
+              <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/IpKQiNu.png" width="70">
+                  <div class="d-flex flex-column ml-2"><span>Mailchimp</span><span class="text-black-50">Project Management</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
+              </div>
+              <h6>Capture and sync subscribers from your mailchimp platform to ours with ease.</h6>
+              <div class="d-flex justify-content-between install mt-3"><span>Installed 1234 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card p-3">
+              <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/42SqVZd.png" width="70">
+                  <div class="d-flex flex-column ml-2"><span>Dropbox</span><span class="text-black-50">File Management</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
+              </div>
+              <h6>Use dropbox to sync your photos to our platform and share it with others.</h6>
+              <div class="d-flex justify-content-between install mt-3"><span>Installed 1234 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card p-3">
+              <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/lXEUCY8.png" width="70">
+                  <div class="d-flex flex-column ml-2"><span>Shopify</span><span class="text-black-50">Ecommerce</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
+              </div>
+              <h6>Sell you items with ease with having any website with our free platform</h6>
+              <div class="d-flex justify-content-between install mt-3"><span>Installed 1234 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card p-3">
+              <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/S2In5pz.png" width="70">
+                  <div class="d-flex flex-column ml-2"><span>Atlassian</span><span class="text-black-50">Project management</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
+              </div>
+              <h6>Developing products for developers,project managers and architects.</h6>
+              <div class="d-flex justify-content-between install mt-3"><span>Installed 345 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card p-3">
+              <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/S5oK3Oe.png" width="70">
+                  <div class="d-flex flex-column ml-2"><span>Salesforce</span><span class="text-black-50">Project management</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
+              </div>
+              <h6>Developing products for developers,project managers and architects.</h6>
+              <div class="d-flex justify-content-between install mt-3"><span>Installed 345 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<style>
+
+body {
+  background: #eee;
+  
+}
+
+.ratings i {
+  color: green;
+}
+
+.install span {
+  font-size: 12px;
+}
+
+.col-md-4 {
+  margin-top: 27px;
+}  
+</style>
+
+--
+
+
+
+
+
+<div class="container mt-12 mb-12">
+
+  <div class="row mt-12">
+
+    <% artigo.forEach(artigo => { %>
+      <div class="col-md-4">
+        <div class="p-card bg-white p-2 rounded px-3">
+          <sdiv class="d-flex align-items-center credits"><img  src="/images/icones/<%- artigo.category.slug %>" width="24px"><span class="text-black-50 ml-2"></span></div>
+          <h5 class="mt-2"><a href="/faq/ver/artigo/<%- artigo.id %>"><%- artigo.title %></a></h5>
+          
+          <% if(artigo.category.title == 'Vpn'){ %> 
+            
+            <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %></span><span class="d-block mb-5"></span>
+            
+          <%}if(artigo.category.title == 'Ubuntu'){ %>
+            
+            <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+          <%}if(artigo.category.title == 'Linux'){ %>
+
+            <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+           <%}if(artigo.category.title == 'Windows'){ %>
+
+            <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Terminal'){ %>
+
+              <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+            <%}if(artigo.category.title == 'Cabeamento estruturado'){ %>
+
+              <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Dns'){ %>
+
+              <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Chrome'){ %>
+
+              <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Firefox'){ %>
+
+              <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Ip'){ %>
+
+                <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Impressora'){ %>
+
+                <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Cameras'){ %>
+
+                <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Grafana'){ %>
+
+                <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Joomla'){ %>
+
+                <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+            <%}if(artigo.category.title == 'Java'){ %>
+
+                <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+
+            <%}if(artigo.category.title == '7º BeCmb'){ %>
+
+              <span class="badge badge-danger py-1 mb-2"><%= artigo.category.title %>  </span><span class="d-block mb-5"></span>
+
+
+
+          <% }else{ %>
+             
+            <br><br>
+            
+          <% } %>
+          
+          <div
+          class="d-flex justify-content-between stats">
+          <div><i class="fa fa-calendar-o"></i><span class="ml-2">1 days ago</span></div>
+          <div class="d-flex flex-row align-items-center">
+            <div class="profiles"></div><span class="ml-3"></span><%= artigo.autor %></div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+      
+</div>
+
+
+
+<style>
+  body {
+  background: #eee;
+}
+
+.filter {
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+} 
+
+.profiles img {
+  margin-right: -6px;
+}
+
+.col-md-4 {
+  margin-top: 26px;
+}
+</style>
+
+
+
+-->
+
+                    
+
+
+
+
+
+<style>
+
+  /*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+
+body {
+  background: #f4f4f4;
+}
+
+.banner {
+  background: #a770ef;
+  background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+  background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+}
+
+</style>
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="px-lg-5">
+
+    <!-- For demo purpose -->
+    <div class="row py-5">
+      <div class="col-lg-12 mx-auto">
+        <div class="text-white p-5 shadow-sm rounded banner">
+          <h1 class="display-4">Bootstrap 4 photo gallery</h1>
+          <p class="lead">Bootstrap photogallery snippet.</p>
+          <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-reset"> 
+                        Bootstrapious</a>, Images by <a href="https://unsplash.com" class="text-reset">Unsplash</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- End -->
+
+    <div class="row">
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Red paint cup</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
+              <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-2.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Blorange</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">PNG</span></p>
+              <div class="badge badge-primary px-3 rounded-pill font-weight-normal">Trend</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-3.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">And She Realized</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
+              <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">Featured</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-4.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">DOSE Juice</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPEG</span></p>
+              <div class="badge badge-success px-3 rounded-pill font-weight-normal">Hot</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-5.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Pineapple</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">PNG</span></p>
+              <div class="badge badge-primary px-3 rounded-pill font-weight-normal">New</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-6.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Yellow banana</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
+              <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">Featured</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-7.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Teal Gameboy</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPEG</span></p>
+              <div class="badge badge-info px-3 rounded-pill font-weight-normal">Hot</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-8.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Color in Guatemala.</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">PNG</span></p>
+              <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">Featured</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Red paint cup</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
+              <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-2.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Lorem ipsum dolor</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">PNG</span></p>
+              <div class="badge badge-primary px-3 rounded-pill font-weight-normal">Trend</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-3.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Lorem ipsum dolor</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
+              <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">Featured</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-4.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Lorem ipsum dolor</a></h5>
+            <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPEG</span></p>
+              <div class="badge badge-success px-3 rounded-pill font-weight-normal">Hot</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+
+    </div>
+    <div class="py-5 text-right"><a href="#" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+                    <%- include('../partials/footer') %>

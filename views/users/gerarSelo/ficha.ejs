@@ -1,0 +1,233 @@
+<%- include('../../partials/header') %>
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+
+
+  .btn-success {
+
+    background-color: #20341e !important;
+}
+
+
+      .conteudo_1{
+                display:none
+              }
+              .conteudo_2{
+                display:none
+              }
+              .conteudo_3{
+                display:none
+              }
+              
+              .active{
+                display:block!important;
+              }
+    
+</style>
+
+
+   
+<header id="header">
+  <nav>
+    <a href="/selos/cadastrados" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/home" >Home</a>  
+        <a href="/selos/cadastrados" >Cadastrados</a>
+
+ 
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header>
+
+
+<div class="inner">
+
+    <section class="wrapper">
+            <header class="special">
+                <h2>selo </h2>
+                <p></p>
+            </header>
+  
+
+<!-- formulario dinamico -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- formulario dinamico -->
+
+
+<div class="inner">
+
+
+<div class="row">
+    <div class="col-3">
+      <div class="text-left">
+        <label for="">Nº CNH</label>
+    </div>
+      <input type="text" name='cnh'  class="form-control" placeholder="" value="<%= user.cnh %>" >
+    </div>
+
+    <div class="col-3">
+      <div class="text-left">
+        <label for="">Categoria da CNH</label>
+    </div>
+      <input type="text" name='Ccnh' class="form-control" placeholder="" value="<%= user.Ccnh %>">
+    </div>
+
+    <div class="col-3">
+      <div class="text-left">
+        <label for="">Validade</label>
+    </div>
+      <input type="text" name='validadeCnh' class="form-control" placeholder="" value="<%= user.validadeCnh %>">
+    </div>
+
+    
+    <div class="col-3">
+      <div class="text-left">
+        <label for="">Cor</label>
+    </div>
+      <input type="text" name='cor' id='color' class="" placeholder="" value="<%= user.cor %>">
+    </div> <br>
+
+    <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">Placa</label>
+    </div>
+      <input type="text" name='placa' id="placa" class="form-control" placeholder="XXX-XXXX" value="<%= user.placa %>">
+    </div>
+
+ <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">Modelo</label>
+    </div>
+      <input type="text" name='modeloVeiculo' class="form-control" placeholder="" value="<%= user.placa %>">
+    </div>
+
+ <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">Ano de Fabricação</label>
+    </div>
+      <input type="text" name='anoDeFabricacao' id="data" class="form-control" placeholder="" value="<%= user.anoDeFabricacao %>">
+    </div>
+
+    <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">Chassi</label>
+    </div>
+      <input type="text" name='chassi' class="form-control" placeholder="" value="<%= user.chassi %>">
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">IPVA</label>
+    </div>
+      <input type="text" name='ipva' class="form-control" placeholder="" value="<%= user.ipva %>">
+    </div>
+
+    <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">RENAVAM </label>
+    </div>
+      <input type="text" name='renavam' class="form-control" placeholder="" value="<%= user.renavam %>">
+    </div>
+
+</div>
+
+<hr>
+
+
+    <img src="/files/<%- user.id %>_user/documentos/<%= user.pathDocumentos %>" class="img-thumbnail" alt="..."  width="500" height="100">
+
+
+
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function cont(){
+     var conteudo = document.getElementById('print').innerHTML;
+     tela_impressao = window.open('about:blank');
+     tela_impressao.document.write(conteudo);
+     tela_impressao.window.print();
+     tela_impressao.window.close();
+  }
+  </script>
+  
+
+
+
+<script>
+  function toggleDiv(conteudo){
+    $('div.conteudo').removeClass('active');
+    if(conteudo == 1){
+      $('div.conteudo_1').addClass('active');
+    }else if(conteudo == 2){
+      $('div.conteudo_2').addClass('active');
+    }else if(conteudo == 3){
+      $('div.conteudo_3').addClass('active');
+    } 
+  }
+  </script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+        
+    <script type="text/javascript">
+    $("#data1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data2").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $('#cpf').mask('000.000.000-00', {reverse: true});
+    $('#telefone1').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
+    $('#telefone2').mask('(00) 00000-0000');
+    $("#rg").mask("999.999.999-99" || "999.999.999-a");
+    $('#cep').mask('00000-000');
+    $('#numero').mask('0#', {maxlength: false});
+    $("#placa").mask( 'AAA-9A99');
+    </script>
+
+
+<%- include('../../partials/footer') %>

@@ -1,0 +1,97 @@
+<%- include('../../partials/header.ejs') %>
+
+<header id="header">
+    <nav>
+      <a href="/faq" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="50" height="20"
+        viewBox="0 0 172 172"
+        style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+          <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+   
+          
+        <a href="/faq/artigo" >Novo artigo</a>  
+        <a data-toggle="modal" data-target="#exampleModalCenter" >Nova Categoria</a>
+  
+        </nav>
+    <nav> 
+      <a href="#menu">Menu</a>
+    </nav>
+  <nav id="menu">
+    <ul class="links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/logout/">Sair</a></li>
+    </ul>
+  </nav>
+  </header><br><br>
+ 
+
+<div class='container'>
+    <hr>
+    <div class='card'>
+        <div class="card-header"></div>
+
+            <h2>Edição Categoria</h2>
+    </div>    
+    <div class='card-body'></div>
+    
+        <form method="POST" name="form" action="/atualizar/categoria" enctype="multipart/form-data">
+            <input class='form-control' type="text" name='title' placeholder='defina o titulo da categoria'  value='<%= category.title %>'><br>
+            <input class='form-control' type="file" name='icone' placeholder='novo icone' value="<%= category.slug %>"><%= category.slug %><br>
+            <input type='hidden' name='id' value='<%= category.id %>'>
+        
+            <div class="text-right">
+                <a href='javascript:form.submit()' class="btn btn-success">Atualizar</a> 
+               
+              </div> 
+        </form>
+
+
+    </div>    
+    </div>
+</div>
+
+
+
+
+
+  <!--  MODAL NOVA CATEGORIA -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+  
+      <div class="modal-content">
+  
+      <form name='form1' method="POST" action="/salvar/categoria">
+    
+        <div class="card-header">
+            <div class="text-right">
+            </div>
+        </div>
+      <div class="card-body">     
+      <h5 class="card-title">Adicionar Categoria</h5>
+  
+      <input type="text" name="title" class="form-control" placeholder="Digite aqui"><br>
+
+      <div class="text-left">
+        <label for="">link do icone</label>
+    </div>
+    <input type="text" name="link" class="form-control" placeholder="Digite aqui"><br>
+
+      
+      
+      <div class="text-right">
+          <a href='javascript:form1.submit()' class="btn btn-success">Salvar</a> 
+      </div> 
+</div> 
+
+        </form>
+  
+  
+      </div>
+    </div>
+  </div>
+
+
+<%- include('../../partials/footer.ejs') %> 

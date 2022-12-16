@@ -1,0 +1,570 @@
+<%- include('../../partials/header') %>
+
+<style>
+  .card{
+    
+    -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+    -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+    box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+  }
+  </style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/meus/contratos" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+        
+        
+        <a href="/meus/contratos" >Militares</a>
+        
+      </nav>
+      <nav> 
+        <a href="#menu">Menu</a>
+      </nav>
+      <nav id="menu">
+        <ul class="links">
+          <li><a href="/home">Home</a></li>
+          <li><a href="/logout/">Sair</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!--
+
+<br><hr>
+
+<div class="inner"> 
+  
+    <div class="row">
+
+        <div class="col-4">
+            <div class="card">
+                <div class="row"> 
+                  <div class="col-4">
+                      <div class="card-body">
+                        <a href="/ver-item/Placa Mãe">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAADkklEQVR4nO2bW0hUQRzGvznrtkVuhqYbKrupZA9ZmbcUgzSKthDXrhY91ENBQS+BVA/lgz11fa5eiiC1e2YQURhCYFGh0Q1M6IKBXSwqAxfX8++hdlkh1pnd2TPWzu9p5uzMf775ds6cmXMBNBpNIsOirZizKMcFc3Q5ETJB0ceJCQYixt4bhnHn9YPXH6ILIUhucW4KsZFjBLYVgC2aRmVDQACE0/akSQ19D/q+i9QVMiCrLCvNbto6AcwVUmgRBDwbtZtL+rv6v/DWSRJpwG7aziKs80XzirBgbiEcDodIGGn4/X70PO9G99NuAAADCpJGjDMAaqU3llvsXjyrxE2zStyUU+qh1mutNFFoudpMOaUeCurzlHkqePtl8BY0GVsTTNetXI16X72oh3FjY90m+Fb4QnmDzLW8dbkNYKD8YLq6sppbnFVUVS4NpYlYfoSiY+CeAwg0NThnpqdlhI7ff3wfm3aoGQ0tJ86jvLgcAOBKd4X9Qk7eGNwj4H9FG6BagGq0AaoFqCbhDRBaCv+NzJmZ2LFlpwwtUbUdKzEb4M5yY++ufTELUUXCnwLaANUCVKMNUC1ANTFfBQDgx9APXL5xCcP+YRnhIjLZMRlra9bBmcy94YuIFAMOHm/CxfYLMkJx8fLVCxw6cERKLCmnALP4pjiT2KCUEbB/dyNm5+Zj8OugjHARmZE6A/W+jdLiSTHAmezEts3bZYSynIS/CmgDVAtQjZQ54GbHTexpasDQzyEZ4SLiTHbicONReKu9UuJJGQGX2i9Y0nng96Lr4nV5aw4pBqyvrZe2MhuPac5p2CDxqZSUU8Bb7ZU2JK0m4SdBbYBqAapRvh12pbvg89bBMNT8FxNmO7x61ZrxC8WBCbEdlrm9FUX5dnhO3hzUhr3dYTV6O6xagGq0AaoFqEYboFqAarQBvAWJWOiOx8fPUb2ZHlcGPg2E5Rj3G+PcBhiM9QbTd+918FazjHBNRNQboegYuA0YBV0JpttutaH1Wgu3uHjTfOUcrt9qC+UZ2S7z1hVahHuK3e2MoSaYLyxYiNLCEqROTxMJI43Br4N42PMQT573hB9ue/PoXR1vDCEDsiuyU20jRicDCkTqWcjTgN2sEvlgQugq0N/V/8Vum1QJ4BQBAWF5ceKPlpMOx5RKkc4DMXw0lTc/LyNgDyxjBnkApEQbJ0a+kcne2k3/7b7ugU+KNGg0Go3mn+UXPm91dVaqSVYAAAAASUVORK5CYII=">
+                        </a>
+                      </div>
+                  </div>  
+                 <div class="col-4">  
+                    <div class="card-title">
+                        <b style="font-size: 14px; text-align: center;  "><font face="Georgia, Arial" color="black">Faturas Vencidas</font></b>
+                    </div>
+                    <p style="font-size: 30px; text-align: center;">1</p>
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+                <div class="card">
+                    <div class="row"> 
+                      <div class="col-3">
+                          <div class="card-body">
+         
+                          </div>
+                      </div>  
+                     <div class="col-3">  
+                        <div class="card-title">
+                            <p style="font-size: 30px; text-align: center;">1</p>
+                            <b style="font-size: 14px; text-align: center;  "><font face="Georgia, Arial" color="black">Faturas Vencidas</font></b>
+                        </div>
+                        
+                     
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+    </div>
+</div>
+
+
+
+-->
+
+
+
+
+
+<!--
+
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+<div class="grey-bg container-fluid">
+  <section id="minimal-statistics">
+    <div class="row">
+      <div class="col-12 mt-3 mb-1">
+        <h4 class="text-uppercase">Minimal Statistics Cards</h4>
+        <p>Statistics on minimal cards.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12"> 
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-pencil primary font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>278</h3>
+                  <span>New Posts</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-speech warning font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>156</h3>
+                  <span>New Comments</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-graph success font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>64.89 %</h3>
+                  <span>Bounce Rate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-pointer danger font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>423</h3>
+                  <span>Total Visits</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="danger">278</h3>
+                  <span>New Projects</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-rocket danger font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="success">156</h3>
+                  <span>New Clients</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-user success font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="warning">64.89 %</h3>
+                  <span>Conversion Rate</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="primary">423</h3>
+                  <span>Support Tickets</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-support primary font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="primary">278</h3>
+                  <span>New Posts</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-book-open primary font-large-2 float-right"></i>
+                </div>
+              </div>
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="warning">156</h3>
+                  <span>New Comments</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-bubbles warning font-large-2 float-right"></i>
+                </div>
+              </div>
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="success">64.89 %</h3>
+                  <span>Bounce Rate</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-cup success font-large-2 float-right"></i>
+                </div>
+              </div>
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="danger">423</h3>
+                  <span>Total Visits</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-direction danger font-large-2 float-right"></i>
+                </div>
+              </div>
+              <div class="progress mt-1 mb-0" style="height: 7px;">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="stats-subtitle">
+  <div class="row">
+    <div class="col-12 mt-3 mb-1">
+      <h4 class="text-uppercase">Statistics With Subtitle</h4>
+      <p>Statistics on minimal cards with Title &amp; Sub Title.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-6 col-md-12">
+      <div class="card overflow-hidden">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <i class="icon-pencil primary font-large-2 mr-2"></i>
+              </div>
+              <div class="media-body">
+                <h4>Total Posts</h4>
+                <span>Monthly blog posts</span>
+              </div>
+              <div class="align-self-center">
+                <h1>18,000</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <i class="icon-speech warning font-large-2 mr-2"></i>
+              </div>
+              <div class="media-body">
+                <h4>Total Comments</h4>
+                <span>Monthly blog comments</span>
+              </div>
+              <div class="align-self-center"> 
+                <h1>84,695</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h1 class="mr-2">$76,456.00</h1>
+              </div>
+              <div class="media-body">
+                <h4>Total Sales</h4>
+                <span>Monthly Sales Amount</span>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-heart danger font-large-2"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h1 class="mr-2">$36,000.00</h1>
+              </div>
+              <div class="media-body">
+                <h4>Total Cost</h4>
+                <span>Monthly Cost</span>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-wallet success font-large-2"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.grey-bg {  
+    background-color: #F5F7FA;
+}
+
+
+
+</style>
+-->
+
+
+
+
+
+<section class="wow fadeIn animated" style="visibility: visible; animation-name: fadeIn;">
+  <div class="">
+      <div class="row">
+
+          <!-- counter -->
+          <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated" data-wow-duration="300ms" style="visibility: visible; animation-duration: 300ms; animation-name: fadeInUp;">
+           <!--
+            <a   title="Numero de Faturas vencidas"><img src="data:image/png;base64,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"></a>
+          -->
+              <span id="anim-number-pizza" class="counter-number"></span>
+              <span class="timer counter alt-font appear" data-to="980" data-speed="7000"><%= faturasVencimento.count %></span>
+              <p class="counter-title">Faturas Vencidas</p>
+          </div>
+          <!-- end counter -->
+
+
+          <!-- counter -->
+          <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated" data-wow-duration="600ms" style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
+           <!--
+            <a   title="Menos de 5 Dias para o vencimento."><img src="data:image/png;base64,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"></a>
+           -->
+               <span class="timer counter alt-font appear" data-to="980" data-speed="7000"><%=cincoDiasVencimento.count %></span>
+              <span class="counter-title">Menos de 5 dias para vencimeto</span>
+          </div>
+          <!-- end counter -->
+          <!-- counter -->
+          <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated" data-wow-duration="900ms" style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
+          
+            <!--
+            <a   title="Menos de 5 Dias para o vencimento."><img src="data:image/png;base64,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"></a>
+         -->
+            <span class="timer counter alt-font appear" data-to="810" data-speed="7000"><%= aguardandoEntregaTesouraria.count %></span>
+              <span class="counter-title">Aguardando entrega na tesouraria</span>
+          </div>
+          <!-- end counter -->
+          <!-- counter --> 
+          <div class="col-md-3 col-sm-6 text-center counter-section wow fadeInUp animated" data-wow-duration="1200ms" style="visibility: visible; animation-duration: 1200ms; animation-name: fadeInUp;">
+            <!--  
+            <i class="fa fa-user medium-icon"></i>
+              --> 
+              <span class="timer counter alt-font appear" data-to="600" data-speed="7000">600</span>
+              <span class="counter-title">Contratos Vencidos</span>
+          </div>
+          <!-- end counter -->
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+<style>
+  
+  .counter-section i { display:block; margin:0 0 10px}
+.counter-section span.counter { font-size:40px; color:#000; line-height:60px; display:block; font-family: "Oswald",sans-serif; letter-spacing: 2px}
+.counter-title{ font-size:12px; letter-spacing:2px; text-transform: uppercase}
+.counter-icon {top:25px; position:relative}
+.counter-style2 .counter-title {letter-spacing: 0.55px; float: left;}
+.counter-style2 span.counter {letter-spacing: 0.55px; float: left; margin-right: 10px;}
+.counter-style2 i {float: right; line-height: 26px; margin: 0 10px 0 0}
+.counter-subheadline span {float: right;}  
+
+.medium-icon {
+    font-size: 40px !important;
+    margin-bottom: 15px !important;
+} 
+
+.container{
+    margin-top:200px;
+}
+
+
+</style>
+
+
+
+<script>
+  $(document).ready(function() {
+
+$('.counter').each(function () {
+$(this).prop('Counter',0).animate({
+Counter: $(this).text()
+}, {
+duration: 400,
+easing: 'swing',
+step: function (now) {
+    $(this).text(Math.ceil(now));
+}
+});
+}); 
+
+});  
+</script>
+
+
+
+
+
+
+
+
+
+<%- include('../../partials/footer') %>

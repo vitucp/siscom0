@@ -1,0 +1,67 @@
+<%- include('../partials/header') %>
+
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+</style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/material" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/material" >Adicionar</a>
+        <a href="/Controle-material" >Controle</a>  
+
+ 
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header><br><br>
+
+
+
+
+<div class="inner">
+
+
+  <form action="/busca-efetivo" method="post">
+    <label for="busca"></label>
+    <input type="search" id="busca" name="busca"  placeholder="Busca" >
+    <p><b></b></p>
+  </form>
+</div>
+
+<hr><br>
+
+
+<div class="inner" >
+<div class="row">
+
+
+
+    
+</div><br>
+
+
+
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,278 @@
+<%- include('../../partials/header') %>
+
+
+<style>
+  .card{
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+.conteudo_1{
+                display:none
+              }
+              .conteudo_2{
+                display:none
+              }
+              .conteudo_3{
+                display:none
+              }
+              
+              .active{
+                display:block!important;
+              }
+</style>
+
+
+   
+<header id="header">
+      <nav>
+        <a href="/selecionar-item" >Voltar</a>
+      </nav>
+      <nav> 
+        <a href="#menu">Menu</a>
+      </nav>
+    <nav id="menu">
+      <ul class="links">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/logout/">Sair</a></li>
+      </ul>
+    </nav>
+</header>
+
+
+<div class="inner">
+
+    <section class="wrapper">
+            <header class="special">
+                <h2>Cadastro de Teclado</h2>
+                <p></p>
+            </header>
+  
+
+<!-- formulario dinamico -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- formulario dinamico -->
+
+
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="#" onclick="toggleDiv(1)">Teclado</a>
+
+      </li>
+      <li class="nav-item">
+      </li>
+      <li class="nav-item">
+        <!--
+        <a class="nav-link active" href="#" onclick="toggleDiv(3)">Relação</a> 
+        -->
+      </li>
+    </ul>
+  </div> 
+  <div class="card-body">
+    <h5 class="card-title"></h5><br>
+
+    <div class="conteudo conteudo_1">
+        
+
+        <!-- FORM MONITOR -->
+
+        <form method="POST" name='form' action="/salvar-item" >
+            <div class="row">
+              <div class="col">
+                  <div class="text-left">
+                      <label for="">Marca</label>
+                  </div>
+                <input type="text" name='marca' class="form-control" placeholder="">
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "3"){ %>
+                    <div class="text-left">
+                     <b style="color: red;">* Preencha esse campo</b>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+              <div class="col">
+                <div class="text-left">
+                    <label for="">Moledo</label>
+                </div>
+                <input type="text" name='modelo' class="form-control" placeholder="">
+              </div>
+            </div><br>
+
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="text-left">
+                        <label for="">Cor</label>
+                    </div>
+                    <select name='cor' class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <option value="preto">Preto</option>
+                        <option value="braco">Branco</option>
+                        <option value="cinza">Cinza</option>
+                        <option value="outro">Outro</option>
+                      </select>
+                </div>
+
+                <div class="col">
+                  <div class="text-left">
+                      <label >Quantidade</label>
+                  </div>
+                <input name='quantidade' id='numero' type="text" ="quantidade" class="form-control" placeholder="">
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "2"){ %>
+                    <div class="text-left">
+                     <b style="color: red;">* Preencha esse campo</b>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div class="text-left">
+                      <label >Preço</label>
+                  </div>
+                <input type="text" name="preco" id='money' class="form-control" placeholder="">
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "1"){ %>
+                    <div class="text-left">
+                     <b style="color: red;">* Preencha esse campo</b>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+              </div>
+
+
+
+
+                <div class="col-md-6"></div>
+   
+              </div><br>
+                  <div class="text-right">
+                    <input type="hidden" name='categoria' value="Teclado">
+                    <a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+                  </div>
+
+                  </div>
+
+
+
+      <div class="conteudo conteudo_2">
+
+        <div class="row">
+          <div class="col">
+              <div class="text-left">
+                  <label for="">Interface da Placa de Vídeo</label>
+              </div>
+            <input type="text" name='placadevideo' class="form-control" placeholder="">
+          </div>
+          <div class="col">
+            <div class="text-left">
+                <label for="">Chipset</label>
+            </div>
+            <select name='chipset' class="form-select" aria-label="Default select example">
+              <option selected></option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+          </div>
+        </div><br>
+
+        <div class="row">
+            <div class="col">
+                <div class="text-left">
+                    <label for="">Número de slots de memória</label>
+                </div>
+                <select name='NslotsMemoria' class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="16">16</option>
+                  </select>
+            </div>
+            <div class="col">
+              <div class="text-left">
+                  <label for="">Modelo</label>
+              </div>
+              <input type="text" name='' class="form-control" placeholder="">
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-md-6">
+                <div class="text-left">
+                    <label for="">Garantia</label>
+                </div>
+                <select name='garantia' class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="sem Garantia">Sem Garantia</option>
+                    <option value="30">30 Dias</option>
+                    <option value="90">90 Dias</option>
+                    <option value="12mes">12 Mês</option>
+                    <option value="2anos">2 Anos</option>
+                    <option value="outros">Outro</option>
+                  </select>
+            </div>
+
+            <div class="col-md-6"></div>
+
+          </div><br>
+              <div class="text-right">
+                <a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+              </div>
+    
+      </div>
+
+   
+  </div>
+</div>
+
+</div>
+
+
+</form>
+
+
+
+
+<script>
+  function toggleDiv(conteudo){
+    $('div.conteudo').removeClass('active');
+    if(conteudo == 1){
+      $('div.conteudo_1').addClass('active');
+    }else if(conteudo == 2){
+      $('div.conteudo_2').addClass('active');
+    }else if(conteudo == 3){
+      $('div.conteudo_3').addClass('active');
+    } 
+  }
+  </script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+        
+    <script type="text/javascript">
+    $("#data1").mask("00/00/0000",{placeholder: "__/__/____"});
+    $("#data2").mask("00/00/0000",{placeholder: "__/__/____"});
+    $('#cpf').mask('000.000.000-00', {reverse: true});
+    $('#telefone1').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
+    $('#telefone2').mask('(00) 00000-0000');
+    $("#rg").mask("999.999.999-99" || "999.999.999-a");
+    $('#cep').mask('00000-000');
+    $('#numero').mask('0#', {maxlength: false});
+    $('#money').mask('000.000.000.000.000,00', {reverse: true});
+
+    </script>
+
+
+<%- include('../../partials/footer') %>
+

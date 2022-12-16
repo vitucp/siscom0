@@ -1,0 +1,121 @@
+<%- include('../../partials/header') %>
+
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+</style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/controle-de-pessoal" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/controle-de-pessoal" >Efetivo</a>  
+        <a href="/efetivo" >Militares</a>
+        <a href="/missoes" >Missoes</a>
+        
+        <a href="/destinos" class=" position-relative">Destinos
+          <span class="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-danger">
+            <%= notificacaoRetorno.count %>
+            <span class="visually-hidden"></span>
+          </span>
+        </a> 
+        <a href="/historico" >Historico</a> 
+ 
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header>
+
+<br><br>
+
+<div class="inner">
+
+
+
+
+  </form>
+</div>
+<br><hr>
+
+
+    
+
+
+
+<div class="inner" >
+
+    <table class="table ">
+            
+
+        <thead>
+          <tr>
+            <th scope="col">grad</th>
+            <th scope="col">Nome de Guerra</th>
+            <th scope="col">status</th>
+            <th scope="col">Localizaçao</th>
+            <th scope="col">telefone</th>
+            <th scope="col">Sessao</th>
+      
+            <th scope="col">sexo</th>
+            <th scope="col"></th>
+
+
+          </tr>
+        </thead>
+     
+        <tbody>
+                             <% user.forEach(user => { %>
+
+          <tr>
+            <th scope="col"><%= user.graduacao %></th>
+            <td><%= user.nomeGuerra %></td>
+            <td><%= user.status %></td>
+            <td><%= user.localizacao %></td>
+            <td><%= user.tel2 %></td>
+            <td><%= user.sessao %></td>
+         
+            <td><%= user.sexo %></td>
+            <th>
+                        
+              <a href="/ver-usuario/<%= user.id %>" class="btn btn-success">ver</a>
+              
+
+          </th>
+            
+          </tr>
+                <% }) %> 
+
+        </tbody>
+      </table>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<%- include('../../partials/footer') %>

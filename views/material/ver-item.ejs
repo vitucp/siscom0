@@ -1,0 +1,85 @@
+<%- include('../partials/header') %>
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+</style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/material" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+  </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header>
+
+<div class="inner">
+
+	<form name='form' action="/busca-destino" method="post">
+			<label for="busca"></label>
+			<div class="row">
+			<div class="col-3">
+				<input type="search" id="busca" name="busca"  placeholder="Busca" style="height: 71%;" >
+			</div>
+			<div class="col-3">
+	
+				<div class="form-group">
+				<!-- Datepicker as text field -->         
+				<div class="input-group date" data-date-format="dd/mm/yyyy">
+					<input  type="date" id='data' name='data' class="form-control" placeholder="dd/mm/yyyy">
+					<div class="input-group-addon" >
+					<span class="glyphicon glyphicon-th"></span>
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+		
+	</form>
+		
+
+</div>
+</div>
+	
+
+
+<div class="row">
+
+	<div class="col-2">
+		<div class="card">
+		  <div class="card-body">
+			<h5 class="card-title" style="text-align: center;"><%- teste %></h5>
+			<p class="card-text" style="text-align: center;"><h3 style="text-align: center;"><font size="7" face="Georgia, Arial" color="black"></font></h3></p>
+		   <div style="text-align: center;">
+			<a href="/relatorio-efetivo/sub" class="btn btn-success">Ver</a>
+			<a href="#" class="btn btn-success">relatorio</a>
+		  </div>
+		  </div>
+		</div><br>
+	  </div><br>
+  
+
+
+</div>
+
+
+
+<%- include('../partials/footer') %>

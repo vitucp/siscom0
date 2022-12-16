@@ -1,0 +1,26 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block manu %}
+
+<form  class="form form--login framed" enctype="multipart/form-data" action = "." ,  method ="POST">
+                        {% csrf_token %}
+                        <label>Local saida {{ saida.local_destino  }}</label>
+                        <label>item{{ saida.item }}</label>
+                        <label>Quantidade{{ saida.modelo }}</label>
+                        <label>Data saida{{ saida.qnt_item }}</label>
+                 
+                        
+
+                        <div>
+ 
+                            <button type="submit" class="input input--submit">salvar</button>
+                        </div>
+                 
+</form>
+                
+
+
+{% endblock %}

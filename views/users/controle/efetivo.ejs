@@ -1,0 +1,123 @@
+<%- include('../../partials/header') %>
+
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+</style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/home" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/controle-de-pessoal" >Efetivo</a>  
+        <a href="/efetivo" >Militares</a>
+        <a href="/missoes" >Missoes</a>
+        <a href="/destinos" class=" position-relative">Destinos
+          <span class="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-danger">
+            <%= notificacaoRetorno.count %>
+            <span class="visually-hidden"></span>
+          </span>
+        </a> 
+        <a href="/historico" >Historico</a> 
+ 
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header><br><br>
+
+
+
+
+<div class="inner">
+
+
+  <form action="/busca-efetivo" method="post">
+    <label for="busca"></label>
+    <input type="search" id="busca" name="busca"  placeholder="Busca" >
+    <p><b></b></p>
+  </form>
+</div>
+
+<hr><br>
+
+
+<div class="inner" >
+<div class="row">
+  <% user.forEach(user => { %>
+
+  
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;"></h5>
+          
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+          width="35" height="35"
+          viewBox="0 0 172 172"
+          style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,21.5c-17.7627,0 -32.25,14.4873 -32.25,32.25c0,17.7627 14.4873,32.25 32.25,32.25c17.7627,0 32.25,-14.4873 32.25,-32.25c0,-17.7627 -14.4873,-32.25 -32.25,-32.25zM86,86c-29.60449,0 -53.75,24.14551 -53.75,53.75h10.75c0,-23.80957 19.19043,-43 43,-43c23.80957,0 43,19.19043 43,43h10.75c0,-29.60449 -24.14551,-53.75 -53.75,-53.75zM86,32.25c11.92578,0 21.5,9.57422 21.5,21.5c0,11.92578 -9.57422,21.5 -21.5,21.5c-11.92578,0 -21.5,-9.57422 -21.5,-21.5c0,-11.92578 9.57422,-21.5 21.5,-21.5z"></path></g></g></svg>
+          <a  class="position-absolute" style="top: 40px; left: 70px;"><%- user.nomeGuerra %></a><br><br>
+
+          <a  class="position-absolute" style="top: 70px; left: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="35" height="35"
+            viewBox="0 0 172 172"
+            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M43,14.33333c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v114.66667c0,7.83362 6.49972,14.33333 14.33333,14.33333h86c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-114.66667c0,-7.83362 -6.49972,-14.33333 -14.33333,-14.33333zM43,28.66667h86v86h-86zM86,43c-7.91608,0 -14.33333,6.41725 -14.33333,14.33333c0,7.91608 6.41725,14.33333 14.33333,14.33333c7.91608,0 14.33333,-6.41725 14.33333,-14.33333c0,-7.91608 -6.41725,-14.33333 -14.33333,-14.33333zM86,78.83333c-15.65917,0 -28.66667,6.51305 -28.66667,15.88705v5.61295h57.33333v-5.61295c0,-9.374 -13.0075,-15.88705 -28.66667,-15.88705zM43,129h14.33333v14.33333h-14.33333zM71.66667,129h57.33333v14.33333h-57.33333z"></path></g></g></svg>
+            <%- user.sessao %></a><br><br></a><br><br>
+          
+          <a  class="position-absolute" style="top: 115px; left: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="35" height="35"
+            viewBox="0 0 172 172"
+            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M46.52734,16.125c-2.81347,0 -5.58496,1.00781 -7.89453,2.85547l-0.33594,0.16797l-0.16797,0.16797l-16.79687,17.30078l0.16797,0.16797c-5.18604,4.78711 -6.78174,11.94678 -4.53516,18.14063c0.02099,0.04199 -0.02099,0.12598 0,0.16797c4.55615,13.03857 16.20898,38.21289 38.96875,60.97266c22.84375,22.84375 48.35401,34.03467 60.97266,38.96875h0.16797c6.52979,2.18359 13.60547,0.62989 18.64453,-3.69531l16.96484,-16.96484c4.45117,-4.45117 4.45117,-12.17773 0,-16.62891l-21.83594,-21.83594l-0.16797,-0.33594c-4.45117,-4.45117 -12.3457,-4.45117 -16.79687,0l-10.75,10.75c-3.88428,-1.86865 -13.14355,-6.65576 -22.00391,-15.11719c-8.79736,-8.39844 -13.29053,-18.05664 -14.94922,-21.83594l10.75,-10.75c4.51416,-4.51416 4.59815,-12.03076 -0.16797,-16.46094l0.16797,-0.16797l-0.50391,-0.50391l-21.5,-22.17187l-0.16797,-0.16797l-0.33594,-0.16797c-2.30957,-1.84766 -5.08105,-2.85547 -7.89453,-2.85547zM46.52734,26.875c0.39893,0 0.79785,0.18896 1.17578,0.50391l21.5,22.00391l0.50391,0.50391c-0.04199,-0.04199 0.31494,0.5249 -0.33594,1.17578l-13.4375,13.4375l-2.51953,2.35156l1.17578,3.35938c0,0 6.17285,16.52393 19.14844,28.89063l1.17578,1.00781c12.49268,11.40088 27.21094,17.63672 27.21094,17.63672l3.35938,1.51172l15.95703,-15.95703c0.92383,-0.92383 0.75586,-0.92383 1.67969,0l22.00391,22.00391c0.92383,0.92383 0.92383,0.58789 0,1.51172l-16.46094,16.46094c-2.47754,2.1206 -5.10205,2.56153 -8.23047,1.51172c-12.17773,-4.78711 -35.84033,-15.18018 -56.94141,-36.28125c-21.26904,-21.26904 -32.37597,-45.39355 -36.44922,-57.10937c-0.81885,-2.18359 -0.23096,-5.41699 1.67969,-7.05469l0.33594,-0.33594l16.29297,-16.62891c0.37793,-0.31494 0.77685,-0.50391 1.17578,-0.50391z"></path></g></g></svg>                  
+            <%- user.tel2 %></a><br><br></a>
+
+          <a  class="position-absolute" style="top: 155px; left: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="35" height="35"
+            viewBox="0 0 172 172"
+            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,10.75c-26.07715,0 -47.19922,21.70996 -47.19922,48.16504c0,17.46875 11.21192,35.94531 21.91993,50.76855c10.75,14.78125 21.41601,25.69922 21.41601,25.69922c1.0498,1.0498 2.43555,1.6377 3.86328,1.6377c1.42774,0 2.81348,-0.5879 3.86328,-1.6377c0,0 10.66602,-10.91797 21.37402,-25.69922c10.75,-14.82324 21.96192,-33.2998 21.96192,-50.76855c0,-26.49707 -21.12207,-48.16504 -47.19922,-48.16504zM86,21.5c20.11426,0 36.44922,16.62891 36.44922,37.41504c0,12.47168 -9.7002,30.36035 -19.90429,44.46973c-8.27247,11.42188 -13.73145,16.92284 -16.54493,19.90429c-2.81348,-2.98145 -8.27246,-8.48242 -16.54492,-19.90429c-10.2041,-14.10937 -19.9043,-31.99805 -19.9043,-44.46973c0,-20.78614 16.33496,-37.41504 36.44922,-37.41504zM86,43c-5.9209,0 -10.75,4.8291 -10.75,10.75c0,5.9209 4.8291,10.75 10.75,10.75c5.9209,0 10.75,-4.8291 10.75,-10.75c0,-5.9209 -4.8291,-10.75 -10.75,-10.75zM48.375,111.48926c-16.04101,4.24121 -26.875,11.37989 -26.875,22.21386c0,18.09864 32.45996,27.54688 64.5,27.54688c32.04004,0 64.5,-9.44824 64.5,-27.54687c0,-10.91797 -10.58203,-17.88867 -26.83301,-22.17187l-6.88672,9.49024c14.73926,3.44335 22.96973,8.31445 22.96973,12.68164c0,6.84473 -20.9541,16.79688 -53.75,16.79688c-32.7959,0 -53.75,-9.95215 -53.75,-16.79687c0,-4.3252 8.23047,-9.28027 22.75977,-12.72364z"></path></g></g>
+          </svg><%- user.localizacao %></a></a>
+          
+          
+            <a class="position-absolute" style="top: 200px; left: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="35" height="35"
+            viewBox="0 0 172 172"
+            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M99.4375,13.6525c-0.14781,0.02688 -0.29562,0.06719 -0.43,0.1075c-1.59906,0.36281 -2.72781,1.80063 -2.6875,3.44v37.84c0,0.1075 0,0.215 0,0.3225v3.1175c0,1.89469 1.54531,3.44 3.44,3.44c1.89469,0 3.44,-1.54531 3.44,-3.44v-2.9025c0.01344,-0.17469 0.01344,-0.36281 0,-0.5375v-6.235c3.99094,1.42438 6.88,5.20031 6.88,9.675c0,5.68406 -4.63594,10.32 -10.32,10.32c-5.68406,0 -10.32,-4.63594 -10.32,-10.32v-36.2275c-8.6,-1.47812 -14.21687,-0.80625 -14.62,-0.7525l-1.72,0.215l-52.3525,92.9875l0.7525,1.6125c0.30906,0.68531 7.78031,16.985 29.3475,29.1325c15.84281,8.9225 29.71031,10.105 36.2275,10.105c2.365,0 3.66844,-0.08062 3.87,-0.1075l1.72,-0.215l51.4925,-91.4825l0.86,-1.505l-0.7525,-1.6125c-0.30906,-0.68531 -7.61906,-16.90437 -29.3475,-29.1325c-4.085,-2.29781 -8.00875,-4.09844 -11.7175,-5.4825v-8.815c0.04031,-0.99437 -0.36281,-1.94844 -1.075,-2.62031c-0.72562,-0.68531 -1.70656,-1.02125 -2.6875,-0.92719zM86.645,79.0125c0.44344,0.05375 0.87344,0.20156 1.29,0.43c1.65281,0.92719 2.21719,3.07719 1.29,4.73l-21.93,38.915c-0.63156,1.11531 -1.80062,1.8275 -3.01,1.8275c-0.56437,0 -1.075,-0.12094 -1.6125,-0.43c-1.65281,-0.92719 -2.21719,-3.07719 -1.29,-4.73l21.93,-39.0225c0.69875,-1.23625 2.00219,-1.86781 3.3325,-1.72zM141.04,83.3125l-42.14,74.9275c0.29563,0.01344 0.56438,0 0.86,0c24.73844,0 39.27781,-10.50812 39.8825,-10.965l1.3975,-1.075z"></path></g></g></svg>
+            <%= user.graduacao%></a><br>
+            
+
+          <div style="text-align: center;">
+            <a href="/ver-usuario/<%= user.id %>" class="btn btn-success">Ver</a>
+          </div>
+        </div>
+    </div><br><br>
+  </div><br>
+
+<% }) %>
+
+</div><br>
+
+
+
+
+<%- include('../../partials/footer') %>

@@ -1,0 +1,174 @@
+{% block head %}
+
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+
+{% block cabecalho %}
+<html>
+	<head>
+		<title>7becmb</title>
+    <link rel="sortcut icon" href="{% static 'images/iconbandeira.ico' %}" type="image/x-icon" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+	</head>
+	<body class="is-preload">
+
+
+<header id="header">
+				<a class="logo" href="/"> <strong>Bem Vindo </strong> {{user.nome_guerra }}  </a>
+    
+				<nav> 
+          {% if user.graduacao == "sd_ep" %}
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="48" height="48"
+            
+            viewBox="0 -50 172 172"
+            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,54.61l-1.505,0.7525l-75.68,38.485l-1.935,0.9675v24.295l79.12,-39.56l79.12,39.56v-24.295l-1.935,-0.9675l-75.68,-38.485zM86,62.35l72.24,36.6575v8.9225l-72.24,-36.12l-72.24,36.12v-8.9225z"></path></g></g></svg>
+          {% elif user.graduacao == "3sgt" %}
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="48" height="48"
+            viewBox="0 -30 172 172"
+            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,37.41l-1.505,0.7525l-75.68,38.485l-1.935,0.9675v58.695l79.12,-39.56l79.12,39.56v-58.695l-1.935,-0.9675l-75.68,-38.485zM86,45.15l72.24,36.6575v8.9225l-72.24,-36.12l-72.24,36.12v-8.9225zM86,62.35l72.24,36.12v9.46l-72.24,-36.12l-72.24,36.12v-9.46zM86,79.55l72.24,36.12v9.46l-72.24,-36.12l-72.24,36.12v-9.46z"></path></g></g></svg>
+          {% endif %}
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+     
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Home</a></li>
+					<li><a href="elements.html">Elements</a></li>
+					<li><a href="generic.html">Generic</a></li>
+          <li><a href="/logout/">Sair</a></li>
+				</ul>
+			</nav>
+
+{% endblock %}
+{% endblock %}
+
+
+
+
+
+
+{% block manu %}
+{% load static %}
+
+<section class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h2>Sistema de Informação</h2>
+						<p>Sistema para controle de tráfego de viaturas do Batalhão.</p>
+					</header>
+					<div class="highlights">
+           
+						<section>
+							<div class="content">
+								<header>
+                 
+									<a href="servico"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="96" height="96"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M14.33333,43v86c0,7.88333 6.45,14.33333 14.33333,14.33333h114.66667c7.88333,0 14.33333,-6.45 14.33333,-14.33333v-86c0,-7.88333 -6.45,-14.33333 -14.33333,-14.33333h-114.66667c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333zM64.5,57.33333c7.91917,0 14.33333,6.41417 14.33333,14.33333c0,7.91917 -6.41417,14.33333 -14.33333,14.33333c-7.91917,0 -14.33333,-6.41417 -14.33333,-14.33333c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333zM43,108.21667c0,-7.15233 14.32617,-10.75 21.5,-10.75c7.17383,0 21.5,3.59767 21.5,10.75v6.45h-43zM129,78.83333h-28.66667v-14.33333h28.66667zM129,107.5h-28.66667v-14.33333h28.66667zM143.33333,129h-114.66667v-86h114.66667z"></path></g></g></svg><span class="label"></span></a>
+									<h3>Serviço</h3>
+								</header>
+
+								<h4>Infomaçõe sobre o serviço.<br>
+                <small>controle de militares de serviço</small></h4>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href=""><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="96" height="96"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M28.66667,28.66667c-7.84216,0 -14.33333,6.49117 -14.33333,14.33333v86c0,7.84216 6.49117,14.33333 14.33333,14.33333h114.66667c7.84216,0 14.33333,-6.49117 14.33333,-14.33333v-71.66667c0,-7.84216 -6.49117,-14.33333 -14.33333,-14.33333h-57.33333l-14.33333,-14.33333zM28.66667,43h37.0651l14.33333,14.33333h63.26823v71.66667h-114.66667z"></path></g></g></svg><span class="label"></span></a>
+									<h3>Documentos</h3>
+								</header>
+								<p>Aquivos e documentos referentes ao seriço.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href=""><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="96" height="96"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M14.33333,28.66667v28.66667h143.33333v-28.66667zM35.83333,35.83333c3.956,0 7.16667,3.21067 7.16667,7.16667c0,3.956 -3.21067,7.16667 -7.16667,7.16667c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667c0,-3.956 3.21067,-7.16667 7.16667,-7.16667zM14.33333,71.66667v28.66667h143.33333v-28.66667zM35.83333,78.83333c3.956,0 7.16667,3.21067 7.16667,7.16667c0,3.956 -3.21067,7.16667 -7.16667,7.16667c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667c0,-3.956 3.21067,-7.16667 7.16667,-7.16667zM14.33333,114.66667v28.66667h143.33333v-28.66667zM35.83333,121.83333c3.956,0 7.16667,3.21067 7.16667,7.16667c0,3.956 -3.21067,7.16667 -7.16667,7.16667c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667c0,-3.956 3.21067,-7.16667 7.16667,-7.16667z"></path></g></g></svg><span class="label">
+                  </span></a>
+									<h3>Registros</h3>
+								</header>
+                  <h4>Confira relatorios de serviços anteriores.</h4>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href=""><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="96" height="96"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M43,14.33333v14.33333h100.33333v71.66667h14.33333v-71.66667c0,-7.91917 -6.41417,-14.33333 -14.33333,-14.33333zM28.66667,43c-7.88333,0 -14.26335,6.45 -14.26335,14.33333l-0.06999,107.5l28.66667,-28.66667h71.66667c7.88333,0 14.33333,-6.45 14.33333,-14.33333v-64.5c0,-7.88333 -6.45,-14.33333 -14.33333,-14.33333zM28.66667,57.33333h86v64.5h-71.66667h-5.9349l-4.19922,4.19922l-4.19922,4.19922z"></path></g></g></svg><span class="label"></span></a>
+									<h3>Chat</h3>
+								</header>
+								<p>Comunique-se com outros militares de 
+                    forma segura, rapida, e simples.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="100" height="100"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#1c2d1c"><path d="M45.0425,16.4475l-17.845,22.6825l-6.5575,-5.805l-9.1375,10.32l12.04,10.75l5.4825,4.8375l4.515,-5.805l22.36,-28.595zM65.36,30.96v13.76h92.88v-13.76zM45.0425,64.6075l-17.845,22.6825l-6.5575,-5.805l-9.1375,10.32l12.04,10.75l5.4825,4.8375l4.515,-5.805l22.36,-28.595zM65.36,79.12v13.76h92.88v-13.76zM45.0425,112.7675l-17.845,22.6825l-6.5575,-5.805l-9.1375,10.32l12.04,10.75l5.4825,4.8375l4.515,-5.805l22.36,-28.595zM65.36,127.28v13.76h92.88v-13.76z"></path></g></g></svg><span class="label"></span></a>
+									<h3>Missões</h3>
+								</header>
+								<p>Missões destinadas a sessão ou militar.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="100" height="100"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#1a261a"><path d="M27.17734,13.76v145.51469h91.84531c-4.128,-1.72 -7.90931,-4.128 -11.00531,-6.88h-73.96v-131.75469h104.57734v66.73735c2.408,0.344 4.816,1.032 6.88,1.72v-75.33735zM48.84531,40.93735v6.88h74.30937v-6.88zM48.84531,84.28v6.88h12.38937v-6.88zM70.52,84.62265v6.88h45.06265c2.408,-1.376 4.82003,-2.40934 7.57203,-3.09734v-3.78266zM133.12531,92.88c-17.43797,0 -31.64531,14.20735 -31.64531,31.64531c0,17.43796 14.20734,31.65203 31.64531,31.65203c17.43797,0 31.65203,-14.21407 31.65203,-31.65203c0,-17.43796 -14.21406,-31.64531 -31.65203,-31.64531zM133.12531,99.76c13.71975,0 24.77203,11.04558 24.77203,24.76531c0,13.71973 -11.05229,24.77203 -24.77203,24.77203c-13.71975,0 -24.76531,-11.0523 -24.76531,-24.77203c0,-13.71974 11.04557,-24.76531 24.76531,-24.76531zM48.84531,102.85735v6.88h12.38937v-6.88zM70.52,102.85735v6.88h28.20531c1.032,-2.408 2.06937,-4.816 3.78937,-6.88zM133.07828,105.21563c-1.89985,0.02599 -3.41893,1.58718 -3.39297,3.48703v12.38266h-12.04c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h12.04v12.04c-0.01754,1.24059 0.63425,2.39452 1.7058,3.01993c1.07155,0.62541 2.39684,0.62541 3.46839,0c1.07155,-0.62541 1.72335,-1.77935 1.7058,-3.01993v-12.04h12.38937c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058h-12.38937v-12.38266c0.01269,-0.92865 -0.35062,-1.82298 -1.00733,-2.4797c-0.65672,-0.65672 -1.55105,-1.02002 -2.4797,-1.00733zM48.84531,121.43469v6.88h12.38937v-6.88zM70.52,121.43469v6.88h25.11469v-3.78937v-3.09063z"></path></g></g></svg><span class="label"></span></a>
+									<h3>Livro de cautela</h3>
+								</header>
+								<p>Tenha controle do materia cautelado, não fique no sanhaço.</p>
+							</div>
+						</section>
+					</div>
+				</div>
+			</section>
+{% endblock %}
+{% block footer %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% block js %}
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+{% endblock %}

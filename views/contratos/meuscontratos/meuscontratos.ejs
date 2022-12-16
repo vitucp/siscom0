@@ -1,0 +1,306 @@
+<%- include('../../partials/header') %>
+
+<style>
+
+    .card{
+          -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+          -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+            box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+        }
+    .container {
+
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            margin: 0px;
+            padding: 8px 0px;
+            }
+
+            h5 {
+            max-width: 60ch;
+            max-height: 60ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        /* The slider */
+        .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        input:checked + .slider {
+        background-color: #20341e;
+        }
+
+        input:focus + .slider {
+        box-shadow: 0 0 1px #20341e;
+        }
+
+        input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+        border-radius: 34px;
+        }
+
+        .slider.round:before {
+        border-radius: 50%;
+        }
+
+
+  </style>
+
+  <header id="header">
+    
+    <nav>
+      <a href="/home" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="50" height="20"
+        viewBox="0 0 172 172"
+        style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+        
+       
+        <a data-toggle="modal" data-target="#exampleModalCenter" >Nova Contrato</a>
+        <a href="/fiscal/contrato">Gerenciar Contratos</a>
+       
+
+        </nav>
+    <nav> 
+      <a href="#menu">Menu</a>
+    </nav>
+  <nav id="menu">
+    <ul class="links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/logout/">Sair</a></li>
+    </ul>
+  </nav>
+  </header><br><br>
+
+
+
+<div class="inner">
+
+
+     <% try{ %> 
+        <% contratos.forEach(contratos => { %>
+            <% if(contratos.status === 'alerta' ){ %>
+               
+
+
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <h6> Contrato <strong>  <class="card-title"><a href="/gerenciar/contratos/<%- contratos.id %>"><%- contratos.titulo -%></a> </strong></h6> vence no dia <strong><%- contratos.dataTermino%></strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <% } %>
+            <% }) %>
+ 
+    <div class="row"> 
+        <% contratos.forEach(contratos => { %>
+            
+   
+
+
+            <div class="col-sm-4">
+                <div class="card">
+                    <% if(contratos.status === 'pago'){ %>
+                        
+
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                        width="45" height="45"
+                        viewBox="0 0 172 172"
+                        style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,14.33333c-39.517,0 -71.66667,32.14967 -71.66667,71.66667c0,39.517 32.14967,71.66667 71.66667,71.66667c39.517,0 71.66667,-32.14967 71.66667,-71.66667c0,-8.06967 -1.40478,-15.80821 -3.87728,-23.05371l-11.60384,11.60384c0.7525,3.698 1.14778,7.5297 1.14778,11.44987c0,31.61217 -25.72117,57.33333 -57.33333,57.33333c-31.61217,0 -57.33333,-25.72117 -57.33333,-57.33333c0,-31.61217 25.72117,-57.33333 57.33333,-57.33333c11.70317,0 22.58877,3.53955 31.67611,9.58822l10.26009,-10.26009c-11.81067,-8.557 -26.27703,-13.66146 -41.93619,-13.66146zM152.59961,23.59961l-73.76628,73.76628l-23.59961,-23.59961l-10.13411,10.13411l33.73372,33.73372l83.90039,-83.90039z"></path></g></g></svg>
+                        <% if( user.id === contratos.userId){  %>
+                            <h5 class="card-title text-center"><a href="/gerenciar/contratos/<%- contratos.id %>"><%- contratos.titulo -%></a></h5>
+                        <% }else{ %>
+                            <h5 class="card-title text-center"><a href="/gerenciar/contratos/<%- contratos.id %>"><%- contratos.titulo -%></a></h5>
+                        <% } %>
+                    
+                        
+                        <% }if(contratos.status === 'alerta' ){  %>
+                            <img height="48" width="48" src="/images/icones/atencao.gif">
+
+                            <% if( user.id === contratos.userId){  %>
+                                <h5 class="card-title text-center"><a href="/gerenciar/contratos/<%- contratos.id %>"><%- contratos.titulo -%></a></h5>
+                            <% }else{ %>
+                                <h5 class="card-title text-center"><a href="/ver/contrato/<%- contratos.id %>"></a><%- contratos.titulo -%></a></h5>
+        
+                            <% } %>
+
+                            <% }if(contratos.status === "pendente"){ %>
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                width="48" height="48"
+                                viewBox="0 0 172 172"
+                                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#c40f0f"><path d="M86,21.61198c-3.79117,0 -7.58514,1.63109 -10.03614,4.89909c-0.1462,0.20274 -0.28169,0.41299 -0.40592,0.62988l-63.07227,105.3444c-2.34022,3.90037 -2.10015,9.1605 0.18197,12.58366c2.28211,3.42316 6.07953,5.43099 10.26009,5.43099h126.14453c4.65833,0 8.28126,-2.53361 10.37207,-5.8789c2.09081,-3.3453 2.67441,-8.71919 -0.34993,-12.75163l0.41992,0.61588l-63.07226,-105.3444c-0.12423,-0.2169 -0.25972,-0.42714 -0.40592,-0.62988c-2.45096,-3.26802 -6.24497,-4.89909 -10.03614,-4.89909zM86,37.58301l59.02702,98.58366h-118.05404zM78.83333,64.5v35.83333h14.33333v-35.83333zM78.83333,114.66667v14.33333h14.33333v-14.33333z"></path></g></g></svg>
+                                <% if( user.id === contratos.userId){  %>
+                                <h5 class="card-title text-center"><a href="/gerenciar/contratos/<%- contratos.id %>"><%- contratos.titulo -%></a></h5>
+                            <% }else{ %>
+                                <h5 class="card-title text-center"><a href="/ver/contrato/<%- contratos.id %>"></a><%- contratos.titulo -%></a></h5>
+                            <% } %>
+                        <% }if(contratos.status == ''){  %> 
+                            <br><br>
+                            <h5 class="card-title text-center"><a href="/gerenciar/contratos/<%- contratos.id %>"><%- contratos.titulo -%></a></h5>
+                        <% } %>
+                        
+                <div class="card-body">
+                    <div class="card-body">
+                    
+                    
+                    <div class="text-left">
+                        <label for="">Empressa: <%- contratos.empresa %></label>  
+                    </div>
+                    <div class="text-left">
+                        <label for="">Data de inicio: <b><%- contratos.dataInicio %></b><br> Data de termino: <%- contratos.dataTermino %></label>  
+                    </div>
+                    </div>
+                   
+                </div> 
+            </div><br>
+    </div>
+        <% }) %>
+    </div><br>
+   
+    <% }catch(erro){ %> 
+    <% } %>
+
+</div>
+
+
+<!--ALERTA NOTIFICAÇAO-->
+
+
+
+
+
+<% contratos.forEach(contratos => { %>
+
+ 
+<% }) %>
+
+
+
+
+
+<!-- MODAL -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      
+        <div class="modal-content">
+        <form  name='form1' method="POST" action="/salvar/contrato">
+        
+            <div class="card-header">
+                <div class="text-right">
+                </div>
+              </div>
+              <div class="card-body">    
+                  <div class="row">
+                      <div class="col">
+                        <div class="text-left">
+                            <label for="">Titulo</label>
+                        </div>
+                        <input type="text" name="titulo" class="form-control" placeholder="Digite aqui"><br>
+                  
+                      </div>
+    
+                      <div class="col">
+                        <div class="text-left">
+                            <label for="">Nº Documento</label>
+                        </div>
+                        <input type="text" id='numero' maxlength="10" name="Ncontrato" class="form-control" placeholder="Digite aqui"><br>
+                      </div>    
+                    </div> 
+    
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-left">
+                                <label for="">Descrição</label>
+                            </div>
+                            <input type="text" maxlength="500" name="descricao" class="form-control" placeholder="Digite aqui"><br>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-left">
+                                <label for="">Data de inicio</label>
+                            </div>
+                            <input  type="text" id='dataInicio' name='dataInicio' class="form-control" placeholder="" value='' >
+                        </div>
+    
+   
+    
+                        <div class="col">
+                            <div class="text-left">
+                                <label for="">Termino</label>
+                            </div>
+                            <input  type="text" id='dataTermino' name='dataTermino' class="form-control" placeholder="" value='' >
+                        </div>
+                    </div><br>
+          
+
+            <div class="text-right">
+                <a href='javascript:form1.submit()' class="btn btn-success">Salvar</a> 
+              </div> 
+          
+            
+        </form>
+
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>sss
+          
+  <script type="text/javascript">
+    $("#dataInicio").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#dataTermino").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#notificacao").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $('#numero').mask('000/0000', '0#', {maxlength: false});
+    </script>
+
+<%- include('../../partials/footer') %>

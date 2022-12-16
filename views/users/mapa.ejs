@@ -1,0 +1,85 @@
+<%- include('../partials/header') %>
+
+
+
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin=""/>
+
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+
+
+
+  <style>
+    #mapDIV{
+      height: 700px;
+      width: 1300px;
+      border: solid 1px black;
+    }
+    
+    </style>
+    
+   <h1>
+       <%- user.graduacao %> <%= user.latitude %> <%= user.logitude %>
+   </h1> 
+    
+    <div id='mapDIV'></div>
+    
+
+
+
+    <script>
+            var map = L.map(document.getElementById('mapDIV'), {
+              center: [-8.877400655830687, -50.48203956940139],
+              zoom: 4
+            });
+            var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        
+            });
+
+            basemapc = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+              zoom: 4,
+        subdomains:['mt0','mt1','mt2','mt3']
+            });
+
+            basemap.addTo(map)
+
+            var Marker = L.marker(['<%= user.latitude %>', ' <%- user.logitude %>']);
+
+            Marker.bindPopup('<%= user.graduacao %> <b> <%= user.nomeGuerra %> </b><br> esta no <%= user.localizacao %>')
+            Marker.addTo(map)
+
+    </script>
+  </div>
+</div>
+
+
+
+
+
+<!--
+  MARCARA DE FORMULARIO
+-->
+
+<!--
+  MARCARA DE FORMULARIO
+-->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+
+<%- include('../partials/footer') %>
+
+
+
+
+

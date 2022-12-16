@@ -1,0 +1,780 @@
+<%- include('../../partials/header') %>
+
+<style>
+
+    .card{
+          -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+          -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+            box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+        }
+    .container {
+
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            margin: 0px;
+            padding: 8px 0px;
+            }
+
+            h5 {
+            max-width: 60ch;
+            max-height: 60ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        /* The slider */
+        .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        input:checked + .slider {
+        background-color: #20341e;
+        }
+
+        input:focus + .slider {
+        box-shadow: 0 0 1px #20341e;
+        }
+
+        input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+        border-radius: 34px;
+        }
+
+        .slider.round:before {
+        border-radius: 50%;
+        }
+
+        .conteudo_1{
+                display:none
+              }
+              .conteudo_2{
+                display:none
+              }
+              .conteudo_3{
+                display:none
+              }
+              
+              .active{
+                display:block!important;
+              }
+    
+
+
+  </style>
+
+  <header id="header">
+
+
+  
+    <nav>
+      <a href="/meus/contratos" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="50" height="20"
+        viewBox="0 0 172 172"
+        style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+      
+      <a data-toggle="modal" data-target="#novaFatura">Nova Fatura</a>
+      
+   
+    </nav>
+
+    <nav> 
+      <a href="#menu">Menu</a>
+    </nav>
+    <nav id="menu">
+      <ul class="links">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/logout/">Sair</a></li>
+      </ul>
+    </nav>
+  </header><br><br>
+
+
+
+
+
+
+<div class="">
+
+  <section class="wrapper">
+    <header class="special">
+        <h2><%- contratos.titulo %></h2>
+        <p></p>
+    </header>
+
+
+
+
+
+
+<!-- formulario dinamico -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- formulario dinamico -->
+
+
+
+
+<div class="card text-center">
+<div class="card-header">
+<ul class="nav nav-pills card-header-pills">
+<li class="nav-item">
+<a class="nav-link active" href="#" onclick="toggleDiv(1)">Documento</a>
+
+</li>
+<li class="nav-item">
+<a class="nav-link active" href="#" onclick="toggleDiv(2)">Empresa</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" href="#" onclick="toggleDiv(3)">Faturas 
+    <!-- <span class="badge badge-light"><%= notificacao.count %></span> --> 
+  </a>  
+</li>
+</ul>
+</div>
+<div class="card-body" >
+<h5 class="card-title"></h5><br>
+
+<div class="conteudo conteudo_1">
+  
+
+
+<form method="post"  name='form' action="/atualizar/contrato">
+  
+    <div class="row">
+      <div class="col"> 
+          <div class="text-left">
+              <label for="">Titulo</label>
+          </div>
+        <input type="text" name='titulo' class="form-control" placeholder="" value='<%- contratos.titulo %>'>
+        <input type="hidden" name='userId' class="form-control" placeholder="" value='<%- contratos.userId %>'>
+        <input type="hidden" name='idContrato' class="form-control" placeholder="" value='<%- contratos.id %>'>
+      </div>
+      <div class="col">
+        <div class="text-left">
+            <label for="">Nº contratos</label>
+        </div>
+        <input type="text" name='Ncontrato' id='numero1' class="form-control" placeholder="" value='<%- contratos.Ncontrato %>'>
+      </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col">
+            <div class="text-left">
+                <label for="">Descricão</label>
+                <input type="textarea" name='descricao' maxlength="500" class="form-control" placeholder="" value='<%- contratos.descricao %>'>
+
+            </div>
+          
+
+        </div>
+
+      </div><br>
+
+      <div class="row">
+        <div class="col-md-3">
+            <div class="text-left">  
+                <label for="">Data de inicio</label>
+              </div>
+              <input type="text" name='dataInicio' id='dataInicio1' class="form-control" placeholder="00/00/0000" value='<%- contratos.dataInicio %>'>
+            </div>
+
+
+
+      <div class="col-3">
+        <div class="text-left">
+            <label for=''>Data de termino</label>
+        </div>
+      <input  type="text" name='dataTermino' id='dataTermino1' class="form-control" placeholder="00/00/0000"  value='<%- contratos.dataTermino %>' >
+    </div>
+
+    <!--
+    <div class="col-3">
+      <div class="text-left">
+          <label for=''>status </label>
+      </div>
+      <select name='status' class="form-select" aria-label="Default select example">
+        <option selected><%- contratos.status %></option>
+        <option value="pago">Pago</option>
+        <option value="alerta">Perto do vencimento</option>
+        <option value="pendente">Pagamento Pendente</option>
+
+      </select>
+  </div>
+-->
+      </div><br>
+
+      
+
+</div>
+
+<div class="conteudo conteudo_2">
+
+  <div class="row">
+    <div class="col-md-3">
+        <div class="text-left">  
+            <label for="">Nome da Empresa</label>
+          </div>
+          <input type="text" name='empresa' class="form-control" placeholder="Nome empresa" value='<%- contratos.empresa %>'>
+        </div>
+
+    <div class="col-3">
+      <div class="text-left">
+          <label for=''>Cnpj</label>
+      </div>
+    <input  type="text" name='cnpj'  id="cnpj" class="form-control" placeholder="Cnpj"  value='<%- contratos.cnpj %>' >
+  </div>
+
+  <div class="col-3">
+    <div class="text-left">
+        <label for=''>Telefone</label>
+    </div>
+  <input  type="text" name='telefoneEmpresa' id='telefone' class="form-control" placeholder="(00) 0000-0000"  value='<%- contratos.telefoneEmpresa %>' >
+</div>
+
+
+
+<div class="col-3">
+  <div class="text-left">
+      <label for=''>Email</label>
+  </div>
+  <input  type="text" name='emailEmpresa'  class="form-control" placeholder="exemplo@gmail.com"  value='<%- contratos.emailEmpresa %>' >
+
+</div>
+
+  </div>
+
+  </div>
+
+  <div class="conteudo conteudo_3">
+
+<table class=" ">
+
+  <% if(!fatura.id){ %>
+  <thead>
+    <tr>
+      <th scope="col ">Nr Fatura </th>
+      <th scope="col">Valor</th>
+      <th scope="col">Vencimento</th>
+      <th scope="col">Data Entrada tesouraria</th>
+      <th scope="col">Nr Ob</th>
+      <th scope="col">Data Ob</th>
+
+    </tr>
+  </thead>
+  <%}else{ %> 
+    
+  <%} %>
+  <tbody class="">
+
+<style>
+  textarea, input, select {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    background: rgba(0, 0, 0, 0);
+} 
+</style>
+
+   <% faturas.forEach(faturas => { %>
+
+    <% if(!faturas.nrFatura ){%>
+      
+      
+
+
+
+
+      <%}else{%> 
+      
+        <tr>
+          
+          <th > <input type="textarea" value="<%-faturas.nrFatura %>"></th>
+          <th ><input type="textarea" value="<%- faturas.valor %>"></th>
+        <th ><input type="textarea" value="<%- faturas.vencimento %>"></th>
+        <th ><input type="textarea" value="<%- faturas.dataEntregaTesouraria %>"></th>
+        <th ><input type="textarea" value="<%- faturas.nrOb %>"></th>
+        <th ><input type="textarea" value="<%- faturas.dataOb %>"></th>
+
+        
+        <td>
+          
+          <% if( faturas.notificacao === '1' ){ %> 
+              <a   title="Menos de 5 Dias para o vencimento."><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABmJLR0QA/wD/AP+gvaeTAAADCElEQVRIie3Wz28VZRTG8c8794e0QAO0BWx0ASvxBy0xItJWoyS4MagLCytjgrp0J7jQlbphpf8AsjQsdNWYhoQS4FYTCS5QY0ys0ULT3paGHwr10jvHRbm1KFgu6ZInmcV5Z57nOyfvZM7LfS2zUrOG6rBVyg5GiHTDofXP+6MZf7FZYCr6IMKuBGVlvNeMP4Ppr22Zqti31MNxVCGSHsmoZFTYFkcVlvJNVeybHvHIAjCv+yjoh4khK+9gemuqyxh2C68Jr2H3VJffqhVv3M6zkBWezes+hHTxGw/V54xmmU3Fumu15McIvRv6jTaM1VM+lbzzf12kcKiz38FGPXnK5pScLt3waJ5ZXS/4JctsyvK6AZzo2OlCjbfx02LYRMXLS8EgkgOTI15s1Bv6jUp+rpW82f6csRRORm4gi9AXHAOZgQiHFwdl4d2lYAvKHbjlJXKHE3shOBb0ZeiO3NmJISuF7mLJ8EJ383uw4255if5fh61o1KXkBHrGz2iN5Cy2ZuhQMJmt0IW59h3OLwSsspGlv8JFKrVkHmwU6/r8HuTFmq7ITKAzQ0uWzEbSgtnF7kKm3AQMFMv/dAiJ6zktGdfRmuFymtNWLJtBW/zQPOROupnVVmQm5dbgUobzUbB53dMu4NLFS7qXC3jxsh7MtD9jPNgsGcsifJvC9pQEjufsWS5gXrdHcjwlEcn24EwmMxS8CikcEfaPjWiZd1jVLGRuThuMn9Eq2S8ciZBSeEUYyq7VDKJ9uuKFjj6Dki9X5NZCPfdUs8DEk1CatUbyRWevr6qn7QrWXrliMEH1lPclO9b3ealhjJCmKr6j6T0919mr++YWgeppg5KR9b0+nh9Pcz6ptXpgsWuqYuAeYPDE9Ii9+LyxUCt5vXzNX9xhAI8P6yiWfI8N9wCE6Tx5bGOv6r9v3HYAl4oeD67iz3sE5oW6LfwX2NQRY2xEy+r6rX+SqwWzD+90/W4zsmaAZbbVkvFaMnPzGi+HnmYymj5ETZ60VTY/4SPz2cadzjWbcV/Lqr8BUc0Pt7tSy70AAAAASUVORK5CYII="></a>
+          <% }if( faturas.notificacao === '2'){ %> 
+              <a   title="Faltam 90 dias para o vencimento."><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABmJLR0QA/wD/AP+gvaeTAAAElElEQVRIie1We0xbZRT/fd+9bYHyKs8CdSs4AtIh2I1MzYQ9IPLo2JRH4gzG5x8m0xhDSEw0NsYYp39oTJwui8YtUaNsxhEyXCbLdDM+BkjCY/LYVnDQWh6lpZTetvd+/lEo3BYCYYl/+Utucr/znXN+53znnO9e4D8G2YxSeVXdAyDkFYD1/njh3IcAWIROdV0jKExMIt92Xjjbvp4vusmwzoPAAEKOV5gajoRvV5jqckHI1wDNJQTn9lU3aNd3FQaz2UyvdvfVUonkgTG320E/VycxD2OkihD2AQALAa4s6zOQfsYgEsI6eJHPDnCB24zgYwrSmRiNttbWVnFdQrPZTLv7b172+/2lWVmZiItTS2++1uJsePKZJPPrLbbr3X9GD94YilptU1iQ7zUaixfNb7+n/f6b05Y33no33emap5NWmyJDp5t7+qXma1DQ5rJ700Yi0j1YXW96tLZRunV7jC1DFEVW89hRdvKzM8wrCGwtDNwYYuU19eyna7+GZJaxv1nlkSfYybMX2dURe9cyh6yGlMCgTU9Dtn7bioxSvPBsE364dBnDw6Nr1uW+vFxUHCjDRydOQRAEAMD2bTpkZWphn5gAAOPAAFMCAB9my1HKRTg8bKrEYVPlmmQAQAhBy6vHIuSUUohMAgBij7HQiAzXgsQYrM5FCIGV2js8Pjg8vtDa6xdhcy5CYhHTEhnERgp2lxc3p9ywTC8AAESJYXDSicFJJ0QpSGCZWcDolBt2l7AhYfiRRkCjViJlUYX0hGBzcpRAp4kJvQOANj4KZEn3rglVPAd9shoqfqW2WYnRWD1RiSoeiTQA8BvfIzINxqDgeHnTTLsFdI3N4ta0G0Cwpl3jDnSPz67U7Is24Nhx4Pc+ma0YEMFxcn/hIWmTkzSyyis5Cp4SRCmChgQEUTyFiqcgZCnLVA2gjgYS4mTOZufmEBsfL5PJjpRy3N4dOXpZEPHRCjyYkxJaEwIU36ORh1lbFnxW4c6EFe55N9IzstbOsLymLkeSRMOekl0yBcvMAv6yuUKfB4fHh/5JJ+a9fgBAQJQwZHNhfNYjs/vltz+gjo2Fbrt+bULCyPNpqcn+nQX5oU2/KGFizoMFIRD6INmcXjgXfRCX1k6vH1NuQTanjDF0XOyEwbgbhMqrFjpSZZTq4P7SvcpQXQAoOIoSfTJ4SrAsztPGQZRioeCCjpLVKpTok2Rd3NPbh4lJK2qbnkM4QoRiQBy+3tNrfGjPbl6p3Hie1oPV9g8+OXUa+YVFiE9IhCjKOzWUzr6qx3UxKlW7z+8v2jIbgvdqQbERhxqP4stTJ5C/swgPHyhHgF+I3p+d7Q1leKXjuzsAitu7hkekQGDHVglj4+KhWDohvyDA55Nfd7KxKDfVP9X21Zn0phdf3iqfDBKTQINNw9I8egkIH3wGt2V0JGbKZr1rMrvNihm7HWkZmQDQYzAQHxCWoSaGnHcJ+PnT998p1aSkBsKvpc1CEiXimJ5S6PQ5i3mG+y9xBM3LexE/UQ0NDdysVzpEJWJkwJbalQA+ibKeR3YVtpnNZmlLUf+PzeJfIO/WgSeKe8AAAAAASUVORK5CYII="></a>
+          <% }if( faturas.notificacao === '0'){ %> 
+              <a   title="Esta Fatura esta vencida"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABmJLR0QA/wD/AP+gvaeTAAACYUlEQVRIieWWTU8TURSGnzPTIRZIWCASpYSGFophgQsXfrCQpcrCpR+JK2PiPzAxGkNc8Bc0kQ3BXyAuwbgxrmRjQFoE0imGqGFDO2Cnc1yghXba6RRho+/q5ubc97lz59xzLvzrkrCB6WSySz1vHNV+RGIAqNqorkgkMjuQyXw7EmAmkbjked4EcAUw64SVgHnxvCcD6+vvDwX8NDzcbuXzLxC51WhTFVJ95TjO/ZHNzXxo4OdYrEcsaxYYaQq2rwUtFsdTtp1rCMzGYtEdy3qncP6QsDLUKRRGq7/UqI5yIpGXQbC8aTLf0cl8Ryd5s94vBeBctLX1efVkBTAdj19A5GaQy5YZYaq7h6nuHrbMSFAowJ2lROJyXaCKPKOJqxJGhuc9rQnMJBKn2Ev9o9ZYOpns8gFLpdJV6t+zv5Hp7XlXAg2RwWOAASAw4AOq6unjAqJ6xgcE9Nh4ImXv/bwW+Rpm8QlVhgvb5XEYCWz4gKqaFml8I04Wf/LQ/hIKVPaGzJ9x+Ui9YvE14DblFE4lLOuND3g2l/sBvG202hVhMtbPZKwfN8SJAHOp5eXvPiCAwiMaJM+2abIYbWMx2sZ2cC0FUMMwKiqNb4vL8fgMIreDXJaibQiQcmq2vH0aTKdWV+8enPNV36jr3tuxrMGgjjHUAPRbCzuFwoPqSV976rVtxysWbwALYVzr6KPnutdrdX0fECBl2zmnUBgFZmiuIKjCdPvu7uhQNrtRK6BhmqX7+i6qYUwAYwQ/ouZQfTy4tvYhyK+pZ6LnutdEJIFILwCqWVVdoaVl9mDq/9/6BW0b1m+XP7uAAAAAAElFTkSuQmCC"></a>
+          <% }if( faturas.notificacao === '3'){  %>
+              <a   title="Encaminhe a Fatura para a  tesouraria."><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAABmJLR0QA/wD/AP+gvaeTAAACiUlEQVRIie2WXUhTYRjH/+d43uXmJMTUWSStsTnMJviR6LEPohJhmYVpWEEfkhCJXkTQhRIGBeaNChYqepGLQtHAFWnQhcJwyTSWYGI407b5QReBfejZOW9XBm2KM46ji3537/O+z/Pjed6bBwghzFoxffbeS4QjBURBooMt5PP5lpZXBAcniS0fhqang5Il8voqjuOqC82FnDpCHZTI4XTANTMFdUTkitv7mfFJvisfba6ODRP3HTEuWro76GZobGugxWWFVJIk2tjWQA28TjRkaQ/412b9A4IgRCfsSgiqo1Vio2PgmfdAFEXcuFwOPoOXCCHVG8r+huOHcyEIAi6Ul6DuYS0oBSeBObQlsqjtUehq6YZRZ8TYxBgoKLS7tc4NEw28Thq0D2zqz9bh/JZ05o97zg3zxbyykMhcM1OYdE3mhES2Hv9l/65MGa4Ey7LLIZGlmdLx9FFnZUhkAJCSlPLVP8bJLXG8H0bf4EsMO+2VaeYkUxgjtrztnXDJLqtvr8PjnvbVYyYYZIoIq0g9mVw80jtmlW2Mb2yvf4tYhkXt7XoYdUkAoGIgPTGdNsXKJnve3wUA0MTEIz5uJ1ThKjTVtGJ/YgoARCpEsUi2MXoXPchK5dF4p/mPeNPdVhwsygCldI9sncXt0GBo1Ib80hM4dS0XfQMv8P3HN9y8X7H65FOAjBDyZdYzu2lZ/rEzoJTCs+CGd96DCJUa16tKYR+1AcASKzKdAduVntfWKLepbp0rKFEQjltr1QsgKz0bfEYOHjTfwzOrxf/6J6W0ZMQ63hNY7CzCDG5tJccp8oiChAcj08TG972y9FsAwHz1aPLc4kI+AA1Ax0VKm99ZxyeDqSMrvwAKvUeqP9cNagAAAABJRU5ErkJggg=="></a>    
+          <% }%>
+
+  
+
+        </td>
+                <td>
+                  
+                  <i  class="bi bi-pen-fill" title="Editar Fatura"  data-toggle="modal" data-target="#editarFatura<%= faturas.id %>"> </i>
+                  
+                  
+                </td>
+                <td>
+                  
+                  <a href="/apagar/fatura/<%- contratos.id %>/<%= faturas.id %>/"   title="Deletar fatura <%- faturas.nrFatura %> " ><img src="https://img.icons8.com/ios/25/000000/empty-trash.png"/></a>
+                  
+                </td>
+      
+              
+              <%}%>
+              <% }) %>    
+              
+            </tr>
+          </tbody>
+        </table>
+        
+    </div><br>
+
+
+
+  <div class="text-right">
+    <a data-toggle="modal" data-target="#autenticar" class="btn btn-success"><b style="color: aliceblue;">Salvar</b></a> 
+  </div>
+
+</div>
+
+</div>
+
+</div> 
+
+
+
+
+<!-- notificacao  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  $(document).ready(function(){
+      $(".toast").toast({
+        autohide: false
+      });
+  });
+  </script>
+
+
+<div class="modal-footer" >
+  <div class="m-1">
+    <div class="toast-container" >
+<% faturas.forEach(faturas => { %>
+
+  <% if(!faturas.nrFatura){%> 
+
+
+
+
+
+
+    <%}else{ %> 
+      <% if( faturas.notificacao == '0'){ %> 
+          <div class="toast  fade show">
+              <div class="toast-header" style="background-color: rgb(197, 9, 9) ;">
+                  <strong class="me-auto text-light"><i class="bi bi-exclamation-triangle-fill"></i>   Atenção</strong>
+                  <small></small>
+                  <a type="button" class="btn-close" data-bs-dismiss="toast"></a>
+              </div>
+              <div class="toast-body ">
+                  
+                 Fatura<strong> <%= faturas.nrFatura %> </strong> está Vencida.
+                </div>
+              </div>
+        <% }if( faturas.notificacao == '1'){ %> 
+          <div class="toast  fade show">
+              <div class="toast-header bg-warning ">
+                  <strong class="me-auto text-light"><i class="bi bi-stopwatch-fill"></i>   Atenção</strong>
+                  <small></small>
+                  <a type="button" class="btn-close" data-bs-dismiss="toast"></a>
+              </div>
+              <div class="toast-body ">
+                  Faltam menos de 5 dias para o vencimento da fatura <strong><%= faturas.nrFatura %>.</strong> 
+                </div>
+              </div>
+        <% }if(faturas.notificacao == '3'){ %> 
+          
+          <div class="toast  fade show">
+            <div class="toast-header " style="background-color: rgb(197, 9, 9) ;">
+                <strong class="me-auto text-light"><i class="bi bi-file-arrow-up-fill"></i>   Atenção</strong>
+                <small></small>
+                <a type="button" class="btn-close" data-bs-dismiss="toast"></a>
+            </div>
+            <div class="toast-body ">
+                Fatura <strong><%= faturas.nrFatura %></strong> esta vencida e 
+                Aguardando entrega na Tesouraria. <br>
+              </div>
+            </div>
+          
+        <% }if(faturas.notificacao == '4'){ %> 
+          
+          <div class="toast  fade show">
+            <div class="toast-header toast-header bg-warning  ">
+                <strong class="me-auto text-light"><i class="bi bi-file-arrow-up-fill"></i>   Atenção</strong>
+                <small></small>
+                <a type="button" class="btn-close" data-bs-dismiss="toast"></a>
+            </div>
+            <div class="toast-body ">
+                Faltam menos de 5 dias para a Fatura <strong><%= faturas.nrFatura %></strong> vencer 
+                Você ainda não registrou a entrega na tesouraria. <br>
+              </div>
+            </div>
+          
+      
+<%}%>
+
+        <% }if(faturas.notificacao == '5'){ %> 
+
+          
+          <div class="toast  fade show">
+            <div class="toast-header " style="background-color: rgb(11, 162, 77) ;">
+                <strong class="me-auto text-light"><i class="bi bi-file-arrow-up-fill"></i> Ops</strong>
+                <small></small>
+                <a type="button" class="btn-close" data-bs-dismiss="toast"></a>
+            </div>
+            <div class="toast-body ">
+               <strong> Não esqueça de lançar a Fatura desse mês. </strong> 
+                <br>
+              </div>
+            </div>
+          
+        <% } %>
+ 
+ 
+  
+
+
+ <% }) %>
+
+  <% if( contratos.notificacao == '0'){ %> 
+    <div class="toast  fade show">
+        <div class="toast-header bg-dark ">
+            <strong class="me-auto text-light"><i class="bi bi-file-earmark-excel-fill"></i>   Atenção</strong>
+            <small></small>
+            <a type="button" class="btn-close" data-bs-dismiss="toast"></a>
+        </div>
+        <div class="toast-body ">
+         <strong>    Este contrato esta vencido. </strong>
+          </div>
+        </div>
+  <% } %>
+
+ 
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="autenticar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLongTitle"></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+
+<div class="col-12">
+  <div class="text-center">
+      <label for="">Digite sua senha</label>
+  </div>
+  <div class="form-group">
+    <input type="password"  placeholder="Senha" id="password" name="password">
+  </div>
+</div>
+
+</div>
+<div class="modal-footer">
+<a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</form> 
+
+
+
+
+
+
+
+
+
+<% faturas.forEach(faturas => { %>
+
+                
+              <!-- Modal EDITAR FATURA -->
+              <div class="modal fade" id="editarFatura<%= faturas.id %>" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title tex" id="TituloModalCentralizado" ></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>
+                      <div class="modal-body">
+                              
+                        <form  name='editar<%= faturas.id %>' method="POST" action="/editar/fatura">
+                          <div class="row">
+                            <div class="col">
+                              <div class="text-left">
+                                  <label for="">Nr Fatura</label>
+                              </div>
+                              <input type="text" name="NrFatura" id='numero4' class="form-control" placeholder="Digite aqui" value="<%-faturas.nrFatura %>"><br>
+                              <input type="hidden" name='idFatura' class="form-control" placeholder="" value='<%- faturas.id %>'>
+                            </div>
+          
+                            <div class="col">
+                              <div class="text-left">
+                                  <label for="">Valor</label>
+                              </div>
+                              <input type="text" id='dinheiro1' name="valor" class="form-control" placeholder="R$" value="<%- faturas.valor %>" ><br>
+                            </div>    
+                          </div> 
+
+                          <div class="row">
+                            <div class="col">
+                              <div class="text-left">
+                                  <label for="">Vencimento</label>
+                              </div>
+                              <input type="text" id="data6" name="vencimento" class="form-control" placeholder="Digite aqui" value="<%- faturas.vencimento %>"><br>
+                            </div>
+          
+                            <div class="col">
+                              <div class="text-left">
+                                  <label for="">Data Entrada Tesouraria</label>
+                              </div>
+                              <input type="text" id='data7' name="dataEntragaTesouraria" class="form-control" placeholder="Digite aqui" value="<%- faturas.dataEntregaTesouraria %>"><br>
+                            </div>    
+                          </div> 
+
+                          <div class="row">
+                            <div class="col">
+                              <div class="text-left">
+                                  <label for="">Nr Ordem bancaria</label>
+                              </div>
+                              <input type="text" id='numero5' name="NrOb" id='' class="form-control" placeholder="Digite aqui" value="<%- faturas.nrOb %>" ><br>
+                            </div>
+          
+                            <div class="col">
+                              <div class="text-left">
+                                  <label for="">Data Ob</label>
+                              </div>
+                              <input type="text" id='data5' name="DataOb" class="form-control" placeholder="Digite aqui" value="<%- faturas.DataOb %>" ><br>
+                              <input type="hidden" name='idContrato' class="form-control" placeholder="" value='<%- contratos.id %>'>
+        
+                            </div>    
+                          </div> 
+
+
+                          
+                          <div class="text-right">
+                            <a href='javascript:editar<%= faturas.id %>.submit()' class="btn btn-success" >salvar</a> 
+                          </div> 
+
+                        </form>
+
+
+                      </div>
+                      <div class="modal-footer">
+  
+                      </div>
+                  </div>
+                </div>
+              </div>
+<% }) %>
+
+
+
+
+
+<!-- MODAL - nova fatura -->
+
+<div class="modal fade" id="novaFatura" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    
+      <div class="modal-content">
+      
+      <form  name='form1' method="POST" action="/nova/fatura">
+      
+          <div class="card-header">
+              <div class="text-right">
+              </div>
+            </div>
+            <div class="card-body">    
+                <div class="row">
+                    <div class="col">
+                      <div class="text-left">
+                          <label for="">Nr Fatura</label>
+                      </div>
+                      <input type="text" name="NrFatura" id='numero2' class="form-control" placeholder="Digite aqui"><br>
+                      <input type="hidden" name='idContratoFaturas' class="form-control" placeholder="" value='<%- contratos.id %>'>
+                    </div>
+  
+                    <div class="col">
+                      <div class="text-left">
+                          <label for="">Valor</label>
+                      </div>
+                      <input type="text" id='dinheiro' name="valor" class="form-control" placeholder="R$"><br>
+                    </div>    
+                  </div> 
+  
+                  <div class="row">
+                    <div class="col">
+                      <div class="text-left">
+                          <label for="">Vencimento </label>
+                      </div>
+                      <input type="text" id="data" name="vencimento" class="form-control" placeholder="Digite aqui"><br>
+                    </div>
+  
+                    <div class="col">
+                      <div class="text-left">
+                          <label for="">Data Entrada Tesouraria</label>
+                      </div>
+                      <input type="text" id='data1' name="dataEntragaTesouraria" class="form-control" placeholder=""><br>
+                    </div>    
+                  </div> 
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="text-left">
+                          <label for="">Nr Ordem bancaria</label>
+                      </div>
+                      <input type="text" id='numero3' name="NrOb" id='' class="form-control" placeholder="Digite aqui"><br>
+                    </div>
+  
+                    <div class="col">
+                      <div class="text-left">
+                          <label for="">Data Ob</label>
+                      </div>
+                      <input type="text" id='data2' name="DataOb" class="form-control" placeholder="Digite aqui"><br>
+                      <input type="hidden" name='idContrato' class="form-control" placeholder="" value='<%- contratos.id %>'>
+
+                    </div>    
+                  </div> 
+          <div class="text-right">
+            <a href='javascript:form1.submit()' class="btn btn-success" >salvar</a> 
+          </div> 
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<script>
+  function toggleDiv(conteudo){
+    $('div.conteudo').removeClass('active');
+    if(conteudo == 1){
+      $('div.conteudo_1').addClass('active');
+    }else if(conteudo == 2){
+      $('div.conteudo_2').addClass('active');
+    }else if(conteudo == 3){
+      $('div.conteudo_3').addClass('active');
+    } 
+  }
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+          
+  <script type="text/javascript">
+    $("#dataInicio").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#dataTermino").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#notificacao").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data0").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data2").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data3").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data7").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data5").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data6").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#dataInicio1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#dataTermino1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#notificacao1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $('#numero').mask('000/0000', '0#', {maxlength: false});
+    $('#numero1').mask('000/0000','0#', {maxlength: false});
+    $('#numero2').mask('000/0000','0#', {maxlength: false});
+    $('#numero3').mask('000/0000','0#', {maxlength: false});
+    $('#numero4').mask('000/0000','0#', {maxlength: false});
+    $('#numero5').mask('000/0000','0#', {maxlength: false});
+    $("#telefone").mask("(00) 0000-00000")
+    $("#cnpj").mask("00.000.000/0000-00", '0#', {maxlength: false} );
+    $('#dinheiro').mask('#.##0,00', {reverse: true});
+    $('#dinheiro1').mask('#.##0,00', {reverse: true});
+   
+    faturas.forEach(faturas => {
+      let id = faturas.id
+      $("#teste"+id).mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    })
+  
+    
+    </script>
+
+
+<%- include('../../partials/footer') %>

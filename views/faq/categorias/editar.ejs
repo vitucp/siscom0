@@ -1,0 +1,103 @@
+<%- include('../../partials/header') %>
+
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+
+ 
+
+      }
+
+      
+
+
+</style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/faq" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/faq/artigo" >Novo artigo</a>  
+        <a data-toggle="modal" data-target="#exampleModalCenter" >Nova Categoria</a>
+
+
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/faq/artigo">Novo Artigo</a></li>
+    <li><a data-toggle="modal" data-target="#exampleModalCenter" >Nova Categoria</a></li>
+    <li><a href="/faq/editar/categoria">Editar Categoria</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header><br><br>
+
+
+
+
+<div class="container">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Categoria</th>
+                <th>Link</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody> %>
+            <% categoria.forEach(categoria => { %>
+                <tr>
+                    <th><%= categoria.id %></th>
+                    <th><%= categoria.title %></th>
+                    <th><%= categoria.slug %></th>
+                    <th>
+                        
+                        <a href='/faq/categoria/editar/<%= categoria.id %>' name='form' class='btn btn-warning'>Editar</a>
+
+                        <form action="/categories/delete" method="POST" style='display: inline;' onsubmit="confirmarDelecao(event, this)">
+                            <input type='hidden' name='id' value="<%= categoria.id %>">
+                            <button class='btn btn-danger'>Deletar</button>
+
+                        </form>
+                    </th>
+                </tr>  
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+
+
+<script>
+    function confirmarDelecao(event, form){
+        event.preventDefault();
+        var decision = confirm('Deseja deletar essa categoria ?');      
+        if(decision){
+            form.submit();
+        }
+    }
+</script>
+
+
+
+
+
+<%- include('../../partials/footer') %>
+ 

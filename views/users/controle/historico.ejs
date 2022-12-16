@@ -1,0 +1,145 @@
+<%- include('../../partials/header') %>
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+</style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/home" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/controle-de-pessoal" >Efetivo</a>  
+        <a href="/efetivo" >Militares</a>
+        <a href="/missoes" >Missoes</a>
+        <a href="/destinos" class=" position-relative">Destinos
+          <span class="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-danger">
+            <%= notificacaoRetorno.count %>
+            <span class="visually-hidden"></span>
+          </span>
+        </a>  
+        <a href="/historico" >Historico</a> 
+ 
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header>
+
+    
+  <div class="inner">
+
+
+
+    <form name='form' action="/busca-destino" method="post">
+      <label for="busca"></label>
+      <div class="row">
+        <div class="col-3">
+             <input type="search" id="busca" name="busca"  placeholder="Busca" >
+        </div>
+        <div class="col-3">
+
+          <div class="form-group">
+            <!-- Datepicker as text field -->         
+            <div class="input-group date" data-date-format="dd/mm/yyyy">
+              <input  type="text" id='data' name='data' class="form-control" placeholder="dd/mm/yyyy">
+              <div class="input-group-addon" >
+                <span class="glyphicon glyphicon-th"></span>
+              </div>
+            </div>
+        </div>
+        </div>
+
+              <div class="col-6">
+                <a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+              </div>
+    
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    
+        <!-- Plugin pro Datapicker novo -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
+        <script>
+         $('.input-group.date').datepicker({format: "dd/mm/yyyy"});
+        </script>
+
+
+
+
+
+            </div>
+      </div>
+
+  
+      <p><b></b></p>
+    </form>
+  </div>
+
+
+<hr>
+
+
+<div class="inner" >
+
+    <table class="table ">
+            
+
+        <thead>
+          <tr>
+            <th scope="col">grad.</th>
+            <th scope="col">Nome de Guerra</th>
+            <th scope="col">Status</th>
+            <th scope="col">Localizaçao</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Volta</th>
+            <th scope="col"></th>
+   
+          </tr>
+        </thead>
+     
+        <tbody>
+
+            <% user.forEach(user => { %>
+
+          <tr>
+            <th scope="col"><%= user.graduacao %></th>
+            <td><%= user.nomeGuerra %></td>
+            <td><%= user.status %></td>
+            <td><%= user.localizacao %></td>
+            <td><%= user.dataPartida %></td>
+            <td><%= user.retorno %></td>
+            <th>
+                        
+                <a href="/ver-usuario/<%= user.id %>" class="btn btn-success">ver</a>
+                
+
+            </th>
+          </tr>
+          
+                <% }) %> 
+
+        </tbody>
+      </table>
+
+</div>
+
+
+
+
+<%- include('../../partials/footer') %>

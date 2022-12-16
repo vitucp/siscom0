@@ -1,0 +1,499 @@
+
+{% load static %}
+
+{% load widget_tweaks%}
+
+
+{% block manu %}
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Sistema de pagamento " />
+        <meta name="author" content="" />
+        <title>Pagamento de GRU </title>
+        <link rel="icon" type="image/x-icon" href="bandeira.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+
+
+    <!-- 
+      ************************ INICIO - Funcionamento do PagTesouro 
+    -->
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/all.js' %}"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <script src="{% static 'js/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'js/jquery-ui-1.12.1.custom/jquery-ui.min.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.6/iframeResizer.min.js"></script>     
+     <!--
+      ************************ FIM - Funcionamento do PagTesouro 
+    -->
+    <!--
+      			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+
+    -->
+  <style>
+
+
+
+
+    div.all{
+  padding: 25px;
+}
+.iframe-epag {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  height: 98%;
+}
+
+.page-footer{
+  background-color:#000000;
+}
+
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+  html {
+    height: 100%;
+
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    
+  }
+  
+  #content {
+   flex: 1;
+   min-height: 100%;
+  }
+  
+  #footer {
+      position: left; 
+  clear: both; 
+  color: #000000; 
+  background-color: rgb(0, 0, 0); 
+  text-align:center; 
+  height: 50px;	 
+  line-height: 50px; 
+  font-size: 80%; 
+  }
+body {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  text-align: center;
+  color: black;
+  background-position: 30% 45%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  
+  overflow: auto;
+
+  
+} 
+#tm {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+    .container {
+        width: 100vw;
+        height: 110vh;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+  </style>
+
+
+    </head>
+    
+    <body id="page-top">
+      
+
+
+<header id="header">
+				<a class="logo" href="/"> <strong>Bem Vindo </strong> {{user.nome_guerra }}  </a>
+    
+				<nav> 
+          {% if user.graduacao == "sd_ep" %}
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="48" height="48"
+            
+            viewBox="0 -50 172 172"
+            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,54.61l-1.505,0.7525l-75.68,38.485l-1.935,0.9675v24.295l79.12,-39.56l79.12,39.56v-24.295l-1.935,-0.9675l-75.68,-38.485zM86,62.35l72.24,36.6575v8.9225l-72.24,-36.12l-72.24,36.12v-8.9225z"></path></g></g></svg>
+          {% elif user.graduacao == "3sgt" %}
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="48" height="48"
+            viewBox="0 -30 172 172"
+            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,37.41l-1.505,0.7525l-75.68,38.485l-1.935,0.9675v58.695l79.12,-39.56l79.12,39.56v-58.695l-1.935,-0.9675l-75.68,-38.485zM86,45.15l72.24,36.6575v8.9225l-72.24,-36.12l-72.24,36.12v-8.9225zM86,62.35l72.24,36.12v9.46l-72.24,-36.12l-72.24,36.12v-9.46zM86,79.55l72.24,36.12v9.46l-72.24,-36.12l-72.24,36.12v-9.46z"></path></g></g></svg>
+          {% endif %}
+          <a href="#menu">Menu</a>
+
+				</nav>
+			</header>
+
+      		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Home</a></li>
+					<li><a>Baixar Extenção</a></li>
+          </span><a href="https://chrome.google.com/webstore/detail/cross-domain-cors/mjhpgnbimicffchbodmgfnemoghjakai" target="_blank">Para o Chrome</a><br />
+          </span><a href="https://addons.mozilla.org/pt-BR/firefox/addon/cross-domain-cors/" target="_blank">Para o Firefox</a>
+
+          <li><a href="/logout/">Sair</a></li>
+				</ul>
+			</nav>
+
+
+
+        <!-- Navigation
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">GRU PagTesouro</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/LogoPagTesouro.png" alt="" /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#crossdomain">Cross Domain</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#gerarGuia">Gerar Guia</a></li>
+                </ul>
+            </div>
+        </nav>
+        -->
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        GRU
+                        <span class="text-primary">PagTesouro</span>
+                    </h1>
+                    <div class="subheading mb-5">
+                        3º Regimento de Cavalaria de Guarda · Tesouraria - (51) 3320-1244
+                        <a href="mailto:tesouraria@3rcg.eb.mil.br">tesouraria@3rcg.eb.mil.br</a>
+                    </div>
+                    <div align="justify" class="lead mb-3 ">O PagTesouro é um componente de processamento de pagamentos digitais gerido pela Secretaria do Tesouro Nacional (STN), um órgão vinculado ao Ministério da Economia e que tem como missão principal gerenciar as contas públicas de forma eficiente e transparente. No contexto do processo de Gerenciamento das Receitas da União, o componente PagTesouro atua no cenário de recolhimento de receitas de Órgãos e entidades da administração Pública Federal como taxas (custas judiciais, emissão de passaporte, etc.), aluguéis de imóveis públicos, serviços administrativos e educacionais, multas, entre outros, permitindo o pagamento em forma digital, assim como a impressão do boleto de pagamento. O pagamento pode ser feito pelas formas Pix, cartão de crédito e boleto de GRU Simples.</div>
+                    <p>Fonte: <a href="https://pagtesouro.tesouro.gov.br/docs/" target="_blank">clique aqui</a> e saiba mais.</p>
+                   --> 
+
+
+                </div>
+            </section>
+            <hr class="m-0" /><!-- Skills
+            <section class="resume-section" id="crossdomain">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Cross Domain</h2>
+                    <div class="lead mb-3">Para o bom funcionamento da ferramenta, faz-se necessário a instalação do plugin Cross Domain que pode ser baixado através dos links abaixo:</div>
+                    <ul class="list-inline dev-icons">
+                        <li class="list-inline-item"><img src="https://addons.cdn.mozilla.net/user-media/addon_icons/681/681497-64.png?modified=1587900845"></img></li>
+                    </ul>
+                    <div class="subheading mb-3">Links para instalação</div>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Firefox <a href="https://addons.mozilla.org/pt-BR/firefox/addon/cross-domain-cors/" target="_blank">Acesse Aqui!</a>
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Google Chrome <a href="https://chrome.google.com/webstore/detail/cross-domain-cors/mjhpgnbimicffchbodmgfnemoghjakai" target="_blank">Acesse Aqui!</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+            -->
+            <hr class="m-0" />
+            <!-- Experience-->
+            
+
+            <div class="container">
+    <div class="box">
+
+            <section class="" id="gerarGuia">
+                <div class="">
+                    <h2 class="mb-1"></h2>
+                    <div class=" ">
+                        <div class="">
+
+                            <div class="row">
+                                <div class="col-sm-12">                         
+                                    <form class="form-group" id="form_principal">
+                                      <br />
+                                      <br />
+                                      <br />
+                                      <br />
+                                      <br />
+                                      <br />
+                                      <br />
+                                      <br />
+                                      <br />
+                                      <br />
+                                       
+
+ 
+                                   
+
+
+                                          
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group" >
+                                                    <!-- <input id="input_codigoServico" type="text" class="form-control" required> 
+                                                    <label for="input_codigoServico" style='color:black;'>Codigo do Servico</label>-->
+                                                    
+                                                    <select id="input_codigoServico" class="form-control" required >
+                                                      <!-- 
+                                                        Relacionar os serviços que são utilizados pela OM
+                                                      -->
+                                                      <option value="0">Selecione</option>
+                                                      <!--
+                                                      <option value="701">701 - INDENIZAÇÕES - teste</option>
+                                                      <option value="6123">Operação de Crédito</option>
+                                                      <option value="6124">Restituições - STN RECUP.DESP.EXERC.ANTERIORES</option>
+                                                      <option value="6126">Restituições - STN OUTROS RESTITUIÇÕES (DEDUÇÕES FOLHA)</option>
+                                                      <option value="6128">Indenizações - STN OUTRAS INDEMIZAÇÕES (DEDUÇÕES FOLHA)</option>
+                                                      <option value="7249">Demais Receitas Correntes - STN OUTRAS INDEMIZAÇÕES (DEDUÇÕES FOLHA)</option>
+                                                      <option value="7251">Multas e juros Previstos em Contrato</option>
+                                                      <option value="7252">Deposito de Terceiros</option>
+                                                      <option value="7272">Estorno de Despesas - DEVOL. CRED FOLHA PAGTOS</option>
+                                                      <option value="7275">Deposito de terceiros - DEVOL.DIARIAS.EXERCICIO</option>
+                                                      <option value="7276">Estorno de Despesas - DEVOL SUPRIMENTO FUNDOS-EXERCICIO</option>
+                                                      <option value="7279">Estorno de Despesas - ANUL.DESPESA NO EXERCICIO</option> 
+                                                      <option value="7303">Estorno de Despesas - CAUÇÕES E GARANTIAS DIVERSAS</option> 
+                                                      <option value="7304">Receita de contribuições - DEPOSITO RENDIM.PIS/PASEP</option> 
+                                                      <option value="7305">Depositos Judiciais - DEPOSITO DE DIVERSAS ORIGENS-DDO</option>
+                                                      <option value="7306">Devolução de convenios - DEPÓSITO DE DIVERSAS </option>
+                                                      -->
+                                                      <option >---------UG 167343----------</option>
+                                                      <option value="7235">Ressarcimento - RESSARCIMENTO DE LIGAÇÕES TELEFÔNICAS</option>
+                                                      <option value="7240">Receitas Imbiliárias - EXERCITO/FUNDO-ALUGUEIS</option>
+                                                      <option value="7241">Receitas Imbiliárias - EXERC/FUNDO-ARRENDAMENTO</option>
+                                                      <option value="7243">Receitas Imbiliárias - EXERCIT/FUNDO-TX USO PNR</option>
+                                                      <option value="7245">Receitas Imbiliárias -EXE/FUND-CESSAO USO BENS IMOVEIS</option>
+                                                      <option value="7311">Administrativos e Comerciais Gerais - EXER/FNDO-SERV BIBLIOTECA</option>
+                                                      <option value="7312">Administrativos e Comerciais Gerais - EXER/FUNDO-SERV COM LIVRO</option>
+                                                      <option value="7313">Administrativos e Comerciais Gerais - EXER/FUNDO-OUT SERV COMER</option>
+                                                      <option value="7316">Administrativos e Comerciais Gerais - EXER/FUNDO-COMER PCS UNIF</option>
+                                                      <option value="7317">Serviço de Navegação, Transporte,Portuário e Aeroportuário - EXER/FUNDO-SERV TRANS RODOVIARIO</option>
+                                                      <option value="7319">Serviço de Navegação, Transporte,Portuário e Aeroportuário - EXER/FUNDO-SERV TRANS HIDROVIARIO</option>
+                                                      <option value="7320">Serviço e Atividades Referentes á Saúde - EXER/FUNDO-SERV</option>
+                                                      <option value="7322"></option>
+                                                      <option value="7323"></option>
+                                                      <option value="7324"></option>
+                                                      <option value="7325"></option>
+                                                      <option value=""></option>
+                                                      <option value=""></option>
+                                                      <option value=""></option>
+                                                      <option value=""></option>
+                                                      <option value=""></option>
+                                                      <option value=""></option>
+                                                      <option value=""></option>
+
+                                                       
+
+
+
+
+                                                    </select>
+                                                    </div>
+                                                </div>
+                                                </div> 
+                                            </div> 
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                  <label for="input_referencia" style='color:black;'>Refer&ecirc;ncia</label>
+                                                  <input id="input_referencia" type="text" class="form-control" placeholder="digite sem o uso de barras">
+                                                </div> 
+                                            </div>
+                                            </div>
+                                          </div> 
+                            
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                              <label for="input_competencia"  style='color:black;'>Competência</label>
+                                              <input id="input_competencia" placeholder="digite sem o uso de barras" type="text" class="form-control" required>
+                                              
+                                            </div>
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label for="input_vencimento" style='color:black;'>Vencimento</label>
+                                                <input id="input_vencimento" placeholder="digite sem uso de barras" type="text" class="form-control" required>
+                                              </div>                                            
+                                            </div>
+                                        </div>
+                            
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label for="input_cnpjCpf" style='color:black;'>CNPJ/CPF</label>
+                                                <input id="input_cnpjCpf" placeholder="digite sem o uso de pontos ou traço " type="text" class="form-control" required>
+                                              </div>                                            
+                                            </div>
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label for="input_nomeContribuinte" style='color:black;'>Nome do Contribuinte</label>
+                                                <input id="input_nomeContribuinte" type="text" placeholder="digite o nome completo" class="form-control" required>
+                                              </div>                                              
+                                            </div>
+                                          </div>
+                            
+                            
+                                          <div class="row">
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label for="input_valorPrincipal" style='color:black;'>Valor Principal </label>
+                                                <input id="input_valorPrincipal" placeholder="0.00" type="text" class="form-control" required>
+                                              </div>         
+                                            </div>
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label for="input_valorDescontos" style='color:black;'>Valor dos Descontos</label>
+                                                <input id="input_valorDescontos" placeholder="0.00" type="text" class="form-control">
+                                              </div>                                             
+                                            </div>
+                                          </div>
+                            
+                                          <div class="row">
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label for="input_valorOutrasDeducoes" style='color:black;'>Valor de Outras Dedu&ccedil;&otilde;es</label>
+                                                <input id="input_valorOutrasDeducoes" placeholder="0.00" type="text" class="form-control">
+                                              </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label for="input_valorMulta" style='color:black;'>Valor da Multa</label>
+                                                <input id="input_valorMulta" placeholder="0.00" type="text" class="form-control">
+                                              </div>
+                                            </div>
+                                          </div>
+                            
+                                          <div class="row">
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label for="input_valorJuros"  style='color:black;'>Valor dos Juros</label>
+                                              <input id="input_valorJuros" placeholder="0.00" type="text" class="form-control">
+                                              </div>                                              
+                                            </div>
+                                            <div class="col-sm-6">
+                                              <div class="form-group">
+                                                <label for="input_valorOutrosAcrescimos" style='color:black;'>Valor de Outros Acrescimos</label>
+                                                <input id="input_valorOutrosAcrescimos" placeholder="0.00" type="text" class="form-control">
+                                              </div>                                             
+                                            </div>
+                                          </div>
+                            
+                                          <div class="row" style="display: none">
+                                            <div class="col-sm-6">
+                                              <input id="input_modoNavegacao" type="hidden" class="form-control" value="2">
+                                              <label for="input_modoNavegacao" style='color:black;'>Modo de Navegacao</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                              <input id="input_urlNotificacao" type="hidden" class="form-control" value="https://localhost">
+                                              <label for="input_urlNotificacao" style='color:black;'>Url Notificacao</label>
+                                            </div>
+                                          </div>
+                            
+                                        <div class="row" style="display: none">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input id="input_modoNavegacao" type="hidden" class="form-control" value="2">
+                                                    <label for="input_modoNavegacao" style='color:black;'>Modo de Navegacao</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input id="input_urlNotificacao" type="hidden" class="form-control" value="https://localhost">
+                                                    <label for="input_urlNotificacao" style='color:black;'>Url Notificacao</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="form-group">
+                                                <button type="submit" class="btn btn-success btn-lg btn-block">GERAR GRU</button>
+                                              </div>
+                                            </div>
+                                        </div>
+                                       
+                                        </form>
+
+                                   </div>
+                                    <div id="dialog" title="ATENÇÃO!" >
+                                      <iframe class="iframe-epag" src="" scrolling="no">
+                                      </iframe>
+                                    </div>
+                                    <!--  -->
+                            
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>  
+
+
+</div>
+
+
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+
+            
+            
+        </div>
+        </div>
+</div>
+</div>
+
+
+    </body>
+</html>
+{% endblock %}

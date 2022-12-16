@@ -1,0 +1,222 @@
+
+
+<%- include('../partials/header') %>
+
+<style>
+    .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+        }
+</style>
+
+<header id="header">
+  
+  <nav>
+    <a href="/home" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+      <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+      
+     
+      <a data-toggle="modal" data-target="#exampleModalCenter" ></a> 
+  
+
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header><br><br>
+<!--
+<section id="banner" >
+
+    <div class="inner" >
+        <h1></h1>
+        <p><strong></strong><br />
+        <a href="https://templated.co/"></a><small></small></p>
+    </div>
+    <video autoplay loop muted playsinline src="/static/images/bg.jpg" ></video>
+
+
+
+<div class="inner" style="width: 15rem; position: absolute ; left: 8%; bottom: -5%;">
+        <div class="card" >    
+            <img class="card-img" src="/static/images/pic01.jpg" alt="Card image ">
+        </div>  
+</div>
+
+
+</section>
+-->
+
+
+<div class="inner" ><br>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="text-right">
+
+          </a>
+        </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="46" height="46"
+                viewBox="0 0 172 172"
+                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,21.5c-17.7627,0 -32.25,14.4873 -32.25,32.25c0,17.7627 14.4873,32.25 32.25,32.25c17.7627,0 32.25,-14.4873 32.25,-32.25c0,-17.7627 -14.4873,-32.25 -32.25,-32.25zM86,86c-29.60449,0 -53.75,24.14551 -53.75,53.75h10.75c0,-23.80957 19.19043,-43 43,-43c23.80957,0 43,19.19043 43,43h10.75c0,-29.60449 -24.14551,-53.75 -53.75,-53.75zM86,32.25c11.92578,0 21.5,9.57422 21.5,21.5c0,11.92578 -9.57422,21.5 -21.5,21.5c-11.92578,0 -21.5,-9.57422 -21.5,-21.5c0,-11.92578 9.57422,-21.5 21.5,-21.5z"></path></g></g></svg>
+                <a  class="position-absolute" style="top: 68px; left: 70px;"><%- user.nomeGuerra %></a><br><br>
+
+                <a  class="position-absolute" style="top: 145px; left: 25px;">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="44" height="44"
+                viewBox="0 0 172 172"
+                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,10.75c-26.07715,0 -47.19922,21.70996 -47.19922,48.16504c0,17.46875 11.21192,35.94531 21.91993,50.76855c10.75,14.78125 21.41601,25.69922 21.41601,25.69922c1.0498,1.0498 2.43555,1.6377 3.86328,1.6377c1.42774,0 2.81348,-0.5879 3.86328,-1.6377c0,0 10.66602,-10.91797 21.37402,-25.69922c10.75,-14.82324 21.96192,-33.2998 21.96192,-50.76855c0,-26.49707 -21.12207,-48.16504 -47.19922,-48.16504zM86,21.5c20.11426,0 36.44922,16.62891 36.44922,37.41504c0,12.47168 -9.7002,30.36035 -19.90429,44.46973c-8.27247,11.42188 -13.73145,16.92284 -16.54493,19.90429c-2.81348,-2.98145 -8.27246,-8.48242 -16.54492,-19.90429c-10.2041,-14.10937 -19.9043,-31.99805 -19.9043,-44.46973c0,-20.78614 16.33496,-37.41504 36.44922,-37.41504zM86,43c-5.9209,0 -10.75,4.8291 -10.75,10.75c0,5.9209 4.8291,10.75 10.75,10.75c5.9209,0 10.75,-4.8291 10.75,-10.75c0,-5.9209 -4.8291,-10.75 -10.75,-10.75zM48.375,111.48926c-16.04101,4.24121 -26.875,11.37989 -26.875,22.21386c0,18.09864 32.45996,27.54688 64.5,27.54688c32.04004,0 64.5,-9.44824 64.5,-27.54687c0,-10.91797 -10.58203,-17.88867 -26.83301,-22.17187l-6.88672,9.49024c14.73926,3.44335 22.96973,8.31445 22.96973,12.68164c0,6.84473 -20.9541,16.79688 -53.75,16.79688c-32.7959,0 -53.75,-9.95215 -53.75,-16.79687c0,-4.3252 8.23047,-9.28027 22.75977,-12.72364z"></path></g></g></svg>
+                <%- user.localizacao %></a><br><br>
+                <br><br></a>
+
+                <% if (user.status === 'baixado') { %>
+                    <a  class="position-absolute" style="top: 250px; left: 25px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="44" height="44"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M80.625,10.75c-38.50683,0 -69.875,31.36817 -69.875,69.875c0,38.50683 31.36817,69.875 69.875,69.875c38.50683,0 69.875,-31.36817 69.875,-69.875c0,-38.50683 -31.36817,-69.875 -69.875,-69.875zM80.625,21.5c32.71192,0 59.125,26.41308 59.125,59.125c0,32.71192 -26.41308,59.125 -59.125,59.125c-32.71192,0 -59.125,-26.41308 -59.125,-59.125c0,-32.71192 26.41308,-59.125 59.125,-59.125zM59.125,51.52442l-7.60058,7.60058l3.82129,3.7793l17.67871,17.7207l-17.67871,17.72071l-3.82129,3.77929l7.60058,7.60058l3.7793,-3.82128l17.7207,-17.67872l17.72071,17.67872l3.77929,3.82128l7.60058,-7.60058l-3.82128,-3.77929l-17.67872,-17.72071l17.67872,-17.7207l3.82128,-3.7793l-7.60058,-7.60058l-3.77929,3.82129l-17.72071,17.67871l-17.7207,-17.67871z"></path></g></g></svg>
+                    <%- user.status %></a>
+                 <% }else if(user.status === 'pronto'){ %>
+                <a  class="position-absolute" style="top: 250px; left: 25px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="44" height="44"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,14.33333c-39.517,0 -71.66667,32.14967 -71.66667,71.66667c0,39.517 32.14967,71.66667 71.66667,71.66667c39.517,0 71.66667,-32.14967 71.66667,-71.66667c0,-8.06967 -1.40478,-15.80821 -3.87728,-23.05371l-11.60384,11.60384c0.7525,3.698 1.14778,7.5297 1.14778,11.44987c0,31.61217 -25.72117,57.33333 -57.33333,57.33333c-31.61217,0 -57.33333,-25.72117 -57.33333,-57.33333c0,-31.61217 25.72117,-57.33333 57.33333,-57.33333c11.70317,0 22.58877,3.53955 31.67611,9.58822l10.26009,-10.26009c-11.81067,-8.557 -26.27703,-13.66146 -41.93619,-13.66146zM152.59961,23.59961l-73.76628,73.76628l-23.59961,-23.59961l-10.13411,10.13411l33.73372,33.73372l83.90039,-83.90039z"></path></g></g></svg>
+                  <%- user.status %></a>
+
+                  <% }else if(user.status === 'ferias'){ %>
+                    <a  class="position-absolute" style="top: 250px; left: 25px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                      width="44" height="44"
+                      viewBox="0 0 172 172"
+                      style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M71.9175,9.5675l-22.36,52.3525h45.58zM80.5175,12.04l21.93,49.3425l32.035,-2.9025c1.42438,-0.13437 2.63375,-1.19594 3.01,-2.58c0.37625,-1.38406 -0.12094,-2.80844 -1.29,-3.655zM63.1025,12.685l-54.825,39.56c-1.16906,0.83313 -1.66625,2.27094 -1.29,3.655c0.37625,1.38406 1.58563,2.44563 3.01,2.58l32.25,2.9025zM68.8,65.36v30.6375c0.49719,0.33594 1.03469,0.68531 1.505,1.075l5.375,4.515v-36.2275zM141.04,75.68c-7.59219,0 -13.76,6.16781 -13.76,13.76c0,7.59219 6.16781,13.76 13.76,13.76c1.1825,0 2.33813,-0.25531 3.44,-0.5375l-49.02,24.6175h-85.14c-1.89469,0 -3.44,1.53188 -3.44,3.44v10.32c0,1.90813 1.54531,3.44 3.44,3.44h151.36c1.90813,0 3.44,-1.53187 3.44,-3.44v-10.32c0,-1.90812 -1.53187,-3.44 -3.44,-3.44h-7.74l-5.375,-18.92l10.75,-5.375c1.81406,-0.59125 2.795,-2.53969 2.20375,-4.35375c-0.59125,-1.81406 -2.53969,-2.795 -4.35375,-2.20375c-0.29562,0.06719 -0.59125,0.17469 -0.86,0.3225l-6.7725,3.3325c3.17125,-2.52625 5.2675,-6.28875 5.2675,-10.6425c0,-7.59219 -6.16781,-13.76 -13.76,-13.76zM114.4875,92.88c-1.55875,0.09406 -3.14437,0.55094 -4.6225,1.29l-38.8075,19.35h-46.9775c-3.78937,0 -6.88,3.09063 -6.88,6.88c0,1.24969 0.37625,2.41875 0.9675,3.44h76.54l32.1425,-16.125c0.63156,-2.66062 0.45688,-5.53625 -0.86,-8.17c-2.23062,-4.44781 -6.82625,-6.96062 -11.5025,-6.665zM59.2325,99.76c-2.37844,-0.09406 -4.8375,0.59125 -6.88,2.0425l-11.7175,8.2775h29.67l3.01,-1.505l-7.4175,-6.235c-1.92156,-1.6125 -4.28656,-2.48594 -6.665,-2.58zM142.2225,111.585l4.515,15.695h-35.7975zM17.2,151.36v10.32c0,1.90813 1.54531,3.44 3.44,3.44h13.76c1.89469,0 3.44,-1.53187 3.44,-3.44v-10.32zM134.16,151.36v10.32c0,1.90813 1.54531,3.44 3.44,3.44h13.76c1.89469,0 3.44,-1.53187 3.44,-3.44v-10.32z"></path></g></g></svg>                    
+                      <%= user.status %></a>
+                      
+                      <% }else if(user.status === 'punido'){ %>
+                    <a  class="position-absolute" style="top: 250px; left: 25px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="40" height="40 "
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,6.88c-43.65603,0 -79.12,35.46397 -79.12,79.12c0,43.65603 35.46397,79.12 79.12,79.12c43.65603,0 79.12,-35.46397 79.12,-79.12c0,-43.65603 -35.46397,-79.12 -79.12,-79.12zM86,13.76c39.93779,0 72.24,32.30221 72.24,72.24c0,39.93779 -32.30221,72.24 -72.24,72.24c-39.93779,0 -72.24,-32.30221 -72.24,-72.24c0,-39.93779 32.30221,-72.24 72.24,-72.24zM81.87469,49.19469c-1.032,0 -1.37734,0.68263 -1.37734,1.37063v46.44c0,1.032 0.68934,1.37734 1.37734,1.37734h7.90797c1.032,0 1.37735,-0.68934 1.37735,-1.37734v-46.44c0,-1.032 -0.68935,-1.37063 -1.37735,-1.37063zM81.87469,111.11469c-1.032,0 -1.37734,0.68263 -1.37734,1.37063v8.94937c0,1.032 0.68934,1.37063 1.37734,1.37063h8.25063c1.032,0 1.37734,-0.68263 1.37734,-1.37063v-8.94937c0,-1.032 -0.68934,-1.37063 -1.37734,-1.37063z"></path></g></g></svg>
+                    <%= user.status %></a>
+                    <% } %>
+
+                <a  class="position-absolute" style="top: 50px; left: 300px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="44" height="44"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M43,14.33333c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v114.66667c0,7.83362 6.49972,14.33333 14.33333,14.33333h86c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-114.66667c0,-7.83362 -6.49972,-14.33333 -14.33333,-14.33333zM43,28.66667h86v86h-86zM86,43c-7.91608,0 -14.33333,6.41725 -14.33333,14.33333c0,7.91608 6.41725,14.33333 14.33333,14.33333c7.91608,0 14.33333,-6.41725 14.33333,-14.33333c0,-7.91608 -6.41725,-14.33333 -14.33333,-14.33333zM86,78.83333c-15.65917,0 -28.66667,6.51305 -28.66667,15.88705v5.61295h57.33333v-5.61295c0,-9.374 -13.0075,-15.88705 -28.66667,-15.88705zM43,129h14.33333v14.33333h-14.33333zM71.66667,129h57.33333v14.33333h-57.33333z"></path></g></g></svg>
+                  <%- user.sessao %></a><br><br></a><br><br>
+
+                  <a  class="position-absolute" style="top: 145px; left: 300px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="44" height="44"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M46.52734,16.125c-2.81347,0 -5.58496,1.00781 -7.89453,2.85547l-0.33594,0.16797l-0.16797,0.16797l-16.79687,17.30078l0.16797,0.16797c-5.18604,4.78711 -6.78174,11.94678 -4.53516,18.14063c0.02099,0.04199 -0.02099,0.12598 0,0.16797c4.55615,13.03857 16.20898,38.21289 38.96875,60.97266c22.84375,22.84375 48.35401,34.03467 60.97266,38.96875h0.16797c6.52979,2.18359 13.60547,0.62989 18.64453,-3.69531l16.96484,-16.96484c4.45117,-4.45117 4.45117,-12.17773 0,-16.62891l-21.83594,-21.83594l-0.16797,-0.33594c-4.45117,-4.45117 -12.3457,-4.45117 -16.79687,0l-10.75,10.75c-3.88428,-1.86865 -13.14355,-6.65576 -22.00391,-15.11719c-8.79736,-8.39844 -13.29053,-18.05664 -14.94922,-21.83594l10.75,-10.75c4.51416,-4.51416 4.59815,-12.03076 -0.16797,-16.46094l0.16797,-0.16797l-0.50391,-0.50391l-21.5,-22.17187l-0.16797,-0.16797l-0.33594,-0.16797c-2.30957,-1.84766 -5.08105,-2.85547 -7.89453,-2.85547zM46.52734,26.875c0.39893,0 0.79785,0.18896 1.17578,0.50391l21.5,22.00391l0.50391,0.50391c-0.04199,-0.04199 0.31494,0.5249 -0.33594,1.17578l-13.4375,13.4375l-2.51953,2.35156l1.17578,3.35938c0,0 6.17285,16.52393 19.14844,28.89063l1.17578,1.00781c12.49268,11.40088 27.21094,17.63672 27.21094,17.63672l3.35938,1.51172l15.95703,-15.95703c0.92383,-0.92383 0.75586,-0.92383 1.67969,0l22.00391,22.00391c0.92383,0.92383 0.92383,0.58789 0,1.51172l-16.46094,16.46094c-2.47754,2.1206 -5.10205,2.56153 -8.23047,1.51172c-12.17773,-4.78711 -35.84033,-15.18018 -56.94141,-36.28125c-21.26904,-21.26904 -32.37597,-45.39355 -36.44922,-57.10937c-0.81885,-2.18359 -0.23096,-5.41699 1.67969,-7.05469l0.33594,-0.33594l16.29297,-16.62891c0.37793,-0.31494 0.77685,-0.50391 1.17578,-0.50391z"></path></g></g></svg>                  
+                  <%- user.whatsapp %></a><br><br></a>
+
+
+
+          <div>
+            <a href="/editar/<%= user.id %>" class="btn bnt-sussces">Editar</a>
+            <% if (ultimaAlteracaoPor){%>
+            <p style="text-align: right;" ><small> Ultima alteração por <%= ultimaAlteracaoPor.nomeGuerra  %></small></p>
+              <% } %>
+          </div> 
+       
+          </div>
+         
+              
+          
+        </div><br>
+     
+
+
+
+<!--
+    
+    <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div><br>
+
+        <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div><br>
+
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div><br>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div><br>
+    </div>
+
+
+-->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include ('../partials/footer') %>
+
+

@@ -1,0 +1,206 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block manu %}
+
+
+<style>
+
+
+.input {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  font-size: 1.125rem;
+  line-height: 3rem;
+  width: 100%; height: 3rem;
+  color: #444;
+  background-color: rgba(255,255,255,.9);
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.7);
+  padding: 0 1rem;
+  font-family: 'Open Sans', sans-serif;
+}
+ .input:focus {
+    outline: none;
+  }
+  .input--top {
+    border-radius: 0.5rem 0.5rem 0 0;
+    border-top: 0;
+  }
+  .input--submit {
+    background-color: rgba(80, 94, 43, 0.9);
+    color: #fff ;
+    font-weight: bold;
+    cursor: pointer;
+    border-top: 0;
+    border-radius: 0 0 0.5rem 0.5rem;
+    margin-bottom: 1rem;
+  }
+.text {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.8);
+  text-decoration: none;
+}
+  .text--small {
+    opacity: 0.85;
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+    .text--small:hover {
+      opacity: 1;
+    }
+  .text--omega {
+    width: 200%;
+    margin: 0 0 1rem -50%;
+    font-size: 1.5rem;
+    line-height: 1.125;
+    font-weight: normal;
+  }
+  .text--centered {
+    display: block;
+    text-align: center;
+  }
+  .text--border-right {
+    border-right: 1px solid rgba(255,255,255,0.5);
+    margin-right: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .legal {
+  position: absolute;
+  bottom: 1.125rem; left: 1.125rem;
+}
+.photo-cred {
+  position: absolute;
+  right: 1.125rem; bottom: 1.125rem;
+}
+.fullscreen-bg {
+  position: fixed;
+  z-index: -1;
+  top:0; right:0; bottom:0; left:0;
+  background: url({% static 'images/plafu.jpg' %}) center;
+  background-size: cover;
+}
+
+
+
+
+#toggle--login:checked ~ .form--signup { left:200%; visibility:hidden; }
+#toggle--signup:checked ~ .form--login { left:-100%; visibility:hidden; }
+
+@media (height:300px){.legal,.photo-cred{display:none}}
+
+
+</style>
+
+
+
+
+
+<section class="wrapper">
+				<div class="inner">
+					<header class="text--centered">
+						<h2>EXÉRCITO BRASILEIRO</h2>
+            <h3>7º BATALHÃO DE ENGENHARIA DE COMBATE</h3>
+            <small>(Batalhão de Engenheiros/1855)</small>
+						<p>BATALHÃO VISCONDE DE TAUNAY</p>
+					</header>
+					<div class="">
+
+						<section>
+
+						</section>
+
+
+<section class="input">
+  <form  class="" enctype="multipart/form-data" action = "" ,  method ="POST">
+                        {% csrf_token %}
+
+
+
+
+
+                        Oficial de Dia:<input type="text" id="of" />
+                        Adj of Dia<input type="text" id=""  />
+                        Sgt Dia Ccap<input type="text" id="ccap"  />
+                        Sgt dia 1 Cia<input type="text" id="cia"  />
+                        Sgt dia Cep<input type="text" id="cep"  />
+                        Cmt Guarda<input type="text" id="cmt"  />
+                        Cb Guarda<input type="text" id=""  />
+                        Motorista<input type="text" id=""  />
+                        P1<input type="text" id=""  />
+                        P1<input type="text" id=""  />
+                        P1<input type="text" id=""  />
+                        P2<input type="text" id=""  />
+                        P2<input type="text" id=""  />
+                        P2<input type="text" id=""  />
+                        P3<input type="text" id=""  />
+                        P3<input type="text" id=""  />
+                        P3<input type="text" id=f"  />
+                        P4<input type="text" id=""  />
+                        P4<input type="text" id=""  />
+                        P4<input type="text" id=""  />
+                        P5<input type="text" id=""  />
+                        P5<input type="text" id=""  />
+                        P5<input type="text" id=""  />
+                        P6<input type="text" id=""  />
+                        P6<input type="text" id=""  />
+                        P6<input type="text" id=""  />
+                        P7<input type="text" id=""  />
+                        P7<input type="text" id=""  />
+                        P7<input type="text" id=""  />
+                        P8<input type="text" id=""  />
+                        P8<input type="text" id=""  />
+                        P8<input type="text" id=""  />
+                        <div>
+ 
+                            <button type="submit" class="input input--submit">salvar</button>
+                        </div>
+</form>
+
+
+<form action="Script_do_Formulario.php" method="post">
+
+<!-- DADOS PESSOAIS-->
+<fieldset>
+ <legend>Dados Pessoais</legend>
+ <table cellspacing="10">
+  
+ 
+   <td align="left">
+    \sczd<input type="text" name="email">
+   </td>
+
+   <td align="left">
+    u<input type="text" name="sobrenome">
+
+       <td align="left">
+    \sczd<input type="text" name="email">
+   </td>
+
+   <td align="left">
+    u<input type="text" name="sobrenome">
+
+  
+</fieldset>
+
+</form>
+
+
+
+</section>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+{% endblock %}

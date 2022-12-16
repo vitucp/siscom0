@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>7becmb</title>
+    	<link rel="sortcut icon" href='/static/images/iconbandeira.ico'/>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="/static/assets/css/main.css"/>
+
+
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+     
+			<header id="header">
+				<a class="logo" href="/"> <strong>Bem Vindo </strong>  </a>
+    <!-- logo com graduação-->
+				<nav> 
+         
+           
+        
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+
+
+
+     
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/scan">Leitor de Qr-code</a></li>
+					<li><a href="/home">home</a></li>
+					<li><a href="">Perfil</a></li>
+					<li><a href="http://10.46.196.3/sped/administracao/sessao/eb/logon.jsp"  target="_blank" target="_blank">Sped</a></li>
+          <li><a href="/login">login</a></li>
+				</ul>
+			</nav>
+
+<body>
+	<div class="container">
+
+		
+            <% articles.forEach(article => { %>
+				<div class="card">
+					<div class="card-header">
+						<h2><%= article.title %></h2>
+					</div>
+					<div class="card-body">
+
+					</div>
+
+				</div>
+            <% }) %>
+        
+
+	</div>
+</body>
+
+
+
+
+<%- include('../partials/footer') %>

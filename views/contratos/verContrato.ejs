@@ -1,0 +1,475 @@
+<%- include('../partials/header') %>
+
+<style>
+
+    .card{
+          -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+          -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+            box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+        }
+    .container {
+
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            margin: 0px;
+            padding: 8px 0px;
+            }
+
+            h5 {
+            max-width: 60ch;
+            max-height: 60ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        /* The slider */
+        .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        input:checked + .slider {
+        background-color: #20341e;
+        }
+
+        input:focus + .slider {
+        box-shadow: 0 0 1px #20341e;
+        }
+
+        input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+        border-radius: 34px;
+        }
+
+        .slider.round:before {
+        border-radius: 50%;
+        }
+
+        .conteudo_1{
+                display:none
+              }
+              .conteudo_2{
+                display:none
+              }
+              .conteudo_3{
+                display:none
+              }
+              
+              .active{
+                display:block!important;
+              }
+    
+
+  </style>
+
+  <header id="header">
+  
+    <nav>
+      <a href="/meus/contratos" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="50" height="20"
+        viewBox="0 0 172 172"
+        style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+        
+       
+        <a data-toggle="modal" data-target="#exampleModalCenter" >Nova Contrato</a> 
+    
+
+        </nav>
+    <nav> 
+      <a href="#menu">Menu</a>
+    </nav>
+  <nav id="menu">
+    <ul class="links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/logout/">Sair</a></li>
+    </ul>
+  </nav>
+  </header><br><br>
+
+
+
+<div class="inner">
+
+
+  <section class="wrapper">
+    <header class="special">
+        <h2><%- contrato.titulo %></h2>
+        <p></p>
+    </header>
+
+
+<!-- formulario dinamico -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- formulario dinamico -->
+
+
+
+
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="text-left">
+            <label for="">Empresa: <br><%- contrato.empresa -%></label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="text-center">
+            <label for="">Cnpj: <br><%- contrato.cnpj -%></label>
+    </div><br>
+    </div>
+    <div class="col-3">
+        <div class="text-right">
+                <label for=""> Contrato Administrativo Nº:  <h5><%- contrato.Ncontrato %></h5> </label>
+                <label for="">Contrato Administrativo Nº: <br><%- contrato.Ncontrato %></label>
+        </div>
+    </div>
+</div><br><br>
+
+
+
+
+<div class="text-center">
+    <h4>Descricão</h4>
+</div><br><br>
+ <%-  contrato.descricao%>
+
+
+
+
+<form method="post"  name='form' action="/atualizar/contrato"  >
+  
+    <div class="row">
+      <div class="col"> 
+          <div class="text-left">
+              <label for="">Titulo</label>
+          </div>
+        <input type="text" name='titulo' class="form-control" placeholder="" value='<%- contrato.titulo %>'>
+        <input type="hidden" name='userId' class="form-control" placeholder="" value='<%- contrato.userId %>'>
+      </div>
+      <div class="col">
+        <div class="text-left">
+            <label for="">Nº contrato</label>
+        </div>
+        <input type="text" name='Ncontrato' id='numero1' class="form-control" placeholder="" value='<%- contrato.Ncontrato %>'>
+      </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col">
+            <div class="text-left">
+                <label for="">Descricão</label>
+                <input type="textarea" name='descricao' maxlength="500" class="form-control" placeholder="" value='<%- contrato.descricao %>'>
+
+            </div>
+          
+
+        </div>
+
+      </div><br>
+
+
+
+
+      <div class="row">
+        <div class="col-md-3">
+            <div class="text-left">  
+                <label for="">Data de inicio</label>
+              </div>
+              <input type="text" name='dataInicio' id='dataInicio1' class="form-control" placeholder="00/00/0000" value='<%- contrato.dataInicio %>'>
+            </div>
+
+
+      <div class="col-3">
+        <div class="text-left">
+            <label for=''>Data de termino</label>
+        </div>
+      <input  type="text" name='dataTermino' id='dataTermino1' class="form-control" placeholder="00/00/0000"  value='<%- contrato.dataTermino %>' >
+    </div>
+
+    <div class="col-3">
+      <div class="text-left">
+          <label for=''>status</label>
+      </div>
+      <select name='status' class="form-select" aria-label="Default select example">
+        <option selected><%- contrato.status %></option>
+        <option value="pago">Pago</option>
+        <option value="alerta">Perto do vencimento</option>
+        <option value="pendente">Pagamento Pendente</option>
+
+      </select>
+  </div>
+
+      </div><br>
+
+
+
+
+
+  <div class="row">
+    <div class="col-md-3">
+        <div class="text-left">  
+            <label for="">Nome da Empresa</label>
+          </div>
+          <input type="text" name='empresa' class="form-control" placeholder="Nome empresa" value='<%- contrato.empresa %>'>
+        </div>
+
+    <div class="col-3">
+      <div class="text-left">
+          <label for=''>Cnpj</label>
+      </div>
+    <input  type="text" name='cnpj'  id="cnpj" class="form-control" placeholder="Cnpj"  value='<%- contrato.cnpj %>' >
+  </div>
+
+  <div class="col-3">
+    <div class="text-left">
+        <label for=''>Telefone</label>
+    </div>
+  <input  type="text" name='telefoneEmpresa' id='telefone' class="form-control" placeholder="(00) 0000-0000"  value='<%- contrato.telefoneEmpresa %>' >
+</div>
+
+<div class="col-3">
+  <div class="text-left">
+      <label for=''>Email</label>
+  </div>
+  <input  type="text" name='emailEmpresa'  class="form-control" placeholder="exemplo@gmail.com"  value='<%- contrato.emailEmpresa %>' >
+
+</div>
+
+  </div>
+
+ 
+
+
+    <div class="row">
+      <div class="col-md-3">
+       
+
+            <label  class="custom-file-upload">
+              <input hidden name='upload' type="file"/>
+              <i data-feather='upload'></i>
+             
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+             width="64" height="64"
+             viewBox="0 0 172 172"
+             style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M44.79167,14.33333c-8.89025,0 -16.125,7.23475 -16.125,16.125v111.08333c0,8.89025 7.23475,16.125 16.125,16.125h80.625v-22.71078c-4.65475,2.20733 -10.39385,1.38854 -14.24235,-2.46354c-2.36858,-2.36858 -3.67432,-5.51693 -3.67432,-8.86735c0,-3.35042 1.30573,-6.49518 3.67432,-8.86735l17.91667,-17.91667c3.7195,-3.7195 9.5876,-4.4799 14.24235,-2.35856v-22.81576h-41.20833c-8.89025,0 -16.125,-7.23475 -16.125,-16.125v-41.20833zM96.75,17.48275v38.05892c0,2.96342 2.41158,5.375 5.375,5.375h38.05892zM137.95833,100.33333c-1.376,0 -2.75038,0.52479 -3.80029,1.57471l-17.91667,17.91667c-2.09625,2.09983 -2.09625,5.50075 0,7.60059c2.09983,2.09983 5.50075,2.09983 7.60059,0l8.74137,-8.74137v40.77441c0,2.97058 2.40442,5.375 5.375,5.375c2.97058,0 5.375,-2.40442 5.375,-5.375v-40.77441l8.74137,8.74137c2.09983,2.09983 5.50075,2.09983 7.60059,0c2.09983,-2.09625 2.09983,-5.50434 0,-7.60059l-17.91667,-17.91667c-1.04633,-1.04992 -2.42429,-1.57471 -3.80029,-1.57471z"></path></g></g></svg>
+            <br> Enviar documento
+ 
+             </label>
+
+
+
+
+          </div>
+  
+    </div>
+  
+    <br>
+
+  <div class="text-right">
+             
+    <a data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-success"><b style="color: aliceblue;">Salvar</b></a> 
+  </div>
+
+</div>
+
+
+
+</div>
+</div>
+
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLongTitle"></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+
+<div class="col-12">
+  <div class="text-center">
+      <label for="">Digite sua senha</label>
+  </div>
+  <div class="form-group">
+    <input type="password"  placeholder="Senha" id="password" name="password">
+  </div>
+</div>
+
+</div>
+<div class="modal-footer">
+<a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+</div>
+</div>
+</div>
+</div>
+
+
+</form>
+
+
+</div>
+
+
+<!-- MODAL -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      
+      
+
+
+        <div class="modal-content">
+        <form  name='form1' method="POST" action="/atualizar/contrato">
+        
+            <div class="card-header">
+                <div class="text-right">
+                </div>
+              </div>
+              <div class="card-body">    
+                  <div class="row">
+                      <div class="col">
+                        <div class="text-left">
+                            <label for="">Titulo</label>
+                        </div>
+                        <input type="text" name="titulo" class="form-control" placeholder="Digite aqui"><br>
+                      </div>
+    
+                      <div class="col">
+                        <div class="text-left">
+                            <label for="">Nº Documento</label>
+                        </div>
+                        <input type="text" id='numero' name="Ncontrato" class="form-control" placeholder="Digite aqui"><br>
+                      </div>    
+                    </div> 
+    
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-left">
+                                <label for="">Descrição</label>
+                            </div>
+                            <input type="text" name="descricao" class="form-control" placeholder="Digite aqui"><br>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-left">
+                                <label for="">Data de inicio</label>
+                            </div>
+                            <input  type="text" id='dataInicio' name='dataInicio' class="form-control" placeholder="" value='' >
+                        </div>
+    
+                        <div class="col">
+                            <div class="text-left">
+                                <label for="">Notificar</label>
+                            </div>
+                            <input  type="text" id='notificacao' name='notificacao' class="form-control" placeholder="" value='' >
+                        </div>
+    
+    
+                        <div class="col">
+                            <div class="text-left">
+                                <label for="">Termino</label>
+                            </div>
+                            <input  type="text" id='dataTermino' name='dataTermino' class="form-control" placeholder="" value='' >
+                        </div>
+                    </div><br>
+          
+
+            <div class="text-right">
+                <a href='javascript:form1.submit()' class="btn btn-success">Salvar</a> 
+              </div> 
+          
+         
+        </form>
+
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+<script>
+  function toggleDiv(conteudo){
+    $('div.conteudo').removeClass('active');
+    if(conteudo == 1){
+      $('div.conteudo_1').addClass('active');
+    }else if(conteudo == 2){
+      $('div.conteudo_2').addClass('active');
+    }else if(conteudo == 3){
+      $('div.conteudo_3').addClass('active');
+    } 
+  }
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+          
+  <script type="text/javascript">
+    $("#dataInicio").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#dataTermino").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#notificacao").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#dataInicio1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#dataTermino1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#notificacao1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $('#numero').mask('0#', {maxlength: false});
+    $('#numero1').mask('0#', {maxlength: false});
+    $("#telefone").mask("(00) 0000-00000")
+    $("#cnpj").mask("00.000.000/0000-00", '0#', {maxlength: false} );
+    
+    </script>
+
+<%- include('../partials/footer') %>

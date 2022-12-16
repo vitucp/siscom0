@@ -1,0 +1,191 @@
+<%- include('../../partials/header') %>
+
+
+ 
+<style>
+
+  .card{
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+          box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+  .container {
+
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+          margin: 0px;
+          padding: 8px 0px;
+          }
+
+          h5 {
+          max-width: 60ch;
+          max-height: 60ch;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+      }
+
+      .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      }
+
+      /* Hide default HTML checkbox */
+      .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      }
+
+      /* The slider */
+      .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+      }
+
+      .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+      }
+
+      input:checked + .slider {
+      background-color: #20341e;
+      }
+
+      input:focus + .slider {
+      box-shadow: 0 0 1px #20341e;
+      }
+
+      input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+      }
+
+      /* Rounded sliders */
+      .slider.round {
+      border-radius: 34px;
+      }
+
+      .slider.round:before {
+      border-radius: 50%;
+      }
+
+
+</style>
+
+
+<header id="header">
+    <nav>
+      <a href="/faq" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="50" height="20"
+        viewBox="0 0 172 172"
+        style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+          <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+  
+          <a href="/faq/artigo" >Novo artigo</a>  
+          <a data-toggle="modal" data-target="#exampleModalCenter" >Nova Categoria</a>
+
+        </nav>
+    <nav> 
+      <a href="#menu">Menu</a>
+    </nav>
+  <nav id="menu">
+    <ul class="links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/faq/artigo">Novo Artigo</a></li>
+      <li><a data-toggle="modal" data-target="#exampleModalCenter" >Nova Categoria</a></li>
+      <li><a href="/faq/editar/categoria">Editar Categoria</a></li>
+      <li><a href="/logout/">Sair</a></li>
+    </ul>
+  </nav>
+  </header><br><br>
+
+  
+
+
+          
+
+  <!-- exibir video 
+  <div class="inner">
+    <div class="text-center">
+          <h1><%- artigo.title %></h1><br><hr>
+
+          <%- artigo.body %>
+          
+
+            <video width="800" height="600" controls>
+              <source src="/files/1_user/faq/<%- artigo.nomeArquivo %>" type="video/mp4">
+              <source src="movie.ogg" type="video/ogg">
+            </video>
+    </div>
+  </div>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../../partials/footer') %>

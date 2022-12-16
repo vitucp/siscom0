@@ -1,0 +1,344 @@
+<%- include('../../partials/header') %>
+
+<style>
+
+    .card{
+          -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+          -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+            box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+        }
+    .container {
+
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            margin: 0px;
+            padding: 8px 0px;
+            }
+
+    h5 {
+    max-width: 60ch;
+    max-height: 60ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+
+  /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #20341e;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #20341e;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+  </style>
+
+  <header id="header">
+    <nav>
+      <a href="/admin" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="50" height="20"
+        viewBox="0 0 172 172"
+        style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+          <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+
+
+        </nav>
+    <nav> 
+      <a href="#menu">Menu</a>
+    </nav>
+  <nav id="menu">
+    <ul class="links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/logout/">Sair</a></li>
+    </ul>
+  </nav>
+  </header><br><br>
+
+
+  <div class="inner">
+
+    <form action="/busca-usuario" method="post">
+        <label for="busca"></label>
+        <input type="search" id="busca" name="busca"  placeholder="Busca" list='historico'>
+        <datalist id='historico'>
+         
+    
+        </datalist>
+        <p><b></b></p>
+      </form>
+
+
+<form method="POST" name='form1' action="/salvar/permissoes" >
+  <input type='hidden' name='id' value="<%= user.id %>">
+
+  <div class="panel-group" id="accordion">
+
+
+
+
+   
+    <div class="card">
+      <div class="card-body">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#admin">
+       
+            <a data-toggle='collapse' data-parent='#admin' href="#admin">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="40" height="40"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M147.92,34.4c-12.69016,0 -25.79656,-8.52776 -37.3584,-16.05448c-9.45312,-6.15072 -17.61624,-11.46552 -24.5616,-11.46552c-6.94536,0 -15.10848,5.3148 -24.5616,11.46552c-11.56184,7.52672 -24.66824,16.05448 -37.3584,16.05448c-1.90232,0 -3.44,1.53768 -3.44,3.44v24.08c0,8.88896 1.2384,17.89144 3.39872,26.68408c0.06536,0.28208 0.09632,0.54352 0.16856,0.83592h0.02752c10.15144,40.1448 39.73544,75.68 61.7652,75.68c27.00056,0 65.36,-53.37504 65.36,-103.2v-24.08c0,-1.90232 -1.53768,-3.44 -3.44,-3.44zM144.48,61.92c0,9.32584 -1.36224,18.60352 -3.70488,27.52h-54.77512v66.00328v2.79672c-17.36512,0 -44.87824,-31.12512 -54.77512,-68.8h54.77512v-75.68c4.902,0 12.62824,5.02928 20.80856,10.3544c11.39672,7.41664 24.19696,15.74832 37.67144,17.00392z"></path></g></g></svg>
+              administrador
+            </a>
+         </a>
+        </h4>
+      </div>
+      </div><br>
+
+
+      <div id="admin" class="panel-collapse collapse in">
+        <div class="panel-body">
+
+          <div class="row">
+            <div class="col">
+              <div class="text-left">
+                <label for="">Todas as permissões</label>
+              </div>
+              <label class="switch" title="O usuario podera adicionar novas categorias">
+                    <% try{ %>
+                              <% if(permissoes.admin === 'sim' ){ %> 
+                        <input type="checkbox" name="admin" value="sim" checked>
+                 <%}else{ %>
+                        <input type="checkbox" name="admin" value="sim" >
+                      <% } %>
+                   <% }catch(erro){ %>
+                    <input type="checkbox" name="admin" value="sim" >
+                  <% } %>
+         
+                <span class="slider round"></span>
+              </label>
+            </div>
+
+           
+
+
+          </div><br>
+
+              <div class="text-right">
+                <a href='javascript:form1.submit()' class="btn btn-success" >salvar</a> 
+              </div>
+      
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+    <div class="card">
+      <div class="card-body">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#faq">
+       
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            width="40" height="40"
+            viewBox="0 0 172 172"
+            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M65.49206,34.761c-11.56357,0.00001 -20.93769,9.37413 -20.9377,20.9377v28.224c-0.00487,6.06843 2.6302,11.83885 7.21938,15.8094l-5.72669,11.11612c-1.76703,3.42992 1.90951,7.10636 5.33957,5.33957l21.9921,-11.32739h73.98827c5.55302,0.00001 10.87861,-2.20592 14.80519,-6.1325c3.92658,-3.92658 6.13251,-9.25217 6.1325,-14.80519v-28.224c-0.00001,-11.56357 -9.37413,-20.93769 -20.9377,-20.9377zM137.28427,49.14792c5.31332,0 9.87516,1.9168 13.68617,5.75096c3.81101,3.83417 5.71667,8.50805 5.71684,14.02145c0,4.71045 -1.41937,8.8207 -4.25761,12.33127c-0.39033,0.46833 -0.40584,1.14408 -0.0374,1.62982l1.71118,2.21181c0.77914,1.00712 0.91741,2.36978 0.35645,3.51288c-0.56095,1.1431 -1.72339,1.86746 -2.99671,1.86737c-1.03059,-0.00003 -2.00337,-0.47613 -2.63567,-1.28995l-1.64753,-2.11995c-0.36623,-0.47886 -1.01571,-0.63945 -1.5629,-0.38646c-2.5786,1.20835 -5.39676,1.81886 -8.24425,1.78598c-5.62263,0 -10.29372,-1.9382 -14.01358,-5.8146c-4.26795,-4.34157 -6.28932,-10.41221 -5.476,-16.44571c0.81332,-6.0335 4.36998,-11.35222 9.6352,-14.40871c2.95786,-1.74474 6.33174,-2.65893 9.76581,-2.64616zM59.43273,50.08881h11.89297c0.90776,0.00007 1.77831,0.36075 2.42013,1.0027c0.64182,0.64194 1.00234,1.51256 1.00223,2.42032v0.1017c0.0001,0.90776 -0.36041,1.77838 -1.00223,2.42032c-0.64182,0.64194 -1.51237,1.00263 -2.42013,1.0027h-6.70628c-0.75838,0.00015 -1.37313,0.6149 -1.37328,1.37328v4.047c-0.0001,0.36431 0.14453,0.71373 0.40207,0.9714c0.25754,0.25767 0.6069,0.40246 0.9712,0.40253h6.70628c1.8903,0 3.42269,1.53239 3.42269,3.42269c0,1.8903 -1.53239,3.42269 -3.42269,3.42269h-6.70628c-0.75838,0.00015 -1.37313,0.6149 -1.37328,1.37328v11.93497c0.00002,0.93813 -0.37264,1.83783 -1.036,2.50119c-0.66336,0.66336 -1.56306,1.03602 -2.50119,1.036c-1.95329,-0.00033 -3.53657,-1.58389 -3.53653,-3.53719v-30.63461c-0.00006,-1.80075 1.45955,-3.26065 3.2603,-3.26096zM96.10109,50.08946c2.18304,-0.00598 4.14317,1.33628 4.92687,3.37381l11.2959,29.36894c0.40804,1.06114 0.26724,2.25517 -0.37643,3.19229c-0.64367,0.93712 -1.70762,1.49707 -2.8445,1.49706c-1.43323,0.0001 -2.71732,-0.88573 -3.22618,-2.22559l-1.56093,-4.10999c-0.31435,-0.82752 -1.10745,-1.37462 -1.99266,-1.37459h-12.35357c-0.87505,-0.00017 -1.66131,0.5345 -1.98282,1.34835l-1.65016,4.17888c-0.52046,1.31748 -1.79322,2.18307 -3.20978,2.18294h-0.02887c-1.13733,-0.00009 -2.20158,-0.56057 -2.84508,-1.49835c-0.6435,-0.93778 -0.7836,-2.13241 -0.37454,-3.19363l11.32674,-29.37091c0.78113,-2.02521 2.72541,-3.36317 4.89603,-3.36921zM137.28427,56.11993c-3.49857,0 -6.42852,1.20497 -8.78883,3.61395c-2.36032,2.40898 -3.54027,5.47055 -3.54047,9.18579c0,4.13935 1.48712,7.41391 4.46101,9.82289c2.22639,1.84696 5.03401,2.84744 7.92668,2.82463c0.99732,0.0031 1.99114,-0.11813 2.95848,-0.36087c0.4285,-0.10782 0.77376,-0.42443 0.9182,-0.84201c0.14444,-0.41759 0.0686,-0.87985 -0.20171,-1.22939l-1.39952,-1.80041c-0.78224,-1.00642 -0.92298,-2.3705 -0.36272,-3.51544c0.56027,-1.14494 1.72371,-1.87082 2.99838,-1.87072h0.04068c1.03311,-0.00015 2.00805,0.47811 2.64026,1.29519l1.16791,1.50975c0.27693,0.35815 0.71953,0.54742 1.16979,0.50024c0.45026,-0.04718 0.84402,-0.32408 1.0407,-0.73185c0.8358,-1.76686 1.26279,-3.69933 1.24927,-5.65386c0.06882,-3.37205 -1.22647,-6.6291 -3.5923,-9.03291c-2.23995,-2.41048 -5.39557,-3.76017 -8.68582,-3.715zM96.15883,61.84465c-0.42994,-0.00002 -0.81591,0.26355 -0.97238,0.664l-3.4906,8.93187c-0.12553,0.32127 -0.08426,0.6838 0.11027,0.96863c0.19453,0.28483 0.51719,0.45519 0.86211,0.45516h6.96021c0.34452,-0.00003 0.66684,-0.17004 0.86141,-0.45435c0.19457,-0.28432 0.23634,-0.64632 0.11162,-0.96748l-3.4696,-8.93187c-0.15592,-0.40145 -0.54237,-0.66594 -0.97304,-0.66597zM26.65913,85.47051c-8.79724,0 -15.92882,7.13157 -15.92882,15.92882c0,8.79724 7.13157,15.92882 15.92882,15.92882c8.79724,0 15.92882,-7.13157 15.92882,-15.92882c0,-8.79724 -7.13157,-15.92882 -15.92882,-15.92882zM12.45593,119.7171c-4.85355,0 -8.76062,3.90773 -8.76062,8.76128c0,4.85355 3.90707,8.76062 8.76062,8.76062h28.40706c4.85355,0 8.76062,-3.90707 8.76062,-8.76062c0,-4.85354 -3.90707,-8.76128 -8.76062,-8.76128z"></path></g></g></svg>
+            Faq
+         </a>
+        </h4>
+      </div>
+      </div><br>
+
+
+      <div id="faq" class="panel-collapse collapse in">
+        <div class="panel-body">
+
+          <div class="row">
+            <div class="col">
+              <div class="text-left">
+                <label for="">Adicionar categorias</label>
+              </div>
+              <label class="switch" title="O usuario podera adicionar novas categorias">
+                <% try{ %>
+                  <% if(permissoes.addCategoriaFaq === 'sim' ){ %> 
+                    <input type="checkbox" name="addCategoriaFaq" value="sim" checked>
+                  <%}else{ %>
+                    <input type="checkbox" name="addCategoriaFaq" value="sim" >
+                  <% } %>
+                  <% }catch(erro){ %>
+                    <input type="checkbox" name="addCategoriaFaq" value="sim" >
+                  <% } %>
+
+                <span class="slider round"></span>
+              </label>
+            </div>
+
+ 
+
+          </div><br>
+
+              <div class="text-right">
+                <a href='javascript:form1.submit()' class="btn btn-success" >salvar</a> 
+              </div>
+      
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="card">
+  <div class="card-body">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#selo">
+   
+        <img  width="40" height="40" src="/images/iconesSelo/carteira-de-motorista-100.png"/>        Selos cadastrados
+     </a>
+    </h4>
+  </div>
+  </div><br>
+
+
+  <div id="selo" class="panel-collapse collapse in">
+    <div class="panel-body">
+
+      <div class="row">
+        <div class="col">
+          <div class="text-left">
+            <label for="">Visualizar selos cadastrados</label>
+          </div>
+          <label class="switch" title="O usuario podera ver selos cadastrados">
+            <% try{ %>
+              <% if(permissoes.selosCadastrados === 'sim' ){ %> 
+                <input type="checkbox" name="selosCadastrados" value="sim" checked>
+              <%}else{ %>
+                <input type="checkbox" name="selosCadastrados" value="sim" >
+              <% } %>
+              <% }catch(erro){ %>
+                <input type="checkbox" name="selosCadastrados" value="sim" >
+              <% } %>
+
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+
+
+      </div><br>
+
+          <div class="text-right">
+            <a href='javascript:form1.submit()' class="btn btn-success" >salvar</a> 
+          </div>
+  
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+  </div>
+
+  </form>
+</div>
+
+
+
+
+
+
+   <!--  MODAL => deletar usuario -->
+
+   <div class="modal fade" id="exampleModalCenter<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+  
+      <div class="modal-content">
+  
+      <form name='form' method="POST" action="/permissoes/<%= user.id %>">
+    
+
+      <div class="card-body">     
+      <h5 class="card-title text-center" style="color: #7e0e0e;">deletar usuario  <%= user.nomeGuerra %></h5>
+  
+      <div class="text-center">
+        <label for="">Esta ação não podera ser revertida</label>
+    </div>
+ 
+      <div class="text-center">
+          <a href='javascript:form.submit()' class="btn btn-danger ">Deletar</a> 
+      </div> 
+</div> 
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<%- include('../../partials/footer') %>

@@ -1,0 +1,1083 @@
+<%- include('../../partials/header') %>
+
+
+<style>
+  .card{
+      -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+      -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+      box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+
+  .btn-success {
+
+      background-color: #20341e !important;
+}
+
+
+  .conteudo_1{
+     display:none
+              }
+              .conteudo_2{
+                display:none
+              }
+              .conteudo_3{
+                display:none
+              }   
+              .conteudo_4{
+                display:none
+              }
+              
+              
+              .active{
+                display:block!important;
+              }
+    
+</style>
+
+
+   
+<header id="header">
+  <nav>
+    <a href="/home" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/home" >Home</a>  
+        <% if(permissoes) {%>
+        <%  if(!permissoes.selosCadastrados === 'null' || permissoes.admin === 'sim' || permissoes.selosCadastrados === 'sim'){ %>
+        <a href="/selos/cadastrados" >Cadastrados</a>
+        <% }else{ %>  
+          
+          <%} %>
+<%}else{%>
+  <%} %>
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header>
+
+
+<div class="inner">
+
+    <section class="wrapper">
+            <header class="special">
+                <h2>Cadastro do Selo</h2>
+                <p></p>
+            </header>
+  
+
+<!-- formulario dinamico -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- formulario dinamico -->
+
+
+
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+ 
+   
+
+
+ 
+               <li class="nav-item">
+        <a class="nav-link active" href="#" title="Meu cadastro" onclick="toggleDiv(3)">Cadastrar selo</a>
+      </li>
+
+         
+      <li class="nav-item">
+        <a class="nav-link active" href="#" title="Selo" onclick="toggleDiv(1)">Selo</a>
+      </li>
+
+     <% if(user.cnh ){  %>
+      <!--
+      <li class="nav-item">
+        <a data-toggle="modal" href="#" title="Novo Selo" data-target="#modalNovoSelo" class="nav-link active"><b style="color: aliceblue;">+</b></a> 
+      </li>
+      -->
+          <% }else{ %> 
+            
+            
+            
+            <%} %> 
+         
+    </ul>
+  </div>
+  <div class="card-body">
+      <h5 class="card-title">7º BE CMB  </h5><br>
+
+       
+
+        <form method="post"  name='form' action="/gerar/selo"  enctype="multipart/form-data" >
+          
+
+
+          <div class="conteudo conteudo_1">
+
+
+            <table class="table ">
+              <thead>
+                <tr>
+                  <th scope="col" >Modelo</th>
+                  <th scope="col" >Placa</th>
+                  <th scope="col">Cor do veiculo</th>
+                  <th scope="col">Nº Selo </th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% selo.forEach(selo => { %>
+                  <% if(selo.nSelo != null){ %>
+                    
+                    <tr>
+                      <th scope="col"><%= selo.modeloVeiculo %></th>
+                      <th scope="col"><%= selo.placa %></th>
+                      <th scope="col"><%= selo.cor %></th>
+                      <th scope="col"><%= selo.nSelo%><th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td ></td>
+                        <th>        
+                          
+    
+    
+    
+                          
+                            <a href="/selo/<%= selo.nSelo  %>" title="editar" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                              width="20" height="20"
+                              viewBox="0 0 172 172"
+                              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,28.66667c-57.33333,0 -78.83333,57.33333 -78.83333,57.33333c0,0 21.5,57.33333 78.83333,57.33333c57.33333,0 78.83333,-57.33333 78.83333,-57.33333c0,0 -21.5,-57.33333 -78.83333,-57.33333zM86,43c37.81133,0 56.93626,30.58084 63.12826,42.97201c-6.19917,12.30517 -25.46742,43.02799 -63.12826,43.02799c-37.81133,0 -56.93626,-30.58084 -63.12826,-42.97201c6.20633,-12.30517 25.46742,-43.02799 63.12826,-43.02799zM86,57.33333c-15.83117,0 -28.66667,12.8355 -28.66667,28.66667c0,15.83117 12.8355,28.66667 28.66667,28.66667c15.83117,0 28.66667,-12.8355 28.66667,-28.66667c0,-15.83117 -12.8355,-28.66667 -28.66667,-28.66667zM86,71.66667c7.91917,0 14.33333,6.41417 14.33333,14.33333c0,7.91917 -6.41417,14.33333 -14.33333,14.33333c-7.91917,0 -14.33333,-6.41417 -14.33333,-14.33333c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333z"></path></g></g></svg></a>
+    
+                          <th>
+
+
+                            <a href="#" data-toggle="modal" data-target="#deletar-selo<%= selo.id %>" title="deletar selo"><img src="https://img.icons8.com/ios/25/000000/empty-trash.png"></a>
+
+
+</th>
+
+
+                          <!-- 
+                          <td>
+                          <a href="#"  data-toggle="modal" data-target="#exampleModalCenter<%= selo.id %>" title="deletar usuario" ><img src="https://img.icons8.com/ios/25/000000/empty-trash.png"/></a>
+                          
+                        </td>
+                      -->
+                      
+                      
+                      <!--  MODAL => deletar usuario 
+                      
+                      <div class="modal fade" id="deletar-selo<%= selo.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              
+              <div class="modal-content">
+                
+                <form name='form<%= selo.id %>' method="POST" action="/permissoes/<%= selo.id %>">
+                  
+                  
+                  <div class="card-body">     
+                    <h5 class="card-title text-center" style="color: #7e0e0e;">deletar usuario  <%= selo.nomeGuerra %></h5>
+                    
+                    <div class="text-center">
+                      <label for="">Esta ação não podera ser revertida</label>
+                    </div>
+                    
+                    <div class="text-center">
+                      <a href='javascript:form<%= selo.id %>.submit()' class="btn btn-danger ">Deletar</a> 
+                    </div> 
+                  </div> 
+            </form>
+            </div>
+            </div>
+            </div>
+            -->
+            
+            
+            
+            
+            </th>
+            </tr>
+            <% }%>
+            <% }) %> 
+            </tbody>
+            </table>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+            <style>
+
+              .selo {
+                position: relative;
+                display:inline-block;
+                padding:20px;
+                border:10px solid rgb(2, 2, 2);
+                text-align: center;
+               
+              }
+              
+              .selo:after {
+                content:'';
+                position:absolute; box-sizing: border-box;
+                
+                border-radius:0px 12px 0px 12px;
+                z-index: -1;
+              
+              }
+              </style>
+    
+<div class="row">
+  <% selo.forEach(selo => { %>
+  <div class="col-4">
+  <% if(selo.nSelo){  %>
+
+              <!-- imprimir conteudo --
+<div class="inner">
+
+<div id="print<%= selo.nSelo %>" class="conteudo">
+
+  <div class="selo">
+    <div style="font-size: 90pt;"><%= selo.nSelo %></div><br>
+    <b> 2022</b>
+  </div>      
+
+</div><br>
+    <input  class="btn btn-success"  onclick="cont();" value="imprimir">
+</div>
+
+
+
+
+
+  <script>
+    
+    function cont(){
+       var conteudo = document.getElementById('print<%= selo.nSelo %>').innerHTML;
+       tela_impressao = window.open('about:blank');
+       tela_impressao.document.write(conteudo);
+       tela_impressao.window.print();
+       tela_impressao.window.close();
+    }
+  </script>
+  
+
+  <!--  TESTE IMRESSAO DE SELO --
+
+  <body>
+        <div id="div<%- selo.nSelo %>">
+          <%= selo.nSelo %>
+          
+
+          
+        </div>
+        <button id="btn">Clique para imprimir</button>
+
+        <script>
+        document.getElementById('btn').onclick = function() {
+            var conteudo = document.getElementById('div<%- selo.nSelo %>').innerHTML,
+                tela_impressao = window.open('about:blank');
+
+            tela_impressao.document.write(conteudo);
+            tela_impressao.window.print();
+            tela_impressao.window.close();
+        };
+        </script>
+    </body>
+
+
+
+
+
+
+
+              <% }else{ %> 
+                
+                
+               <i>Preencha os dados na aba cadastro</i><br>    
+               <i>para visualizar seu selo</i>           
+                
+                <%} %>
+
+              </div>
+   <% }) %>             
+
+</div>
+
+
+-->
+          </div>
+
+      <div class="conteudo conteudo_3">
+        
+        
+
+<!--
+
+        <table class="table ">
+          <thead>
+            <tr>
+              <th scope="col" >Modelo</th>
+              <th scope="col" >Placa</th>
+              <th scope="col">Cor do veiculo</th>
+              <th scope="col">Nº Selo </th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% selo.forEach(selo => { %>
+              <% if(selo.nSelo != null){ %>
+                
+                <tr>
+                  <th scope="col"><%= selo.modeloVeiculo %></th>
+                  <th scope="col"><%= selo.placa %></th>
+                  <th scope="col"><%= selo.cor %></th>
+                  <th scope="col"><%= selo.nSelo%><th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td ></td>
+                    <th>        
+                      
+
+                      <a data-toggle="modal" data-target="#atualizar-selo<%= selo.nSelo %>" title="editar" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                      width="20" height="20"
+                      viewBox="0 0 172 172"
+                      style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,28.66667c-57.33333,0 -78.83333,57.33333 -78.83333,57.33333c0,0 21.5,57.33333 78.83333,57.33333c57.33333,0 78.83333,-57.33333 78.83333,-57.33333c0,0 -21.5,-57.33333 -78.83333,-57.33333zM86,43c37.81133,0 56.93626,30.58084 63.12826,42.97201c-6.19917,12.30517 -25.46742,43.02799 -63.12826,43.02799c-37.81133,0 -56.93626,-30.58084 -63.12826,-42.97201c6.20633,-12.30517 25.46742,-43.02799 63.12826,-43.02799zM86,57.33333c-15.83117,0 -28.66667,12.8355 -28.66667,28.66667c0,15.83117 12.8355,28.66667 28.66667,28.66667c15.83117,0 28.66667,-12.8355 28.66667,-28.66667c0,-15.83117 -12.8355,-28.66667 -28.66667,-28.66667zM86,71.66667c7.91917,0 14.33333,6.41417 14.33333,14.33333c0,7.91917 -6.41417,14.33333 -14.33333,14.33333c-7.91917,0 -14.33333,-6.41417 -14.33333,-14.33333c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333z"></path></g></g></svg></a>
+                 <!-- 
+                      <td>
+                      <a href="#"  data-toggle="modal" data-target="#exampleModalCenter<%= selo.id %>" title="deletar usuario" ><img src="https://img.icons8.com/ios/25/000000/empty-trash.png"/></a>
+                      
+                    </td>
+                  -->
+                  
+                  
+                  <!--  MODAL => deletar usuario --
+                  
+                  <div class="modal fade" id="exampleModalCenter<%= selo.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          
+          <div class="modal-content">
+            
+            <form name='form<%= selo.id %>' method="POST" action="/permissoes/<%= selo.id %>">
+              
+              
+              <div class="card-body">     
+                <h5 class="card-title text-center" style="color: #7e0e0e;">deletar usuario  <%= selo.nomeGuerra %></h5>
+                
+                <div class="text-center">
+                  <label for="">Esta ação não podera ser revertida</label>
+                </div>
+                
+                <div class="text-center">
+                  <a href='javascript:form<%= selo.id %>.submit()' class="btn btn-danger ">Deletar</a> 
+                </div> 
+              </div> 
+        </form>
+        </div>
+        </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        </th>
+        </tr>
+        <% }%>
+        <% }) %> 
+        </tbody>
+        </table>
+        
+        -->
+      
+          
+          
+          
+          <hr>
+          
+          <div class="row">
+            <div class="col-3">
+              <div class="text-left">
+                <label for="">Nº CNH </label>
+              </div>
+            <input type="text" name='cnh'  class="form-control" placeholder="" value="<%= user.cnh %>" >
+            <input type="hidden" name='nSelo'  class="form-control" placeholder="" value="<%= user.nSelo %>" >
+          </div>
+
+          <div class="col-3">
+            <div class="text-left">
+              <label for="">Categoria da CNH</label>
+            </div>
+            <input type="text" name='Ccnh' class="form-control" placeholder="" value="<%= user.Ccnh %>">
+          </div>
+          
+          <div class="col-3">
+            <div class="text-left">
+              <label for="">Validade</label>
+            </div>
+            <input type="text" name='validadeCnh' id="data2" class="form-control" placeholder="" value="<%= user.validadeCnh %>">
+          </div>
+          
+          
+          <div class="col-3">
+            <div class="text-left">
+              <label for="">Cor do Veículo</label>
+            </div>
+            <input type="text" name='cor' id='color' class="" placeholder="" value="<%= selo.cor %>">
+          </div> 
+          
+          
+          <div class="col-3"><br> 
+            <div class="text-left">
+              <label for="">Placa</label>
+            </div>
+            <input type="text" name='placa' id="placa" class="form-control" placeholder="XXX-XXXX" value="<%= selo.placa %>">
+          </div>
+          
+          <div class="col-3"><br>
+            <div class="text-left">
+              <label for="">Modelo</label>
+            </div>
+            <input type="text" name='modeloVeiculo' class="form-control" placeholder="" value="<%= selo.placa %>">
+          </div>
+          
+          <div class="col-3"><br>
+            <div class="text-left">
+              <label for="">Ano de Fabricação</label>
+            </div>
+            <input type="text" name='anoDeFabricacao' id="data1" class="form-control" placeholder="" value="<%= selo.anoDeFabricacao %>">
+          </div>
+          
+          <div class="col-2"><br>
+            <div class="text-left">
+              <label for="">Chassi</label>
+            </div>
+            <input type="text" name='chassi' class="form-control" placeholder="" value="<%= selo.chassi %>">
+          </div>
+          
+          
+        </div> 
+        <hr>
+        <div class="row">
+          
+          <div class="col-4"><br>
+            <div class="text-left">
+              <label for="">IPVA</label>
+            </div>
+            <input type="text" name='ipva' class="form-control" placeholder="" value="<%= selo.ipva %>">
+          </div>
+          
+          <div class="col-4"><br>
+            <div class="text-left">
+              <label for="">RENAVAM</label>
+            </div>
+            <input type="text" name='renavam' class="form-control" placeholder="" value="<%= selo.renavam %>">
+          </div><br><br>
+        </div><br>
+  
+        
+        
+        
+        <br><h5 class="card-title">Enviar Foto da Documentacão do veiculo</h5><hr>
+        
+        <div class="row">
+
+          <div class="col-4">
+            <div class="card-title">Foto</div>
+            <input class='form-control' type="file" name='file'  placeholder='disponibilizar arquivo para download'> 
+            
+          </div>
+          
+          
+          
+          <div id="img-container">
+            <div class="card-title"></div>
+            <img  width="300" height="300"  src="/files/<%- selo.id %>_user/documentos/<%= selo.pathDocumentos %>">
+          </div>
+
+          
+          
+          
+        </div>
+        <div class="text-right">     
+          <a data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-success"><b style="color: aliceblue;">Salvar</b></a> 
+        </div>
+        
+          
+        
+
+
+
+
+
+
+
+
+</div>
+
+
+
+<div class="conteudo conteudo_4">
+<!--
+  <hr>
+  
+          <div class="row">
+            <div class="col-3">
+              <div class="text-left">
+                <label for="">Cor do Veículo</label>
+              </div>
+              <input type="text" name='novocor' id='color' class="" placeholder="" value="">
+            </div> 
+  
+  
+            <div class="col-3">
+              <div class="text-left">
+                <label for="">Placa</label>
+            </div>
+              <input type="text" name='novoplaca' id="placa" class="form-control" placeholder="XXX-XXXX" value="">
+            </div>
+  
+         <div class="col-3">
+              <div class="text-left">
+                <label for="">Modelo</label>
+            </div>
+              <input type="text" name='novomodeloVeiculo' class="form-control" placeholder="" value="">
+            </div>
+  
+         <div class="col-3">
+              <div class="text-left">
+                <label for="">Ano de Fabricação</label>
+            </div>
+              <input type="text" name='novoanoDeFabricacao' id="data1" class="form-control" placeholder="" value="">
+            </div>
+  
+            <div class="col-2"> <br>
+              <div class="text-left">
+                <label for="">Chassi</label>
+            </div>
+              <input type="text" name='novochassi' class="form-control" placeholder="" value="">
+            </div>
+  
+  
+          </div> 
+          <hr>
+          <div class="row">
+   
+            <div class="col-4"><br>
+              <div class="text-left">
+                <label for="">IPVA</label>
+            </div>
+              <input type="text" name='novoipva' class="form-control" placeholder="" value="">
+            </div>
+  
+            <div class="col-4"><br>
+              <div class="text-left">
+                <label for="">RENAVAM</label>
+            </div>
+              <input type="text" name='novorenavam' class="form-control" placeholder="" value="">
+          </div><br><br>
+          </div><br>
+    
+  
+  
+  
+  <br><h5 class="card-title">Enviar Foto da Documentacão do veiculo</h5><hr>
+  
+  <div class="row">
+  
+    <div class="col-4">
+      <div class="card-title">Foto</div>
+      <input class='form-control' type="file" name='novofile' placeholder='disponibilizar arquivo para download'> 
+  </div>
+  
+  
+  </div>
+
+<div class="text-right">     
+  <a data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-success"><b style="color: aliceblue;">Salvar</b></a> 
+</div>
+
+-->
+</div>
+
+
+
+        </div>
+
+ 
+        </div>
+
+
+
+      </div>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="col-12">
+          <div class="text-center">
+              <label for="">Digite sua senha</label>
+          </div>
+          <div class="form-group">
+            <input type="password"  placeholder="Senha" id="password" name="password">
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+<% selo.forEach(selo => { %>
+
+  <!-- Atualizar  -->
+  <div class="modal fade" id="atualizar-selo<%= selo.nSelo %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+      </div>
+      <div class="modal-body">
+
+        <form  method="post" name="selo<%= selo.nSelo %>" action="/atualizar/selo" >
+
+
+
+
+
+
+
+
+    
+          
+
+          <div class="row">
+            <div class="col">
+              <div class="text-left">
+                <label for="">Nº CNH </label>
+              </div>
+              <input type="text" id="dataInicio" name="cnh" class="form-control" placeholder="" value="<%= user.cnh %>" >
+              <input type="hidden" id="dataInicio" name="selo" class="form-control" placeholder="" value="<%= selo.nSelo %>" >
+            </div>
+            
+            <div class="col">
+              <div class="text-left">
+                <label for="">Categoria </label>
+              </div>
+              <input type="text" id="dataInicio" name="Ccnh" class="form-control" placeholder=""  value="<%= user.Ccnh %>" >
+            </div>
+
+            
+          
+            <div class="col">
+                <div class="text-left">
+                  <label for="">Validade</label>
+                </div>
+                <input type="text" id="dataTermino" name="validadeCnh" class="form-control" placeholder="" value="<%= user.validadeCnh %>" >
+              </div>
+            </div><br>
+          
+          
+          <div class="row">
+            <div class="col">
+              <div class="text-left">
+                <label for="">Cor Do veiculo</label>
+              </div>
+              <input type="text" name="cor" class="form-control" placeholder="Digite aqui" value="<%= selo.cor %>" ><br>
+              
+            </div>
+            
+            <div class="col">
+              <div class="text-left">
+                <label for="">RENAVAM</label>
+              </div>
+              <input type="text" id="placa" maxlength="8" name="renavam" class="form-control" placeholder="Digite aqui" value="<%= selo.renavam %>"><br>
+            </div>    
+          </div> 
+          
+          <div class="row">
+            <div class="col">
+                  <div class="text-left">
+                      <label for="">Chassi</label>
+                  </div>
+                  <input type="text" maxlength="500" name="chassi" class="form-control" placeholder="Digite aqui" value="<%= selo.chassi %>"><br>
+              </div>
+              <div class="col">
+                <div class="text-left">
+                  <label for="">Ano de Fabricação</label>
+                </div>
+                <input type="text" id="anoDeFabricacaoSelo" name="anoDeFabricacao" class="form-control" placeholder="dia/mês/ano" value="<%= selo.anoDeFabricacao %>" >
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col">
+                <div class="text-left">
+                  <label for="">Modelo</label>
+                </div>
+                <input type="text" id="dataInicio" name="modeloVeiculo" class="form-control" placeholder="" value="<%= selo.modeloVeiculo %>" >
+              </div>
+              
+              <div class="col">
+                <div class="text-left">
+                  <label for="">IPVA</label>
+                </div>
+                <input type="text" id="dataInicio" name="ipva" class="form-control" placeholder=""  value="<%= selo.ipva %>" >
+              </div>
+
+              
+              
+              <div class="col">
+                  <div class="text-left">
+                    <label for="">Placa</label>
+                  </div>
+                  <input type="text" id="dataTermino" name="placa" class="form-control" placeholder="" value="<%= selo.placa %>" >
+                </div>
+              </div><br>
+              
+              <div class="row">
+                <div class="col-12">
+              <div class="text-left">
+                <label for="">Foto da Documentacão</label>
+              </div>
+              <input class='form-control' type="file" name='file' placeholder='disponibilizar arquivo para download'> 
+            </div>  
+          </div><br>
+          
+          
+
+        </form>
+        
+        
+      </div>
+      <div class="modal-footer">
+        <a href='javascript:selo<%= selo.nSelo %>.submit()' class="btn btn-success" >salvar</a> 
+      </div>
+    </div>
+  </div>
+</div>
+<% }) %>
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalNovoSelo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+<form action="/novo/selo" name="novoSelo" method="post" enctype='multipart/form-data'>
+
+        <div class="card-body">    
+          <div class="row">
+              <div class="col">
+                <div class="text-left">
+                    <label for="">Cor Do veiculo</label>
+                </div>
+                <input type="text" name="cor" class="form-control" placeholder="Digite aqui"><br>
+          
+              </div>
+  
+              <div class="col">
+                <div class="text-left">
+                    <label for="">RENAVAM</label>
+                </div>
+                <input type="text" id="placa" maxlength="8" name="renavam" class="form-control" placeholder="Digite aqui"><br>
+              </div>    
+            </div> 
+  
+            <div class="row">
+                  <div class="col">
+                    <div class="text-left">
+                        <label for="">Chassi</label>
+                    </div>
+                    <input type="text" maxlength="500" name="chassi" class="form-control" placeholder="Digite aqui"><br>
+                </div>
+                <div class="col">
+                  <div class="text-left">
+                      <label for="">Ano de Fabricação</label>
+                  </div>
+                  <input type="text" id="anoDeFabricacaoSelo" name="anoDeFabricacao" class="form-control" placeholder="dia/mês/ano" value="" >
+              </div>
+            </div>
+  
+            <div class="row">
+                <div class="col">
+                    <div class="text-left">
+                        <label for="">Modelo</label>
+                    </div>
+                    <input type="text" id="dataInicio" name="modelo" class="form-control" placeholder="" value="" >
+                </div>
+
+                <div class="col">
+                  <div class="text-left">
+                      <label for="">IPVA</label>
+                  </div>
+                  <input type="text" id="dataInicio" name="ipva" class="form-control" placeholder=""  value="" >
+              </div>
+  
+  
+  
+                <div class="col">
+                    <div class="text-left">
+                        <label for="">Placa</label>
+                    </div>
+                    <input type="text" id="dataTermino" name="placa" class="form-control" placeholder="" value="" >
+                </div>
+            </div><br>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="text-left">
+                  <label for="">Foto da Documentacão</label>
+              </div>
+                <input class='form-control' type="file" name='file' placeholder='disponibilizar arquivo para download'> 
+            </div>  
+            </div><br>
+
+  
+  
+    <div class="text-right">
+        <a href="javascript:novoSelo.submit()" class="btn btn-success">Salvar</a> 
+      </div> 
+  
+    </form>
+  
+  
+  
+  
+  </div>
+
+      </div>
+ 
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+<% selo.forEach(selo => { %>
+
+                    
+                      <!--  MODAL => deletar selo -->
+                      
+                      <div class="modal fade" id="deletar-selo<%= selo.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          
+                          <div class="modal-content">
+                            
+                            <form name='form<%= selo.id %>' method="POST" action="/selo/delete/<%= selo.nSelo %>">
+                              
+                              
+                              <div class="card-body">     
+                                <h5 class="card-title text-center" style="color: #7e0e0e;">deletar selo   <%= selo.nSelo %></h5>
+                                
+                                <div class="text-center">
+                                  <label for="">Esta ação não podera ser revertida</label>
+                                </div>
+                                
+                                <div class="text-center">
+                                  <a href='javascript:form<%= selo.id %>.submit()' class="btn btn-danger ">Deletar</a> 
+                                </div> 
+                              </div> 
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        
+
+
+<% }) %>
+
+
+
+
+
+<!--
+
+<form name="form1" method="POST" action="/salvar/contrato">
+        
+
+    <div class="card-body">    
+        <div class="row">
+            <div class="col">
+              <div class="text-left">
+                  <label for="">Titulo</label>
+              </div>
+              <input type="text" name="titulo" class="form-control" placeholder="Digite aqui"><br>
+        
+            </div>
+
+            <div class="col">
+              <div class="text-left">
+                  <label for="">Nº Documento</label>
+              </div>
+              <input type="text" id="numero" maxlength="8" name="Ncontrato" class="form-control" placeholder="Digite aqui"><br>
+            </div>    
+          </div> 
+
+          <div class="row">
+              <div class="col">
+                  <div class="text-left">
+                      <label for="">Descrição</label>
+                  </div>
+                  <input type="text" maxlength="500" name="descricao" class="form-control" placeholder="Digite aqui"><br>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col">
+                  <div class="text-left">
+                      <label for="">Data de inicio</label>
+                  </div>
+                  <input type="text" id="dataInicio" name="dataInicio" class="form-control" placeholder="dia/mês/ano" value="" maxlength="10">
+              </div>
+
+
+
+              <div class="col">
+                  <div class="text-left">
+                      <label for="">Termino</label>
+                  </div>
+                  <input type="text" id="dataTermino" name="dataTermino" class="form-control" placeholder="dia/mês/ano" value="" maxlength="10">
+              </div>
+          </div><br>
+
+
+  <div class="text-right">
+      <a href="javascript:form1.submit()" class="btn btn-success">Salvar</a> 
+    </div> 
+
+  
+
+
+
+
+</div></form>
+-->
+
+
+
+<script>
+  function toggleDiv(conteudo){
+    $('div.conteudo').removeClass('active');
+    if(conteudo == 1){
+      $('div.conteudo_1').addClass('active');
+    }else if(conteudo == 4){
+      $('div.conteudo_4').addClass('active');
+    }else if(conteudo == 3){
+      $('div.conteudo_3').addClass('active');
+    }
+  }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+<script type="text/javascript">
+    $("#data1").mask("0000",{placeholder: "ano"});
+    $("#data").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#data2").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+    $("#anoDeFabricacaoSelo").mask("0000",{placeholder: "ano"});
+    $('#cpf').mask('000.000.000-00', {reverse: true});
+    $('#telefone1').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
+    $('#telefone2').mask('(00) 00000-0000');
+    $("#rg").mask("999.999.999-99" || "999.999.999-a");
+    $('#cep').mask('00000-000');
+    $('#numero').mask('0#', {maxlength: false});
+    $("#placa").mask( 'AAA-9A99');
+</script>
+
+
+<%- include('../../partials/footer') %>

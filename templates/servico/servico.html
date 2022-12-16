@@ -1,0 +1,299 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block manu %}
+
+
+<style>
+
+.modal {
+display: none;
+}
+ 
+.modal:target {
+display: flex;
+}
+.modal {
+text-align: left;
+backdrop-filter: blur(2px);
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+padding: 5rem;
+}
+ 
+.modal:target {
+justify-content: space-around;
+align-items: center;
+}
+ 
+.modal__overlay {
+position: absolute;
+height: 100%;
+width: 100%;
+left: 0;
+top: 0;
+cursor: default;
+}
+ 
+.modal__content {
+/* mudar tamanho do padding*/
+min-width: 100px;
+position: relative;
+background-color: #f5f5f5;
+padding: 10%;
+}
+ 
+.modal__close {
+color: initial;
+text-decoration: none;
+position: absolute;
+top: 0;
+right: 0;
+padding: 0 0.5rem;
+display: inline-block;
+}
+
+
+
+
+.input {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  font-size: 1.125rem;
+  line-height: 3rem;
+  width: 100%; height: 3rem;
+  color: #444;
+  background-color: rgba(255,255,255,.9);
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.7);
+  padding: 0 1rem;
+  font-family: 'Open Sans', sans-serif;
+}
+ .input:focus {
+    outline: none;
+  }
+  .input--top {
+    border-radius: 0.5rem 0.5rem 0 0;
+    border-top: 0;
+  }
+  .input--submit {
+    background-color: rgba(80, 94, 43, 0.9);
+    color: #fff ;
+    font-weight: bold;
+    cursor: pointer;
+    border-top: 0;
+    border-radius: 0.5 0.5 0.5rem 0.5rem;
+    margin-bottom: 1rem;
+    width: 200px;
+  	height: 50px;
+  }
+.text {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.8);
+  text-decoration: none;
+}
+  .text--small {
+    opacity: 0.85;
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+    .text--small:hover {
+      opacity: 1;
+    }
+  .text--omega {
+    width: 200%;
+    margin: 0 0 1rem -50%;
+    font-size: 1.5rem;
+    line-height: 1.125;
+    font-weight: normal;
+  }
+  .text--centered {
+    display: block;
+    text-align: center;
+  }
+  .text--border-right {
+    border-right: 1px solid rgba(255,255,255,0.5);
+    margin-right: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .legal {
+  position: absolute;
+  bottom: 1.125rem; left: 1.125rem;
+}
+.photo-cred {
+  position: absolute;
+  right: 1.125rem; bottom: 1.125rem;
+}
+.fullscreen-bg {
+  position: fixed;
+  z-index: -1;
+  top:0; right:0; bottom:0; left:0;
+  background: url({% static 'images/plafu.jpg' %}) center;
+  background-size: cover;
+}
+
+#toggle--login:checked ~ .form--signup { left:200%; visibility:hidden; }
+#toggle--signup:checked ~ .form--login { left:-100%; visibility:hidden; }
+
+@media (height:300px){.legal,.photo-cred{display:none}}
+
+
+
+
+</style>
+
+ 
+<section class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h2>Sistema de Informação</h2>
+						<p>Sistema para controle de tráfego de viaturas do Batalhão.</p>
+					</header>
+					<div class="highlights">
+           
+						<section>
+							<div class="content">
+								<header>
+
+
+                   <!-- MODAL ENTRADA -->
+                <div class="modal" id="modals" tabindex="-1">
+                <a href="#" class="modal__overlay" aria-label="Fechar"></a>
+                <div class="modal__content">
+                <a href="#" class="modal__close" aria-label="Fechar">x</a>
+
+                  
+              
+                </div>
+                </div>
+
+                  {% if user.graduacao == "asp" or user.nome_guerra == "sti" %}
+									  <a href="{% url 'servico:livro' %}">
+                  {% elif user.graduacao == "2ºten" %}
+                    <a href="{% url 'servico:livro' %}">
+                  {% elif user.graduacao == "2ºten" %}
+                    <a href="{% url 'servico:livro' %}">
+                  {% elif user.graduacao == "sd_ep" %}
+                   
+                  {% endif %}
+
+                  <svg 
+                  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="96" height="96"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M50.16667,14.33333c-11.78895,0 -21.5,9.71105 -21.5,21.5v100.33333c0,11.78895 9.71105,21.5 21.5,21.5h93.16667v-14.33333h-93.16667c-4.04938,0 -7.16667,-3.11729 -7.16667,-7.16667c0,-4.04938 3.11728,-7.16667 7.16667,-7.16667h93.16667v-14.33333v-100.33333h-28.66667h-43zM50.16667,28.66667h21.5v58.21517l11.2819,-7.90853l10.2181,-7.18066l21.5,15.08919v-58.21517h14.33333v86h-78.83333c-2.52154,0 -4.90994,0.5299 -7.16667,1.34375v-80.17708c0,-4.04938 3.11728,-7.16667 7.16667,-7.16667zM86,28.66667h14.33333v30.6543l-7.16667,-5.02507l-7.16667,5.02507z"></path></g></g></svg></a>
+                  
+									<h3>Abrir serviço</h3>
+								</header>
+
+								<h4>iniciar serviço.<br>
+                <small></small></h4>
+							</div>
+						</section>
+
+            <section>
+							<div class="content">
+
+                  <!-- MODAL ENTRADA -->
+                <div class="modal" id="veiculo" tabindex="-1">
+                <a href="#" class="modal__overlay" aria-label="Fechar"></a>
+                <div class="modal__content">
+                <a href="#" class="modal__close" aria-label="Fechar">x</a>
+
+                     <button onclick="window.location.href = '{% url 'servico:ficha-viatura' %}'" class="input input--submit">Viaturas</button></br>
+
+                     <button onclick="window.location.href = '{% url 'servico:ficha-fornecedor' %}'" class="input input--submit">Fornecedor</button>                      
+
+
+
+
+                </div>
+                </div>
+
+                <!--  MODAL fim -->
+
+								<header>
+                 
+									<a href="#veiculo"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="96" height="96"
+                  viewBox="0 0 226 226"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,226v-226h226v226z" fill="none"></path><g fill="#20341e"><path d="M113,21.1875c-50.62378,0 -91.8125,41.18872 -91.8125,91.8125c0,50.62378 41.18872,91.8125 91.8125,91.8125c50.62378,0 91.8125,-41.18872 91.8125,-91.8125c0,-50.62378 -41.18872,-91.8125 -91.8125,-91.8125zM113,35.3125c42.98194,0 77.6875,34.70557 77.6875,77.6875c0,42.98194 -34.70556,77.6875 -77.6875,77.6875c-42.98193,0 -77.6875,-34.70556 -77.6875,-77.6875c0,-42.98193 34.70557,-77.6875 77.6875,-77.6875zM113,56.5c-19.42187,0 -35.3125,15.89063 -35.3125,35.3125c0,10.7041 4.99341,20.22192 12.58008,26.70508c-15.89062,8.24878 -26.70508,24.85669 -26.70508,43.91992h14.125c0,-19.5874 15.7251,-35.3125 35.3125,-35.3125c19.58741,0 35.3125,15.7251 35.3125,35.3125h14.125c0,-19.06323 -10.81445,-35.67114 -26.70508,-43.91992c7.58667,-6.48316 12.58008,-16.00098 12.58008,-26.70508c0,-19.42187 -15.89062,-35.3125 -35.3125,-35.3125zM113,70.625c11.78003,0 21.1875,9.40747 21.1875,21.1875c0,11.78003 -9.40747,21.1875 -21.1875,21.1875c-11.78003,0 -21.1875,-9.40747 -21.1875,-21.1875c0,-11.78003 9.40747,-21.1875 21.1875,-21.1875z"></path></g></g></svg></a>
+									<h3>Pessoal</h3>
+								</header>
+
+								<h4>entrada de Pessoal.<br>
+                <small></small></h4>
+							</div>
+						</section>
+
+
+            <section>
+							<div class="content">
+
+                  <!-- MODAL ENTRADA -->
+                <div class="modal" id="pessoal" tabindex="-1">
+                <a href="#" class="modal__overlay" aria-label="Fechar"></a>
+                <div class="modal__content">
+                <a href="#" class="modal__close" aria-label="Fechar">x</a>
+
+                     <button onclick="window.location.href = '{% url 'servico:ficha-militar' %}'" class="input input--submit">Militar</button></br>
+
+                     <button onclick="window.location.href = '{% url 'servico:abrir-civil' %}'" class="input input--submit">Civil</button>                      
+
+
+
+
+                </div>
+                </div>
+
+                <!--  MODAL fim -->
+
+								<header>
+                 
+									<a href="#pessoal"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="96" height="96"
+                  viewBox="0 0 226 226"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,226v-226h226v226z" fill="none"></path><g fill="#20341e"><path d="M113,21.1875c-50.62378,0 -91.8125,41.18872 -91.8125,91.8125c0,50.62378 41.18872,91.8125 91.8125,91.8125c50.62378,0 91.8125,-41.18872 91.8125,-91.8125c0,-50.62378 -41.18872,-91.8125 -91.8125,-91.8125zM113,35.3125c42.98194,0 77.6875,34.70557 77.6875,77.6875c0,42.98194 -34.70556,77.6875 -77.6875,77.6875c-42.98193,0 -77.6875,-34.70556 -77.6875,-77.6875c0,-42.98193 34.70557,-77.6875 77.6875,-77.6875zM113,56.5c-19.42187,0 -35.3125,15.89063 -35.3125,35.3125c0,10.7041 4.99341,20.22192 12.58008,26.70508c-15.89062,8.24878 -26.70508,24.85669 -26.70508,43.91992h14.125c0,-19.5874 15.7251,-35.3125 35.3125,-35.3125c19.58741,0 35.3125,15.7251 35.3125,35.3125h14.125c0,-19.06323 -10.81445,-35.67114 -26.70508,-43.91992c7.58667,-6.48316 12.58008,-16.00098 12.58008,-26.70508c0,-19.42187 -15.89062,-35.3125 -35.3125,-35.3125zM113,70.625c11.78003,0 21.1875,9.40747 21.1875,21.1875c0,11.78003 -9.40747,21.1875 -21.1875,21.1875c-11.78003,0 -21.1875,-9.40747 -21.1875,-21.1875c0,-11.78003 9.40747,-21.1875 21.1875,-21.1875z"></path></g></g></svg></a>
+									<h3>Entrada</h3>
+								</header>
+
+								<h4>entrada de pessoas.<br>
+                <small></small></h4>
+							</div>
+						</section>
+
+
+
+
+                        <section>
+							<div class="content">
+
+
+
+								<header>
+                 
+									<a href=" {% url 'servico:cautela-municao' %} "><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  width="96" height="96"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M30.315,0c-1.63937,0.30906 -2.82187,1.76031 -2.795,3.44c0,0 -0.08062,6.50375 0,9.89c2.29781,91.79156 36.40219,137.97625 51.0625,153.6175c2.02906,2.16344 4.16563,4.17906 7.31,4.8375c3.14438,0.65844 6.40969,-0.02687 11.0725,-1.505c0.1075,-0.02687 0.215,-0.06719 0.3225,-0.1075c14.27063,-5.805 41.25313,-16.74312 45.365,-18.49c3.18469,-1.35719 5.85875,-3.49375 6.5575,-6.7725c0.69875,-3.27875 -0.88687,-6.42312 -3.3325,-9.1375c-12.51031,-13.89437 -39.13,-51.42531 -41.3875,-122.6575c-0.09406,-2.98312 0,-9.675 0,-9.675c0,-1.89469 -1.54531,-3.44 -3.44,-3.44h-70.09c-0.1075,0 -0.215,0 -0.3225,0c-0.1075,0 -0.215,0 -0.3225,0zM34.4,6.88h63.21c-0.02687,2.20375 -0.06719,4.21938 0,6.45c2.29781,72.87156 29.81781,112.17625 43.215,127.065c1.69313,1.88125 1.76031,2.91594 1.72,3.1175c-0.04031,0.20156 -0.44344,0.92719 -2.58,1.8275c-3.66844,1.55875 -30.71812,12.56406 -45.0425,18.3825c-4.23281,1.34375 -6.49031,1.53188 -7.6325,1.29c-1.14219,-0.24187 -1.96187,-0.87344 -3.7625,-2.795c-13.69281,-14.60656 -46.87,-58.95031 -49.1275,-149.1025c-0.05375,-1.96187 -0.01344,-4.03125 0,-6.235zM77.5075,13.8675c-1.78719,0.04031 -3.15781,1.54531 -3.1175,3.3325c1.90813,75.90844 30.00594,113.90969 42.0325,126.7425c0.63156,0.67188 1.505,1.075 2.365,1.075c0.79281,0 1.63938,-0.28219 2.2575,-0.86c1.30344,-1.22281 1.33031,-3.31906 0.1075,-4.6225c-11.51594,-12.29531 -38.47156,-48.84531 -40.3125,-122.55c-0.04031,-1.77375 -1.24969,-3.10406 -3.3325,-3.1175zM54.61,14.835c-1.78719,0.04031 -3.26531,1.54531 -3.225,3.3325c2.00219,80.20844 31.80656,120.38656 44.505,133.945c0.63156,0.67188 1.505,0.9675 2.365,0.9675c0.79281,0 1.53188,-0.26875 2.15,-0.86c1.30344,-1.22281 1.43781,-3.21156 0.215,-4.515c-12.18781,-13.0075 -40.83656,-51.76125 -42.785,-129.7525c-0.04031,-1.78719 -1.55875,-3.18469 -3.225,-3.1175z"></path></g></g></svg></a>
+									<h3>Cautela</h3>
+								</header>
+
+								<h4>Cautela de munição.<br>
+                <small></small></h4>
+							</div>
+						</section>
+
+
+
+
+
+
+
+{% endblock %}

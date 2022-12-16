@@ -1,0 +1,145 @@
+<%- include('../partials/header') %>
+
+<style>
+
+    .card{
+          -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+          -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+            box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+        }
+    .container {
+
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            margin: 0px;
+            padding: 8px 0px;
+            }
+
+    h5 {
+    max-width: 60ch;
+    max-height: 60ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  </style>
+
+  <header id="header">
+    <nav>
+      <a href="/home" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        width="50" height="20"
+        viewBox="0 0 172 172"
+        style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+          <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+
+
+        </nav>
+    <nav> 
+      <a href="#menu">Menu</a>
+    </nav>
+  <nav id="menu">
+    <ul class="links">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/logout/">Sair</a></li>
+    </ul>
+  </nav>
+  </header><br><br>
+
+  <div class="inner">
+
+    <form action="/busca-usuario" method="post">
+        <label for="busca"></label>
+        <input type="search" id="busca" name="busca"  placeholder="Busca" list='historico'>
+        <datalist id='historico'>
+          <%  user.forEach(user => { %>
+                  <option value="<%- user.nomeGuerra %>"><%- user.nomeGuerra %></option>
+          <% }) %>
+          
+        </datalist>
+        <p><b></b></p>
+      </form>
+
+      <hr>
+        <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col" >grad.</th>
+                <th scope="col">Nome de Guerra</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sessão</th>
+                <th scope="col">Inicio</th>
+                <th scope="col">Volta</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <% user.forEach(user => { %>
+              <tr>
+                <th scope="col"><%= user.graduacao %></th>
+                <td><%= user.nomeGuerra %></td>
+                <td><%= user.nome %></td>
+                <td><%= user.sessao %></td>
+                <td><%= user.status %></td>
+                <td ><%= user.retorno %></td>
+                <th>         
+                    <a href="/permissoes/<%= user.id %>" title="Ver"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                        width="20" height="20"
+                        viewBox="0 0 172 172"
+                        style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#20341e"><path d="M86,28.66667c-57.33333,0 -78.83333,57.33333 -78.83333,57.33333c0,0 21.5,57.33333 78.83333,57.33333c57.33333,0 78.83333,-57.33333 78.83333,-57.33333c0,0 -21.5,-57.33333 -78.83333,-57.33333zM86,43c37.81133,0 56.93626,30.58084 63.12826,42.97201c-6.19917,12.30517 -25.46742,43.02799 -63.12826,43.02799c-37.81133,0 -56.93626,-30.58084 -63.12826,-42.97201c6.20633,-12.30517 25.46742,-43.02799 63.12826,-43.02799zM86,57.33333c-15.83117,0 -28.66667,12.8355 -28.66667,28.66667c0,15.83117 12.8355,28.66667 28.66667,28.66667c15.83117,0 28.66667,-12.8355 28.66667,-28.66667c0,-15.83117 -12.8355,-28.66667 -28.66667,-28.66667zM86,71.66667c7.91917,0 14.33333,6.41417 14.33333,14.33333c0,7.91917 -6.41417,14.33333 -14.33333,14.33333c-7.91917,0 -14.33333,-6.41417 -14.33333,-14.33333c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333z"></path></g></g></svg></a>
+                    <td>
+                        <a href="#"  data-toggle="modal" data-target="#exampleModalCenter<%= user.id %>" title="deletar usuario" ><img src="https://img.icons8.com/ios/25/000000/empty-trash.png"/></a>
+
+                    </td>
+
+
+
+   <!--  MODAL => deletar usuario -->
+
+   <div class="modal fade" id="exampleModalCenter<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+  
+      <div class="modal-content">
+  
+      <form name='form<%= user.id %>' method="POST" action="/permissoes/<%= user.id %>">
+    
+
+      <div class="card-body">     
+      <h5 class="card-title text-center" style="color: #7e0e0e;">deletar usuario  <%= user.nomeGuerra %></h5>
+  
+      <div class="text-center">
+        <label for="">Esta ação não podera ser revertida</label>
+    </div>
+ 
+      <div class="text-center">
+          <a href='javascript:form<%= user.id %>.submit()' class="btn btn-danger ">Deletar</a> 
+      </div> 
+</div> 
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+                    
+
+                </th>
+              </tr>
+                    <% }) %> 
+            </tbody>
+          </table>
+  </div>
+
+
+
+
+  
+
+
+
+<%- include('../partials/footer') %>

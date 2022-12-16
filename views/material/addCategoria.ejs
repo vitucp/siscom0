@@ -1,0 +1,45 @@
+
+<%- include('../partials/header') %>
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+</style>
+
+
+<div class="inner">
+
+    <section class="wrapper">
+            <header class="special">
+                <h2>Controle de material</h2>
+                <p></p>
+            </header>
+  
+
+            <div class="card">
+              <div class="card-header">
+               Adicionar uma categoria
+
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Nome da Categoria</h5>
+
+                  <form method="POST" name='form' action="/save/categoria">
+                    <input  name="nome"class="form-control">
+                    <div class="text-right"><br>
+                 
+                    <a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+                  </form>
+
+              </div>
+              </div>
+            </div><br>
+
+
+</div>
+<%- include('../partials/footer') %>

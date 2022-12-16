@@ -1,0 +1,538 @@
+<%- include('../../partials/header') %>
+
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+
+
+  .btn-success {
+
+    background-color: #20341e !important;
+}
+
+
+      .conteudo_1{
+                display:none
+              }
+              .conteudo_2{
+                display:none
+              }
+              .conteudo_3{
+                display:none
+              }
+              
+              .active{
+                display:block!important;
+              }
+    
+</style>
+
+
+   
+<header id="header">
+  <nav>
+    <a href="/selo" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/home" >Home</a>  
+        <a href="/selos/cadastrados" >Cadastrados</a>
+
+ 
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header>
+
+
+<div class="inner">
+
+    <section class="wrapper">
+            <header class="special">
+                <h2>Selo </h2>
+                <p></p>
+            </header>
+  
+
+<!-- formulario dinamico -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- formulario dinamico -->
+
+
+<div class="inner">
+  
+  <form action="/atualizar/selo" name="atualizaSelo" method="post">
+
+<div class="row">
+    <div class="col-3">
+      <div class="text-left">
+        <label for="">Nº CNH</label>
+    </div>
+      <input type="text" name='cnh'  class="form-control" placeholder="" value="<%= selo.cnh %>" >
+      <input type='hidden' name='selo' value='<%= selo.nSelo %>'>
+    </div>
+
+    <div class="col-3">
+      <div class="text-left">
+        <label for="">Categoria da CNH</label>
+    </div>
+      <input type="text" name='Ccnh' class="form-control" placeholder="" value="<%= selo.Ccnh %>">
+    </div>
+
+    <div class="col-3">
+      <div class="text-left">
+        <label for="">Validade</label>
+    </div>
+      <input type="text" name='validadeCnh' class="form-control" placeholder="" value="<%= selo.validadeCnh %>">
+    </div>
+
+    
+    <div class="col-3">
+      <div class="text-left">
+        <label for="">Cor</label>
+    </div>
+      <input type="text" name='cor' id='color' class="" placeholder="" value="<%= selo.cor %>">
+    </div> <br>
+
+    <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">Placa</label>
+    </div>
+      <input type="text" name='placa' id="placa" class="form-control" placeholder="XXX-XXXX" value="<%= selo.placa %>" >
+    </div>
+
+ <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">Modelo</label>
+    </div>
+      <input type="text" name='modeloVeiculo' class="form-control" placeholder="" value="<%= selo.modeloVeiculo %>">
+    </div>
+
+ <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">Ano de Fabricação</label>
+    </div>
+      <input type="text" name='anoDeFabricacao' id="data" class="form-control" placeholder="" value="<%= selo.anoDeFabricacao %>" >
+    </div>
+
+    <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">Chassi</label>
+    </div>
+      <input type="text" name='chassi' class="form-control" placeholder="" value="<%= selo.chassi %>">
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">IPVA</label>
+    </div>
+      <input type="text" name='ipva' class="form-control" placeholder="" value="<%= selo.ipva %>">
+    </div>
+
+    <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">RENAVAM</label>
+    </div>
+      <input type="text" name='renavam' class="form-control" placeholder="" value="<%= selo.renavam %>">
+    </div>
+
+
+    <div class="col-3"><br>
+      <div class="text-left">
+        <label for="">Foto</label>
+    </div>
+      <input class='form-control' type="file" name='file'  placeholder='disponibilizar arquivo para download'> 
+
+    </div>
+
+    
+
+
+
+</div>
+
+<hr>
+
+
+    <img src="/files/<%- user.id %>_user/documentos/<%= selo.pathDocumentos  %>" class="img-thumbnail" alt="..."  width="250" height="250">
+
+
+
+
+
+
+    
+     <div class="text-right">     
+          <a href='javascript:atualizaSelo.submit()' class="btn btn-success"><b style="color: aliceblue;">Salvar</b></a> 
+      </div>
+        
+
+   
+
+  </form>
+
+
+  
+  
+  
+  
+  
+  <style>
+
+    .selo {
+      position: relative;
+      display:inline-block;
+      padding:20px;
+      border:10px solid rgb(2, 2, 2);
+      text-align: center;
+     
+    }
+    
+    .selo:after {
+      content:'';
+      position:absolute; box-sizing: border-box;
+      
+      border-radius:0px 12px 0px 12px;
+      z-index: -1;
+    
+    }
+    </style>
+
+<div class="row">
+
+<div class="col-4">
+
+
+    <!-- imprimir conteudo -->
+<div class="inner">
+
+<div id="print<%= selo.nSelo %>" class="conteudo">
+
+<div class="selo">
+<div style="font-size: 90pt;"><%= selo.nSelo %></div><br>
+<b> 2022</b>
+</div>      
+
+</div><br>
+<input  class="btn btn-success"  onclick="cont();" value="imprimir">
+</div>
+
+
+
+
+
+<script>
+
+function cont(){
+var conteudo = document.getElementById('print<%= selo.nSelo %>').innerHTML;
+tela_impressao = window.open('about:blank');
+tela_impressao.document.write(conteudo);
+tela_impressao.window.print();
+tela_impressao.window.close();
+}
+</script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!--
+  
+  
+  
+  
+  
+  <form action="/novo/selo/0" name="novoSelo" method="post" >
+    
+    <div class="card-body">    
+      <div class="row">
+        <div class="col">
+          <div class="text-left">
+            <label for="">Cor Do veiculo</label>
+          </div>
+          <input type="text" name="cor" class="form-control" placeholder="Digite aqui"><br>
+          
+        </div>
+        
+        <div class="col">
+          <div class="text-left">
+            <label for="">RENAVAM</label>
+          </div>
+          <input type="text" id="placa" maxlength="8" name="renavam" class="form-control" placeholder="Digite aqui"><br>
+        </div>    
+      </div> 
+      
+      <div class="row">
+        <div class="col">
+          <div class="text-left">
+            <label for="">Chassi</label>
+          </div>
+          <input type="text" maxlength="500" name="chassi" class="form-control" placeholder="Digite aqui"><br>
+        </div>
+        <div class="col">
+          <div class="text-left">
+            <label for="">Ano de Fabricação</label>
+          </div>
+          <input type="text" id="anoDeFabricacaoSelo" name="anoDeFabricacao" class="form-control" placeholder="dia/mês/ano" value="" >
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+              <div class="text-left">
+                <label for="">Modelo</label>
+              </div>
+              <input type="text" id="dataInicio" name="modelo" class="form-control" placeholder="" value="" >
+            </div>
+            
+            <div class="col">
+              <div class="text-left">
+                <label for="">IPVA</label>
+              </div>
+              <input type="text" id="dataInicio" name="ipva" class="form-control" placeholder=""  value="" >
+            </div>
+            
+            
+            
+            <div class="col">
+              <div class="text-left">
+                  <label for="">Placa</label>
+                </div>
+                <input type="text" id="dataTermino" name="placa" class="form-control" placeholder="" value="" >
+              </div>
+            </div><br>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="text-left">
+                  <label for="">Foto da Documentacão</label>
+                </div>
+          <input class='form-control' type="file" name='file' placeholder='disponibilizar arquivo para download'> 
+      </div>  
+      </div><br>
+
+
+
+      <div class="text-right">
+  <a href="javascript:novoSelo.submit()" class="btn btn-success">Salvar</a> 
+</div> 
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function cont(){
+    var conteudo = document.getElementById('print').innerHTML;
+    tela_impressao = window.open('about:blank');
+    tela_impressao.document.write(conteudo);
+    tela_impressao.window.print();
+    tela_impressao.window.close();
+  }
+</script>
+
+
+
+
+<script>
+  function toggleDiv(conteudo){
+    $('div.conteudo').removeClass('active');
+    if(conteudo == 1){
+      $('div.conteudo_1').addClass('active');
+    }else if(conteudo == 2){
+      $('div.conteudo_2').addClass('active');
+    }else if(conteudo == 3){
+      $('div.conteudo_3').addClass('active');
+    } 
+  }
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+
+<script type="text/javascript">
+  $("#data1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+  $("#data").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+  $("#data2").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+  $('#cpf').mask('000.000.000-00', {reverse: true});
+  $('#telefone1').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
+  $('#telefone2').mask('(00) 00000-0000');
+  $("#rg").mask("999.999.999-99" || "999.999.999-a");
+  $('#cep').mask('00000-000');
+  $('#numero').mask('0#', {maxlength: false});
+  $("#placa").mask( 'AAA-9A99');
+</script>
+
+
+
+
+
+
+<div class="ineer">
+  
+  
+  <form action="/teste" name="novoSelo" method="post" enctype='multipart/form-data'>
+    
+    <div class="card-body">    
+      <div class="row">
+        <div class="col">
+          <div class="text-left">
+            <label for="">Cor Do veiculo</label>
+          </div>
+          <input type="text" name="cor" class="form-control" placeholder="Digite aqui"><br>
+          
+        </div>
+        
+        <div class="col">
+          <div class="text-left">
+            <label for="">RENAVAM</label>
+          </div>
+          <input type="text" id="placa" maxlength="8" name="renavam" class="form-control" placeholder="Digite aqui"><br>
+        </div>    
+      </div> 
+      
+      <div class="row">
+            <div class="col">
+              <div class="text-left">
+                <label for="">Chassi</label>
+              </div>
+              <input type="text" maxlength="500" name="chassi" class="form-control" placeholder="Digite aqui"><br>
+            </div>
+            <div class="col">
+              <div class="text-left">
+                <label for="">Ano de Fabricação</label>
+              </div>
+              <input type="text" id="anoDeFabricacaoSelo" name="anoDeFabricacao" class="form-control" placeholder="dia/mês/ano" value="" >
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col">
+              <div class="text-left">
+                <label for="">Modelo</label>
+              </div>
+              <input type="text" id="dataInicio" name="modelo" class="form-control" placeholder="" value="" >
+            </div>
+            
+            <div class="col">
+              <div class="text-left">
+                <label for="">IPVA</label>
+              </div>
+              <input type="text" id="dataInicio" name="ipva" class="form-control" placeholder=""  value="" >
+            </div>
+            
+            
+            
+            <div class="col">teste
+              <div class="text-left">
+                <label for="">Placa</label>
+              </div>
+              <input type="text" id="dataTermino" name="placa" class="form-control" placeholder="" value="" >
+            </div>
+      </div><br>
+      
+      <div class="row">
+        <div class="col-12">
+          <div class="text-left">
+            <label for="">Foto da Documentacão</label>
+          </div>
+          <input class='form-control' type="file" name='file' placeholder='disponibilizar arquivo para download'> 
+        </div>  
+      </div><br>
+      
+      
+      
+      <div class="text-right">
+        <a href="javascript:novoSelo.submit()" class="btn btn-success">Salvar</a> 
+      </div> 
+      
+    </form>
+    
+    
+    
+  </div>
+  
+  
+-->
+
+
+
+
+
+
+
+
+
+<%- include('../../partials/footer') %>

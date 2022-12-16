@@ -1,0 +1,1029 @@
+
+  <%- include('../../partials/header') %>
+
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+</style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/efetivo" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/controle-de-pessoal" >Efetivo</a>  
+        <a href="/efetivo" >Militares</a>
+        <a href="/missoes" >Missoes</a>
+        <a href="/destinos" >Destinos</a>  
+        <a href="/historico" >Historico</a> 
+ 
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header>
+
+
+<div class="inner">
+
+
+
+ <style>
+   .card{
+ 
+         -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+         -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+         box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+       }
+ 
+ 
+   .btn-success {
+ 
+     background-color: #20341e !important;
+ }
+ 
+ 
+       .conteudo_1{
+                 display:none
+               }
+               .conteudo_2{
+                 display:none
+               }
+               .conteudo_3{
+                 display:none
+               }
+               
+               .active{
+                 display:block!important;
+               }
+     
+ </style>
+ 
+ 
+ <div class="inner">
+ 
+     <section class="wrapper">
+             <header class="special">
+                 <h2>Ficha Militar </h2>
+                 <p></p>
+             </header>
+   
+ 
+ <!-- formulario dinamico -->
+             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <!-- formulario dinamico -->
+ <% erros.forEach(function(erros){ %>   
+   <% if(erros.msg == "4"){ %>
+ 
+     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       <strong>ERRO!</strong> Preencha o campo data.
+       <a type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </a>
+     </div>
+   <% }else if(erros.msg == '5') { %>
+     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       <strong>ERRO!</strong> Preencha o campo data de retorno.
+       <a type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </a>
+     </div>
+   <% }else if(erroSenha){ %>
+     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       <strong>ERRO!</strong>Senha incorreta.
+       <a type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </a>
+     </div>
+   <% } %>
+ <% }) %>
+ 
+ 
+ <div class="card text-center">
+   <div class="card-header">
+     <ul class="nav nav-pills card-header-pills">
+       <li class="nav-item">
+         <a class="nav-link active" href="#" onclick="toggleDiv(1)">Militar</a>
+ 
+       </li>
+       <!--
+       <li class="nav-item">
+         <a class="nav-link active" href="#" onclick="toggleDiv(2)">Destino</a>
+       </li>
+       -->
+     </ul>
+   </div>
+   <div class="card-body">
+       <h5 class="card-title">7º BE CMB</h5><br>
+ 
+     <div class="conteudo conteudo_1">
+        
+ 
+         <form method="post"  name='form' action="/update/edicao" >
+           
+             <div class="row">
+               <div class="col"> 
+                   <div class="text-left">
+                       <label for="">Nome de Guerra</label>
+                   </div>
+                 <input type="text" name='nomeGuerra' class="form-control" placeholder="" value='<%= user.nomeGuerra %>'>
+                 <% erros.forEach(function(erros){ %>   
+                   <% if(erros.msg == "3"){ %>
+                     <div class="text-left">
+                      <b style="color: red;">* Preencha esse campo</b>
+                     </div>
+                   <% } %>
+                 <% }) %>
+               </div>
+               <div class="col">
+                 <div class="text-left">
+                     <label for="">Nome completo</label>
+                 </div>
+                 <input type="text" name='nome' class="form-control" placeholder="" value='<%= user.nome %>'>
+               </div>
+             </div><br>
+ 
+             <div class="row">
+                 <div class="col">
+                     <div class="text-left">
+                         <label for="">Graduação</label>
+                     </div>
+                     <select name='graduacao' class="form-select" aria-label="Default select example">
+                       <option selected><%= user.graduacao %></option>
+                       <option value="Coronel">Coronel</option>
+                       <option value="Ten Coronel">Ten Coronel</option>
+                       <option value="Major">Major</option>
+                       <option value="Capitão">Capitão</option>
+                       <option value="1º Tenente">1º Tenente</option>
+                       <option value="2º Tenente">2º Tenente</option>
+                       <option value="Aspirante a Oficial">Aspirante a Oficial</option>
+                       <option value="Sub Tenente">Sub Tenete</option>
+                       <option value="1º Sargento">1º Sargento</option>
+                       <option value="2º Sargento">2º Sargento</option>
+                       <option value="3º Sargento">3º Sargento</option>
+                       <option value="Cabo">Cabo</option>
+                       <option value="Soldado Ep">Soldado EP</option>
+                       <option value="Soldado Ev">Soldado Ev </option>
+                     </select>
+ 
+                 </div>
+                 <div class="col">
+                   <div class="text-left">
+                       <label for="">Sessão</label>
+                     </div>
+                     <select name='sessao' class="form-select" aria-label="Default select example">
+                       <option value="<%= user.sessao %>"><%= user.sessao %></option>
+                       <option value="Sti">Sti</option>
+                       <option value="1º Cia">1º Cia</option>
+                       <option value="Cep">Cep</option>
+                       <option value="Ccap">Ccap</option>
+                       <option value="S1">S1</option>
+                       <option value="S2">S2</option>
+                       <option value="S3">S3</option>
+                       <option value="S4">S4</option>
+                       <option value="Relações Publicas">Relações Publicas</option>
+                       <option value="Fiscalização">Fiscalização</option>
+                       <option value="Spima">Spima</option>
+                       <option value="Tesouraria">Tesouraria</option>
+                       <option value="Sec Com">Sec Com</option>
+                       <option value="Salc">Salc</option>
+                       <option value="Almox">Almox</option>
+                       <option value="Spp">Spp</option>
+                       <option value="Sfpc">Sfpc</option>
+                       <option value="Juridica">Assesoria Juridica</option>
+                       <option value="Comformidade">Comformidade</option>
+                       <option value="Saúde">Saúde</option>
+                       <option value="Aprov">Aprov</option>
+ 
+                   </select>
+                   </div>
+               </div><br>
+ 
+ 
+ 
+ 
+               <div class="row">
+                 <div class="col">
+                     <div class="text-left">
+                         <label for="">CPF</label>
+                     </div>
+                   <input type="text" name='cpf' id='cpf' class="form-control" placeholder="000.000.000-00" value="<%= user.cpf %>">
+                 </div>
+       
+                 <div class="col">
+                   <div class="text-left">
+                       <label for="">RG</label>
+                   </div>
+                     <input type="text" name='rg' id='rg' class="form-control" placeholder="" value="<%= user.rg %>">
+                   </div>
+               </div><br>
+       
+ 
+ 
+ 
+               <div class="row">
+                 <div class="col-md-6">
+                     <div class="text-left">  
+                         <label for="">Email</label>
+                       </div>
+                       <input type="text" name='email' class="form-control" placeholder="" value='<%= user.email %>'>
+                     </div>
+ 
+                 <div class="col-2">
+                   <div class="text-left">
+                       <label for=''>WhatsApp</label>
+                   </div>
+                 <input  type="text" name='whatsapp' id='telefone1' class="form-control" placeholder=""  value='<%= user.whatsapp %>' >
+               </div>
+ 
+               <div class="col-2">
+                 <div class="text-left">
+                     <label for=''>telefone</label>
+                 </div>
+               <input  type="text" name='tel2' id='telefone2' class="form-control" placeholder=""  value='<%= user.tel2 %>' >
+             </div>
+ 
+               <div class="row">
+                   
+                 <div class="col">
+                   <div class="text-left">
+                       <label >Sexo</label>
+                   </div>
+                 <select name='sexo' class="form-select" aria-label="Default select example">
+                   <option selected><%= user.sexo %></option>
+                   <option value="Masculino">Masculino</option>
+                   <option value="Feminino">Feminino</option>
+                 </select>
+ 
+                 <% erros.forEach(function(erros){ %>   
+                   <% if(erros.msg == "1"){ %>
+                     <div class="text-left">
+                       <b style="color: red;">* Preço invalido</b>
+                      </div>
+                   <% } %>
+                 <% }) %>
+               </div>
+               </div>
+               </div><br>
+ 
+ 
+               <div class="row">
+                 <div class="col-2">
+                     <div class="text-left">
+                         <label for="">Cep</label>
+                     </div>
+                   <input type="text" name='cep' id='cep' class="form-control" placeholder="" value="<%= user.cep %>">
+                 </div>
+       
+                 <div class="col-4">
+                   <div class="text-left">
+                       <label for="">Rua</label>
+                   </div>
+                     <input type="text" name='rua' class="form-control" placeholder="" value="<%= user.rua %>">
+                   </div>
+ 
+                   <div class="col-2">
+                     <div class="text-left">
+                         <label for="">Nº</label>
+                     </div>
+                       <input type="text" name='numeroCasa' id='numero' class="form-control" placeholder="" value="<%= user.numeroCasa %>">
+                     </div>
+ 
+                     <div class="col-2">
+                       <div class="text-left">
+                           <label for="">Bairro</label>
+                       </div>
+                         <input type="text" name='bairro' class="form-control" placeholder="" value="<%= user.bairro %>">
+                       </div>
+                       <input type='hidden' name='ids' value='<%= user.id %>'>
+ 
+               </div><br>
+       
+ 
+                     <div class="text-right">
+                      
+                     <a data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-success " ><b style="color: aliceblue;">Salvar</b></a> 
+        
+                   </div>
+ 
+ 
+ 
+ </div>
+       
+ 
+       <div class="conteudo conteudo_2">
+ 
+           <div class="row">
+             <div class="col-md-6">
+                 <div class="text-left">
+                     <label for="">Localização</label>
+                 </div>
+                   <select name='localizacao' class="form-select" aria-label="Default select example">
+                       <option selected><%- user.localizacao %></option>          
+                       <option value="Batalhão">Batalhão</option>
+                       <option value="Trecho">Trecho</option>
+                       <option value="Hgun">Hgun</option>
+                       <option value="Curso">Curso</option>
+                       <option value="baixado">baixado</option>
+                       <option value="Ferias">Ferias</option>
+                   </select>
+             </div>
+ 
+           
+               <div class="col-md-3">
+                   <div class="text-left">
+                       <label for="">Data de partida</label>
+                   </div>
+                   <input  type="text" id='data1' name='dataPartida' class="form-control" placeholder="" value='<%= user.dataPartida %>' >
+                   <% erros.forEach(function(erros){ %>   
+                     <% if(erros.msg == "4"){ %>
+                       <div class="text-left">
+                        <b style="color: red;">* Preencha data de partida.</b>
+                       </div>
+                     <% } %>
+                   <% }) %>
+                 </div>
+ 
+ <!--
+   formatar saida 
+    moment(user.dataPartida).format( 'DD-MM-YYYY')
+ -->
+ 
+               <div class="col-md-3">
+                 <div class="text-left">
+                     <label for="">Data de retorno</label>
+                 </div>
+                 <input  type="text" id='data2' name='retorno' class="form-control" placeholder="" value='<%= user.retorno %>' >
+                 <% erros.forEach(function(erros){ %>   
+                   <% if(erros.msg == "5"){ %>
+                     <div class="text-left">
+                      <b style="color: red;">* Preenchaa data de retorno.</b>
+                     </div>
+                   <% } %>
+                 <% }) %>
+               </div>
+          
+            
+ 
+ 
+ 
+ 
+             <div class="col-md-6"></div>
+ 
+           </div><br>
+ 
+           <div class="text-right">
+                      
+             <a data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-success"><b style="color: aliceblue;">Salvar</b></a> 
+           </div>
+     
+       </div>
+   </div>
+ </div>
+ </div>
+ 
+ 
+ 
+ 
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+ 
+         <div class="col-12">
+           <div class="text-center">
+               <label for="">Digite sua senha</label>
+           </div>
+           <div class="form-group">
+             <input type="password"  placeholder="Senha" id="password" name="password">
+           </div>
+         </div>
+ 
+       </div>
+       <div class="modal-footer">
+         <a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+       </div>
+     </div>
+   </div>
+ </div>
+ 
+ 
+ 
+ 
+ </form>
+ 
+ 
+ 
+ <script>
+   function toggleDiv(conteudo){
+     $('div.conteudo').removeClass('active');
+     if(conteudo == 1){
+       $('div.conteudo_1').addClass('active');
+     }else if(conteudo == 2){
+       $('div.conteudo_2').addClass('active');
+     }else if(conteudo == 3){
+       $('div.conteudo_3').addClass('active');
+     } 
+   }
+   </script>
+ 
+ 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+ 
+ 
+         
+     <script type="text/javascript">
+     $("#data1").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+     $("#data2").mask("00/00/0000",{placeholder: "dia/mês/ano"});
+     $('#cpf').mask('000.000.000-00', {reverse: true});
+     $('#telefone1').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
+     $('#telefone2').mask('(00) 00000-0000');
+     $("#rg").mask("999.999.999-99" || "999.999.999-a");
+     $('#cep').mask('00000-000');
+     $('#numero').mask('0#', {maxlength: false});
+     </script>
+ 
+ 
+ <%- include('../../partials/footer') %>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  
+    <section class="wrapper">
+            <header class="special">
+                <h2>Ficha Militar </h2>
+                <p></p>
+            </header>
+  
+
+<!-- formulario dinamico --
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- formulario dinamico --
+
+   <% if(erroSenha === "0"){ %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>ERRO!</strong>Senha incorreta.
+          <a type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+        </div>
+      <% } %>
+
+      <% erros.forEach(function(erros){ %>   
+        <% if(erros.msg == "4"){ %>
+      
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>ERRO!</strong> Preencha o campo data.
+            <a type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
+          </div>
+        <% }else if(erros.msg == '5') { %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>ERRO!</strong> Preencha o campo data de retorno.
+            <a type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
+          </div>
+        <% } %>
+      <% }) %>
+
+
+
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="#" onclick="toggleDiv(1)">Militar</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#" onclick="toggleDiv(2)">Destino</a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="card-body">
+      <h5 class="card-title">7º BE CMB</h5><br>
+
+ 
+
+      
+
+
+
+    <div class="conteudo conteudo_1">
+        
+        <!-- FORM MONITOR --
+
+        <form method="post" name='form' action="/salvar-alteracao" >
+          <input type="hidden" name='id' value="<%= user.id %>">
+            <div class="row">
+              <div class="col"> 
+                  <div class="text-left">
+                      <label for="">Nome de Guerra</label>
+                  </div>
+                <input type="text" name='nomeGuerra' class="form-control" placeholder="" value='<%= user.nomeGuerra %>'>
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "3"){ %>
+                    <div class="text-left">
+                     <b style="color: red;">* Preencha esse campo</b>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+              <div class="col">
+                <div class="text-left">
+                    <label for="">Nome completo</label>
+                </div>
+                <input type="text" name='nome' class="form-control" placeholder="" value='<%= user.nome %>'>
+              </div>
+            </div><br>
+
+            <div class="row">
+                <div class="col">
+                    <div class="text-left">
+                        <label for="">Graduação</label>
+                    </div>
+                    <select name='graduacao' class="form-select" aria-label="Default select example">
+                      <option selected><%= user.graduacao %></option>
+                      <option value="Coronel">Coronel</option>
+                      <option value="Ten Coronel">Ten Coronel</option>
+                      <option value="Major">Major</option>
+                      <option value="Capitão">Capitão</option>
+                      <option value="1º Tenente">1º Tenente</option>
+                      <option value="2º Tenente">2º Tenente</option>
+                      <option value="Aspirante a Oficial">Aspirante a Oficial</option>
+                      <option value="Sub Tenente">Sub Tenete</option>
+                      <option value="1º Sargento">1º Sargento</option>
+                      <option value="2º Sargento">2º Sargento</option>
+                      <option value="3º Sargento">3º Sargento</option>
+                      <option value="Cabo">Cabo</option>
+                      <option value="Soldado Ep">Soldado EP</option>
+                      <option value="Soldado Ev">Soldado Ev </option>
+                    </select>
+
+                </div>
+                <div class="col">
+                  <div class="text-left">
+                      <label for="">Sessão</label>
+                    </div>
+                    <select name='sessao' class="form-select" aria-label="Default select example">
+                      <option value="<%= user.sessao %>"><%= user.sessao %></option>
+                      <option value="Sti">Sti</option>
+                      <option value="1º Cia">1º Cia</option>
+                      <option value="Cep">Cep</option>
+                      <option value="Ccap">Ccap</option>
+                      <option value="S1">S1</option>
+                      <option value="S2">S2</option>
+                      <option value="S3">S3</option>
+                      <option value="S4">S4</option>
+                      <option value="Relações Publicas">Relações Publicas</option>
+                      <option value="Fiscalização">Fiscalização</option>
+                      <option value="Spima">Spima</option>
+                      <option value="Tesouraria">Tesouraria</option>
+                      <option value="Sec Com">Sec Com</option>
+                      <option value="Salc">Salc</option>
+                      <option value="Almox">Almox</option>
+                      <option value="Spp">Spp</option>
+                      <option value="Sfpc">Sfpc</option>
+                      <option value="Juridica">Assesoria Juridica</option>
+                      <option value="Comformidade">Comformidade</option>
+                      <option value="Saúde">Saúde</option>
+                      <option value="Aprov">Aprov</option>
+
+                  </select>
+                  </div>
+              </div><br>
+
+
+
+
+              <div class="row">
+                <div class="col">
+                    <div class="text-left">
+                        <label for="">CPF</label>
+                    </div>
+                  <input type="text" name='cpf'  id='cpf' class="form-control" placeholder="000.000.000-00" value="<%= user.cpf %>">
+                </div>
+      
+                <div class="col">
+                  <div class="text-left">
+                      <label for="">RG</label>
+                  </div>
+                    <input type="text" name='rg' id='rg' class="form-control" placeholder="" value="<%= user.rg %>">
+                  </div>
+              </div><br>
+      
+
+
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="text-left">  
+                        <label for="">Email</label>
+                      </div>
+                      <input type="text" name='email' class="form-control" placeholder="" value='<%= user.email %>'>
+                    </div>
+
+                <div class="col-2">
+                  <div class="text-left">
+                      <label for=''>Telefone</label>
+                  </div>
+                <input  type="text" name='tel2' id='telefone1' class="form-control" placeholder=""  value='<%= user.tel2 %>' >
+              </div>
+
+              <div class="row">
+                  
+                <div class="col">
+                  <div class="text-left">
+                      <label >Sexo</label>
+                  </div>
+                <select name='sexo' class="form-select" aria-label="Default select example">
+                  <option selected><%= user.sexo %></option>
+                  <option value="Home">Homen</option>
+                  <option value="Mulher">Mulher</option>
+                </select>
+
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "1"){ %>
+                    <div class="text-left">
+                      <b style="color: red;">* Preço invalido</b>
+                     </div>
+                  <% } %>
+                <% }) %>
+              </div>
+              </div>
+
+              <div class="row">
+                  
+                <div class="col">
+                  <div class="text-left">
+                      <label >Status</label>
+                  </div>
+                <select name='status' class="form-select" aria-label="Default select example">
+                  <option selected><%= user.status %></option>
+                  <option value="pronto">Pronto</option>
+                  <option value="baixado">Baixado</option>
+                  <option value="punido">punido</option>
+                </select>
+
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "1"){ %>
+                    <div class="text-left">
+                      <b style="color: red;">* Preço invalido</b>
+                     </div>
+                  <% } %>
+                <% }) %>
+              </div>
+              </div>
+</div><br>
+              
+
+<div class="row">
+  <div class="col-3">
+      <div class="text-left">
+          <label for="">Cep</label>
+      </div>
+    <input type="text" name='cep' id='cep' class="form-control" placeholder="" value="<%= user.cep %>">
+  </div>
+
+        <div class="col-3">
+        <div class="text-left">
+            <label for="">Bairro</label>
+        </div>
+          <input type="text" name='bairro' class="form-control" placeholder="" value="<%= user.bairro %>">
+        </div>
+
+  <div class="col-4">
+    <div class="text-left">
+        <label for="">Rua</label>
+    </div>
+      <input type="text" name='rua' class="form-control" placeholder="" value="<%= user.rua %>">
+    </div>
+
+    <div class="col-1">
+      <div class="text-left">
+          <label for="">Nº</label>
+      </div>
+        <input type="text" name='numeroCasa' id='numero' class="form-control" placeholder="" value="<%= user.numeroCasa %>">
+      </div>
+
+
+
+
+</div><br>
+
+   
+
+                  <div class="text-right">
+                      <div class="col-md-6" value='<%= user.id %>'  ></div>
+                      <a data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-success" >Salvar</a> 
+                  </div>
+
+                  </div>
+  
+
+
+
+      <div class="conteudo conteudo_2">
+
+          <div class="row">
+            <div class="col-md-6">
+                <div class="text-left">
+                    <label for="">Localização</label>
+                </div>
+                  <select name='localizacao' class="form-select" aria-label="Default select example">
+                      <option selected><%- user.localizacao %></option>          
+                      <option value="Batalhão">Batalhão</option>
+                      <option value="Trecho">Trecho</option>
+                      <option value="Hgun">Hgun</option>
+                      <option value="Curso">Curso</option>
+                      <option value="baixado">baixado</option>
+                      <option value="Ferias">Ferias</option>
+                  </select>
+            </div>
+
+          
+              <div class="col-md-3">
+                  <div class="text-left">
+                      <label for="">Data de partida</label>
+                  </div>
+                  <input  type="text" id='data1' name='datapartida' class="form-control" placeholder=""  value='<%= user.dataPartida %>' >
+                  <% erros.forEach(function(erros){ %>   
+                    <% if(erros.msg == "4"){ %>
+                      <div class="text-left">
+                       <b style="color: red;">* Preenchaa data de partida.</b>
+                      </div>
+                    <% } %>
+                  <% }) %>
+                </div>
+
+              <div class="col-md-3">
+                <div class="text-left">
+                    <label for="">Data de retorno</label>
+                </div>
+                <input  type="text" id='data2' name='retorno' class="form-control" placeholder=""  value='<%= user.retorno %>' >
+                <% erros.forEach(function(erros){ %>   
+                  <% if(erros.msg == "5"){ %>
+                    <div class="text-left">
+                     <b style="color: red;">* Preenchaa data de retorno.</b>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+         
+           
+<!--
+           <%   if(user.localizacao === "Batalhão") { %>
+
+              
+              <div class="col-md-3"><br>
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14243.536418062316!2d-35.20430064026272!3d-5.831465875355222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ffec760fd7a7%3A0xb1d678d4364a2ffc!2s7%C2%BA%20BE%20CMB%20-%20Batalh%C3%A3o%20de%20Engenharia%20de%20Combate!5e1!3m2!1spt-BR!2sbr!4v1630121896643!5m2!1spt-BR!2sbr" 
+               width="1065" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+              </div>
+            <% }else if(user.localizacao === 'Hgun') { %>
+              <div class="col-md-3"><br>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.3642371857304!2d-35.20211600511198!3d-5.804125443177938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b3001cfcf6996f%3A0x42ef402123cc34b1!2sHospital%20de%20Guarni%C3%A7%C3%A3o%20de%20Natal!5e0!3m2!1spt-BR!2sbr!4v1630122474127!5m2!1spt-BR!2sbr" 
+                width="1065" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            <% }else if(user.localizacao === 'Trecho') { %>
+              <div class="col-md-3"><br>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d452633.0947731031!2d-38.57288204245901!3d-8.911862009334842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7090d0e8c4cada1%3A0xf201b1843e6d63ac!2sPetrol%C3%A2ndia%20-%20PE%2C%2056460-000!5e1!3m2!1spt-BR!2sbr!4v1630123211680!5m2!1spt-BR!2sbr"
+                 width="1065" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            <% } %>
+--
+          </div><br>
+              <div class="text-right">
+                <a data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-success" >Salvar</a> 
+              </div>
+    
+              
+      </div>
+
+
+
+  </div>
+
+<!--
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin=""/>
+
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+
+
+
+  <style>
+    #mapDIV{
+      height: 700px;
+      width: 1300px;
+      border: solid 1px black;
+    }
+    
+    </style>
+    
+    <%= user.graduacao %> <%= user.latitude %> <%= user.logitude %>
+    
+    <div id='mapDIV'></div>
+    
+
+
+
+    <script>
+        var map = L.map(document.getElementById('mapDIV'), {
+          center: [-8.877400655830687, -50.48203956940139],
+          zoom: 4
+        });
+        var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    
+        });
+
+        basemapc = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+          zoom: 4,
+    subdomains:['mt0','mt1','mt2','mt3']
+});
+
+
+
+
+
+        basemap.addTo(map)
+
+        var Marker = L.marker(['<%= user.latitude %>', ' <%- user.logitude %>']);
+
+        Marker.bindPopup('<%= user.graduacao %> <b> <%= user.nomeGuerra %> </b><br> esta no <%= user.localizacao %>')
+        Marker.addTo(map)
+
+
+
+    </script>
+    --
+</div>
+</div>
+
+
+<!-- Modal --
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="col-12">
+          <div class="text-center">
+              <label for="">Digite sua senha</label>
+          </div>
+          <div class="form-group">
+            <input type="password"  placeholder="Senha" id="password" name="password">
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <a href='javascript:form.submit()' class="btn btn-success" >ir</a> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</form>
+
+
+
+
+
+<script>
+  function toggleDiv(conteudo){
+    $('div.conteudo').removeClass('active');
+    if(conteudo == 1){
+      $('div.conteudo_1').addClass('active');
+    }else if(conteudo == 2){
+      $('div.conteudo_2').addClass('active');
+    }else if(conteudo == 3){
+      $('div.conteudo_3').addClass('active');
+    } 
+  }
+  </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+        
+    <script type="text/javascript">
+    $("#data1").mask("00/00/0000",{placeholder: "__/__/____"});
+    $("#data2").mask("00/00/0000",{placeholder: "__/__/____"});
+    $('#cpf').mask('000.000.000-00', {reverse: true});
+    $('#telefone1').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
+    $('#telefone2').mask('(00) 00000-0000');
+    $("#rg").mask("999.999.999-99" || "999.999.999-a");
+    $('#cep').mask('00000-000');
+    $('#numero').mask('0#', {maxlength: false});
+    </script>
+
+
+-->
+<%- include('../../partials/footer') %>
+

@@ -1,0 +1,66 @@
+<style>
+ .container-fluid {
+  width: 100%
+}
+ .container-te {
+  width: 70%;
+  
+}
+</style>
+
+
+
+<div class='container-fluid'>
+
+
+
+
+	</form>
+
+<form  action="{% url 'material:busca-material' %}" style='text-aling'>
+
+		<input type="text"  name="query" placeholder="buscar" arial-label='Search'>
+
+</form>
+
+
+
+<table class="table table-hover thead-dark">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Item</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">N Pedido</th>
+      <th scope="col">Data de entrada</th>
+    </tr>
+  </thead>
+
+{% for material in material %}
+
+  <tbody>
+    <tr>
+      <th scope="row">{{ material.id }}</th>
+      <td>{{ material.item }}</td>
+      <td>{{ material.qnt_item }}</td>
+      
+      <td>{{ material.n_pedido }}</td>
+      <td>{{ material.data_entrada }}</td>
+      <td>
+                <a href="{% url 'material:edit-material' material.id %}" class="btn btn-primary btn-sm">Editar</a>
+                <a href="{% url 'material:edit-material' material.id %}" class="btn btn-primary btn-sm">Saida</a>
+
+
+
+       
+
+       </td>
+    </tr>
+  </tbody>
+</div>
+
+      {%  empty %} 
+          <h3 style='color:red'>Nem um resultado encontrado<h3>
+
+{% endfor %}
+

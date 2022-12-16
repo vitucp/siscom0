@@ -1,0 +1,59 @@
+<style>
+	.container-fluid {
+		width: 100%
+	}
+
+	.container-te {
+		width: 70%;
+
+	}
+</style>
+
+
+
+<div class='container-fluid'>
+
+
+	</form>
+
+<form class="form-search" action="{% url 'viaturas:busca-viaturas' %}" style='margin-right:200px'>
+
+		<input type="text" class="input-medium search-query" name="query" placeholder="buscar" arial-label='Search'>
+    <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+
+
+<table class="table table-hover thead-dark">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Viaturas</th>
+      <th scope="col">Prefixo</th>
+      <th scope="col">Placa/Eb</th>
+      <th scope="col">Foto</th>
+    </tr>
+  </thead>
+
+{% for viaturas in viaturas %}
+
+  <tbody>
+    <tr>
+      <th scope="row">{{ viaturas.id }}</th>
+      <td>{{ viaturas.viaturas }}</td>
+      <td>{{ viaturas.prefixo }}</td>
+      <td>{{ viaturas.Placa_eb }}</td>
+      <td>{{ viaturas.fotos }}</td>
+      <td>
+                <a href="{% url 'viaturas:edit-viaturas' viaturas.id %}" class="btn btn-success">Editar</a>
+
+       
+
+       </td>
+    </tr>
+  </tbody>
+</div>
+      {%  empty %} 
+          <h3 style='color:red'>Nem um resultado encontrado<h3>
+
+{% endfor %}

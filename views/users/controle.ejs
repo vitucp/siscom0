@@ -1,0 +1,279 @@
+<%- include('../partials/header') %>
+
+
+<style>
+  .card{
+
+        -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+      }
+</style>
+
+   
+<header id="header">
+  <nav>
+    <a href="/home" ><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="50" height="20"
+      viewBox="0 0 172 172"
+      style=" fill:#000000;">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#95A5A6">
+        <path d="M93.16667,42.49609l-43.50391,43.50391l43.50391,43.5039l10.75,-10.75l-32.75391,-32.7539l32.75391,-32.75391z"></path></g></g></svg></a>
+ 
+        <a href="/controle-de-pessoal" >Efetivo</a>  
+        <a href="/efetivo" >Militares</a>
+        <!--
+
+          <a href="/missoes" >Missoes</a>
+        -->
+        
+        <a href="/destinos" class=" position-relative">Destinos
+          <span class="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-danger">
+
+            <%= notificacaoRetorno.count %>
+            <span class="visually-hidden"></span>
+          </span>
+        </a> 
+        <a href="/historico" >Historico</a> 
+ 
+      </nav>
+  <nav> 
+    <a href="#menu">Menu</a>
+  </nav>
+<nav id="menu">
+  <ul class="links">
+    <li><a href="/home">Home</a></li>
+    <li><a href="/logout/">Sair</a></li>
+  </ul>
+</nav>
+</header>
+
+
+<br><hr>
+
+
+        <div class="row">
+          <div class="col-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="text-align: center;">Oficias</h5>
+                <p class="card-text" style="text-align: center;"><h3 style="text-align: center;"><font size="7" face="Georgia, Arial" color="black"><%= oficiais.count %></font></h3></p>
+                <div style="text-align: center;">
+                  <a href="/relatorio-efetivo/of" class="btn btn-success">Ver</a>
+                  
+                </div>
+              </div>
+          </div>
+        </div>
+
+        
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Sub tenentes</h5>
+              <p class="card-text" style="text-align: center;"><h3 style="text-align: center;"><font size="7" face="Georgia, Arial" color="black"><%= sub.count %></font></h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/sub" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div><br>
+        </div><br>
+
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Sargentos</h5>
+              <p class="card-text" style="text-align: center;"><h3 style="text-align: center;"><font size="7" face="Georgia, Arial" color="black"><%= sgt.count %></font></h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/sgt" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div><br>
+        </div><br>
+
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Cabos</h5>
+              <p class="card-text" style="text-align: center;">
+                <h3 style="text-align: center;">
+                  <font size="7" face="Georgia, Arial" color="black"><%= cabo.count %></font>
+                </h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/cb" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div><br>
+        </div><br>
+
+
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Soldado Ep</h5>
+              <p class="card-text" style="text-align: center;">
+                <h3 style="text-align: center;">
+                  <font size="7" face="Georgia, Arial" color="black"><%= sd.count %></font>
+                </h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/ep" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div><br>
+        </div><br>
+
+      
+        <div class="col-md-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Soldado Ev</h5>
+              <p class="card-text" style="text-align: center;">
+                <h3 style="text-align: center;">
+                  <font size="7" face="Georgia, Arial" color="black"><%= sdev.count %></font>
+                </h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/ev" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Total</h5>
+              <p class="card-text" style="text-align: center;">
+                <h3 style="text-align: center;">
+                  <font size="7" face="Georgia, Arial" color="black"><%= efetivo.count %></font>
+                </h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/total" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div><br>
+        </div><br>
+
+
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Prontos</h5>
+              <p class="card-text" style="text-align: center;">
+                <h3 style="text-align: center;">
+                  <font size="7" face="Georgia, Arial" color="black"><%= prontos.count %></font>
+                </h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/prontos" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div><br>
+        </div><br>
+
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">baixados</h5>
+              <p class="card-text" style="text-align: center;">
+                <h3 style="text-align: center;">
+                  <font size="7" face="Georgia, Arial" color="black"><%= baixados.count %></font>
+                </h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/baixado" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div><br>
+        </div><br>
+
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Hgun</h5>
+              <p class="card-text" style="text-align: center;">
+                <h3 style="text-align: center;">
+                  <font size="7" face="Georgia, Arial" color="black"><%= hgun.count %></font>
+                </h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/hgun" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div><br>
+        </div><br>
+
+       
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Trecho</h5>
+              <p class="card-text" style="text-align: center;">
+                <h3 style="text-align: center;">
+                  <font size="7" face="Georgia, Arial" color="black"><%= trecho.count %></font>
+                </h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/trecho" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">Ferias</h5>
+              <p class="card-text" style="text-align: center;">
+                <h3 style="text-align: center;">
+                  <font size="7" face="Georgia, Arial" color="black"><%= ferias.count %></font>
+                </h3></p>
+             <div style="text-align: center;">
+              <a href="/relatorio-efetivo/ferias" class="btn btn-success">Ver</a>
+              
+            </div>
+            </div>
+          </div><br>
+        </div><br>
+
+        </div>
+
+<!--
+
+<div class="inner" ><br>
+
+ <form action="/busca" method="post">
+    <label for="busca"></label>
+    <input type="search" id="busca" name="busca">
+    <p><b></b></p>
+  </form>
+  
+    <div class="row">
+            <%  user.forEach(user => {  %>  
+
+        <div class="col-3">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= user.nomeGuerra %></h5>
+              <p class="card-text"><%= user.tel1 %><br>
+                <%= user.localizacao %><br><br>
+
+              
+              </p><br>
+              <a href="#" class="btn btn-success">Ver</a>
+            </div><br>
+          </div><br>
+        </div><br>
+          <% }) %>
+    </div><br>
+
+</div><br>
+
+-->
+<%- include('../partials/footer') %>
